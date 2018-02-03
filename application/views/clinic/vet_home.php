@@ -15,8 +15,8 @@
 
 .beta tbody {
     height: 500px;
-    width: 1000px;
-    overflow-y: auto;
+    width: 1068px;
+    overflow-y: hidden;
 }
 
 .beta thead {
@@ -31,12 +31,13 @@
 </style>
 <div id="container">
 
+<!--
 <div  style="float:right;">
 	<button type="button" class="btn btn-success btn-md" id="addbtn"  data-toggle="modal" data-target="#addclientmodal">
 	<span class="glyphicon glyphicon-plus"></span>New Client</button>
 </div>
 <h2>List of Clients</h2>
-
+-->
 
 <?php if( $error = $this->session->flashdata('responsed')): ?>
 		<div class="alert alert-dismissible alert-danger">
@@ -51,10 +52,22 @@
 <?php endif; ?>
 
 
-<div style="height: 600px; width: 1000px; overflow: auto">
+<div style=" overflow-x: auto;" class="table-responsive">
 <table class="beta table-list-search" id="mytable">
 	<thead>
-		<tr>
+		<tr class="th1">
+			<th>LIST OF CLIENTS</th>
+			<th> </th>
+			<th> </th>
+			<th> <div  style="float:right;">
+			<button type="button" class="btn btn-md" id="addbutn"  data-toggle="modal" data-target="#addclientmodal">
+			<span class="glyphicon glyphicon-plus">
+			<span class="tooltiptext">Add Client</span>
+			</span></button>
+			</div> </th>
+		</tr>
+		
+		<tr class="th2">
 			<th>Client ID</th>
 			<th>Client's Name</th>
 			<th style="text-align:center;">No. of Pets Owned</th>
@@ -84,7 +97,8 @@
 							<td style="text-align:center;"><?php echo $client['pets']; ?></td>
 							<td style="text-align:center;">	
 							<?php $c=$client['clientid'];?>				
-							<button class="btn btn-info" id="<?php echo $c;?>" type="button" onclick="lol(this.id)">View Details   <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button>
+							<b class="btn viewdetailsbtn" id="<?php echo $c;?>" type="button" onclick="lol(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true">
+							<span class="tooltiptext2">View Details</span></span></b>
 							</td>
 						</tr>
 					<?php } ?>

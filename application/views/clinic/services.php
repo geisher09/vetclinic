@@ -5,6 +5,8 @@
 	<span class="glyphicon glyphicon-plus"></span> Add service</button>
 	</div>
 	<h2>Services offered:</h2>
+	<div class="container-fluid box">
+<!--
 <table class="table" id="mytable">
 	<thead>
 		<tr>
@@ -13,42 +15,50 @@
 			<th style="text-align:center;">Action</th>
 		</tr>
 	</thead>
-	<tbody> <!-- -  hey! suggest ko sana na hati yung services by classifications tulad nung nasa picture na kuha dun sa clinic, suggestion lang... :D --->
+	<tbody> 
 		<tr> 
-			<td style="width:400px;"><b>Grooming Services</b></td>  <!-- classification ng service, dummy data lang ung nasa baba  -->
+			<td style="width:400px;"><b>Grooming Services</b></td>
 			<td></td><td></td><td></td>
-		</tr>
+		</tr>-->
 			<?php 
 			foreach($grooming as $s){
 				echo '
-				<tr>
-					<td>'.$s['id'].'</td>
-					<td>'.$s['desc'].'</td>
-					<td style="text-align:center;"><p>
+				<div class="col-lg-3 col-md-3 col-sm-3 boxed">
+					<ul> Grooming </ul> <hr>
+					<li> '.$s['desc'].' </li>
+					<li> '.$s['id'].' </li> <hr>
+					<li> <p>
 						<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#updateservicemodal" onclick="data('.$s['id'].')">Edit</button>
 						<a href="'.base_url('vetclinic/services/?id='.$s['id']).'" role="button" class="btn btn-danger btn-md" >Delete</a></p>
-					</td>
-				</tr> ';}
+					</li>
+				</div>
+				
+				
+				 ';}
 			?>
-		<tr>
-			<td><b>Treatment Services</b></td> <!--  classification ng service, dummy data lang ung nasa baba -->
+		<!--<tr>
+			<td><b>Treatment Services</b></td>
 			<td></td><td></td><td></td>
-		</tr> 
+		</tr> -->
 				<?php 
 			foreach($treatment as $s){
 				echo '
-				<tr>
-					<td>'.$s['id'].'</td>
-					<td>'.$s['desc'].'</td>
-					<td style="text-align:center;"><p>
+				<div class="col-lg-3 col-md-3 col-sm-3 boxed">
+					<ul> Treatment </ul> <hr>
+					<li> '.$s['desc'].' </li>
+					<li> '.$s['id'].' </li> <hr>
+					<li> <p>
 						<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#updateservicemodal" onclick="data('.$s['id'].')">Edit</button>
-						<button type="submit" class="btn btn-danger btn-md" )">Delete</button></p>
-					</td>
-				</tr> ';}
+						<a href="'.base_url('vetclinic/services/?id='.$s['id']).'" role="button" class="btn btn-danger btn-md" >Delete</a></p>
+					</li>
+				</div>
+				 ';}
 			?>
 		
+		</div>
+<!--
 	</tbody>
-</table>
+</table>-->
 
 	<!--  Add Service Modal -->
 	  <div class="modal fade" id="addservicemodal" role="dialog">

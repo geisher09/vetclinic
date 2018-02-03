@@ -1,33 +1,43 @@
 
 	body { 
-		background: url(http://localhost/veterinary/assets/images/background6.png) no-repeat center center fixed; 
+		/*background: url(http://localhost/veterinary/assets/images/background6.png) no-repeat center center fixed; 
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
-		background-size: cover;
+		background-size: cover;*/
 	}
+	
 	.logo{
 		height: 40px;
 		width: 40px;
-		margin: 5px;
+		margin-left: 50px;
+		margin-top: 10px;
 		float:left;
 		border-radius: 10px;
 	}
+	
+	.navbar-nav {
+		  -moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+	}
+	
 	#menu {
 		list-style-type: none; margin: 0; padding: 0; width: 100%;
-		background-color: #404040;  overflow: hidden;
-		position: fixed; top: 0;
+		background-color: #fff;  overflow: hidden;
+		position: fixed; top: 0; height: 70px;
 	}
 	#menu li a {
-		display: block; color: #f2f2f2; text-decoration: none; padding-top:17px;
-		text-align: center; font-family: Helvetica; font-size: 15.5px; 
-		transition: 0.3s; border-bottom: 2px solid #404040;
+		display: block; color: grey; text-decoration: none; padding-top:25px;
+		text-align: center; font-family: Champagne&Limousines; font-size: 14px; 
+		transition: 0.3s; margin-right: 30px;
 	}
-	#menu li a:hover {  color:#f2f2f2; background-color:#333333; border-bottom:2px solid #f2f2f2;}
-	#menu li a:focus { color: #66a3ff; border-bottom:2px solid #66a3ff;}
+	#menu li a:hover {  color:#3498DB; border-top:2px solid #3498DB; background-color: #fff;}
+	#menu li a:focus {  color:#3498DB; border-top:2px solid #3498DB; background-color: #fff;}
+	
 	#title{
 		font-family: Cambria; font-size: 31px; padding:2px;
-		background-color:#f2f2f2; -webkit-text-stroke: 0.5px black; color: #3385ff;
+		background-color:#fff; -webkit-text-stroke: 0.5px black; color: #3385ff;
 	}
 	#container{
 		padding: 0;
@@ -36,41 +46,119 @@
 	}
 	
 	/************* home page *************/
-	#addbtn {
+	#addbutn {
 		display: inline-block;
-		font-size: 17px;
-		margin-bottom: 15px;
+		font-size: 14px;
 		cursor: pointer;
 		float: right;
+		background-color: #2E86C1;
+		width: 45px;
+		height: 45px;
+		outline: none;
+		margin-bottom: 20px;
+		border-radius: 50px;
 	}
+	
+	#addbutn:hover { color: #fff;}
+	#addbutn:focus { color: #fff;}
+	
+	.tooltiptext {
+		visibility: hidden;
+		width: 100px;
+		color: #fff;
+		background-color: none;
+		text-align: center;
+		border-radius: 0px;
+		border: 0px;
+		position: absolute;
+		top: -8px;
+		right: 170%;
+		font-family: Calibri;
+		padding: 3px;
+		outline: none;
+	}
+	
+	#addbutn:hover .tooltiptext {
+		visibility: visible;
+		outline: none;
+	}
+	
 	#mytable{
 		width: 100%;
 		border-collapse: collapse;
-		overflow: auto;
-		margin-top: 10px;
+		overflow: hidden;
+		margin-top: 30px;
 	}
 	#mytable th{
-		background-color: #3399FF;
 		color: white;
 		height: 30px;
-		font-size: 18px;
-		padding:3px 5px;
-		border-bottom: 1px solid #000;
-		border-top: 1px solid #000;
+		border: none;
 		text-align: left;
+		font-family: Calibri;
 	}
 	#mytable td{
-		border-bottom: 1px solid #CCC;
-		padding:0px;
-		padding-top:7px;
-		padding-left:5px;
+		background-color: #E5E8E8;
+		padding-top: 13px;
+		padding-bottom: 13px;
+		padding-left: 20px;
+		
 	}
-	#mytable tr:hover{
+	#mytable tbody {
+		overflow-y: scroll;
+		overflow-x: hidden;
+		height: 300px;
+	}
+	
+	#mytable tbody tr:hover td{
 		background-color:rgba(255,255,255,0.3);
+		color: #3498DB;
+	}
+	.th1 {
+		background-color: #3498DB;
+		padding-top: 15px;
+		padding-bottom: 25px;
+		padding-left: 20px;
+		padding-right: 20px;
+		font-size: 20px;
 	}
 	
-	.btn { outline:none; }
+	.th2{
+		background-color: #5DADE2;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		padding-left: 20px;
+		font-size: 18px;
+	}
 	
+	.btn{ outline:none; 
+			margin: 0px;
+			padding: 0px;}
+			
+	.viewdetailsbtn {
+		color: #7F8C8D;
+		background-color: none;
+		width: 10px;
+		height: 18px;
+		text-align: center-left;
+	}
+	
+	.tooltiptext2 {
+		visibility: hidden;
+		width: 100px;
+		color: #3498DB;
+		background-color: none;
+		text-align: center;
+		border-radius: 0px;
+		position: absolute;
+		top: -5px;
+		left: 120%;
+		font-family: Calibri;
+		padding: 3px;
+	}
+	
+	.viewdetailsbtn:hover .tooltiptext2 {
+		visibility: visible;
+	}
 	/************* add new page *************/
 	label{
 		font-size:17px;
@@ -80,14 +168,15 @@
 	input[type=radio]{ cursor: pointer;}
 	
 	/************* search bars *************/
+	/*
 	input[type=text]#search {
 		width: 100%;
 		height: 10px;
 		outline:none;
-		border: 1px solid #404040;
+		border: 1px solid #F2F2F2;
 		font-size: 16px;
-		background-color: #404040;
-		border-radius:2px;
+		background-color: #FFFFFF;
+		border-radius:15px;
 		padding: 15px 5px;
 		margin: 11px 0px 10px 10px;
 		transition: 0.5s;
@@ -97,8 +186,60 @@
 	input[type=text]#search:focus{
 		border: 1px solid #F2F2F2;
 		background-color: #FFFFFF;
+	} */
+	
+	.search {
+    padding: 5px 0;
+    width: 230px;
+    height: 30px;
+    position: relative;
+    margin-left: 440px;
+	margin-top: 14px;
+}
+	.search > .btnmod {
+		font-size: 14px;
+		font-family: "Verdana";
+		margin-left: 190px;
+		position: absolute;
+		background-color: #fff;
+		color: grey;
+		width: 40px;
+		height: 33px;
+		padding: 5px;
+		border: 0px;
 	}
 	
+	.search > .btnmod:hover {
+		color: #3498DB;
+		border: 0px;
+	}
+	.search > .btnmod:focus {
+		color: #3498DB;
+		border: 0px;
+		outline: none;
+	}
+	
+    .search input {
+        position: absolute;
+        width: 0px;
+        margin-left: 210px;
+        -webkit-transition: all 0.7s ease-in-out;
+        -moz-transition: all 0.7s ease-in-out;
+        -o-transition: all 0.7s ease-in-out;
+        transition: all 0.7s ease-in-out;
+        height: 30px;
+        padding: 0 2px 0 2px;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+		border-color: #3498DB;
+    }
+	
+    .search:hover input, .search input:focus {
+            width: 200px;
+            margin-left: 0px;
+			outline: none;
+    }
 	/************* inventory page *************/
 	#inventorytable {
 		width: 100%;
@@ -142,4 +283,33 @@
 	
 	#clientModal{
 		margin: 0 auto;
+	}
+	
+	/************* services ************/
+	.boxed {
+		float: left;
+		height: 250px;
+		width: 120px;
+		background-color: #5DADE2;
+		margin-right: 50px;
+		margin-top: 50px;
+		margin-left: 30px;
+		text-align: center;
+		position: static;
+		border-radius: 10px;
+	}
+	
+	.boxed > ul {
+		color: #fff;
+		font-size: 25px;
+	}
+	
+	.boxed > li {
+		list-style: none;
+		color: #fff;
+		font-size: 20px;
+	}
+	
+	.box {
+		margin-left: 100px;
 	}

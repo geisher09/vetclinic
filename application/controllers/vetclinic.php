@@ -16,7 +16,7 @@ class vetclinic extends CI_Controller {
 	}
 	public function index()
 	{
-		$header_data['title'] = "Clinic";		
+		$header_data['title'] = "Records";		
 		$this->load->view('include/header',$header_data);
 		$this->load->model('vet_model');
 		$clients = $this->vet_model->getClients();

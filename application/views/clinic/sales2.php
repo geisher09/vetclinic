@@ -1,11 +1,16 @@
 <div id="container">
 
-	<div  style="float:right;">
-		<div style="height: 600px; width: 1000px; overflow: auto">
-		<h1 style="text-align:center; font-size:70px;">Sales:</h1>
-		<table class="beta table-list-search" id="mytable">
+	<div  style=" overflow-x: hidden; height:500px;" >
+		<table class="table-list-search" id="mytable">
 			<thead>
-				<tr>
+				<tr class="th1">
+					<th>SALES</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				
+				<tr class="th2">
 					<th>Service Type</th>
 					<th>Description</th>
 					<th>Cost</th>
@@ -43,6 +48,5 @@
 				
 			</tbody>
 		</table>
-		</div>
 	</div>
 </div>
