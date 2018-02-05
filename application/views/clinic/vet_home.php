@@ -1,33 +1,41 @@
+<!-- 
+PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung bakit. ayusin na lang minsan. -carlo
+
 <style type="text/css">
-.beta thead, .beta tbody, .beta tr, .beta td, .beta th { display: block; }
+    .beta thead, .beta tbody, .beta tr, .beta td, .beta th { display: block; }
 
-.beta tr:after {
-    content: ' ';
-    display: block;
-    visibility: hidden;
-    clear: both;
-}
+    .beta tr:after {
+        content: ' ';
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
 
-.beta thead th {
-    height: 30px;
-    /*text-align: left;*/
-}
+    .beta thead th {
+        height: 30px;
+        /*text-align: left;*/
+    }
 
-.beta tbody {
-    height: 500px;
-    width: 1068px;
-    overflow-y: hidden;
-}
+    .beta tbody {
+        height: 1000px;
+    /*    width: 1068px;*/
+        overflow-y: hidden;
+    }
 
-.beta thead {
-    /* fallback */
-}
+    .beta thead {
+        /* fallback */
+    }
 
 
-.beta tbody td, thead th {
-    width: 25%;
-    float: left;
-}
+    .beta tbody td, thead th {
+        width: 25%;
+        float: left;
+    }
+</style> -->
+<style>
+	#mytable tbody td {
+		width:290px;
+	}
 </style>
 <div id="container">
 
@@ -51,30 +59,31 @@
 		</div> 
 <?php endif; ?>
 
-
-<div style=" overflow-x: auto;" class="table-responsive">
-<table class="beta table-list-search" id="mytable">
-	<thead>
-		<tr class="th1">
-			<th>LIST OF CLIENTS</th>
-			<th> </th>
-			<th> </th>
-			<th> <div  style="float:right;">
-			<button type="button" class="btn btn-md" id="addbutn"  data-toggle="modal" data-target="#addclientmodal">
-			<span class="glyphicon glyphicon-plus">
-			<span class="tooltiptext">Add Client</span>
-			</span></button>
-			</div> </th>
-		</tr>
-		
-		<tr class="th2">
-			<th>Client ID</th>
-			<th>Client's Name</th>
-			<th style="text-align:center;">No. of Pets Owned</th>
-			<th style="text-align:center;">Action</th>
-		</tr>
-	</thead>
-	<tbody>
+<!--table for clients-->
+<div style=" overflow-x:hidden;" class="table-responsive">
+    <table class="beta table-list-search" id="mytable">
+        <thead>
+            <tr class="th1">
+                <th>LIST OF CLIENTS</th>
+                <th></th><th></th>
+                <th >
+                    <div>
+                        <button type="button" class="btn btn-md" id="addbutn"  data-toggle="modal" data-target="#addclientmodal">
+                            <span class="glyphicon glyphicon-plus">
+                            <span class="tooltiptext">Add new client</span>
+                            </span>
+                        </button>
+                    </div> 
+                </th>
+            </tr>
+            <tr class="th2">
+                <th>Client ID</th>
+                <th>Client's Name</th>
+                <th style="text-align:center;">No. of Pets Owned</th>
+                <th style="text-align:center;">Action</th>
+            </tr>
+        </thead>
+	    <tbody>
 							<?php if(count($cl) > 0){ ?>
 					<?php foreach ($cl as $client){ ?>
 							<tr>
@@ -97,7 +106,7 @@
 							<td style="text-align:center;"><?php echo $client['pets']; ?></td>
 							<td style="text-align:center;">	
 							<?php $c=$client['clientid'];?>				
-							<b class="btn viewdetailsbtn" id="<?php echo $c;?>" type="button" onclick="lol(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true">
+							<b class="btn viewdetailsbtn" id="<?php echo $c;?>" type="button" onclick="lol(this.id)" data-toggle="modal" data-target="#clientModal"><span class="glyphicon glyphicon-folder-open" aria-hidden="true">
 							<span class="tooltiptext2">View Details</span></span></b>
 							</td>
 						</tr>
@@ -106,12 +115,13 @@
 					
 
 		
-	</tbody>
-</table>
+        </tbody>
+    </table>
 </div>
+<!--    end of table for clients-->
 
-	<!------------- Add Client Modal --------------->
-  <div class="modal fade" id="addclientmodal" role="dialog">
+<!------------- Add Client Modal --------------->
+    <div class="modal fade" id="addclientmodal" role="dialog">
     <div class="modal-dialog modal-lg">
     
       <!-- Modal content-->
@@ -238,29 +248,30 @@
 				</div>
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           <button type="submit" class="btn btn-primary">Save</button>
 			  </form>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
         <?php form_close();?>
       </div>
       
     </div>
-  </div>
+  </div> 
+<!--end of add client modal-->
   
-  <!----------- Client Detail Modal -------------------->
- <div class="modal fade" id="clientModal" role="dialog">
+<!----------- Client Detail Modal -------------------->
+  <div class="modal fade" id="clientModal" role="dialog">
     <div class="modal-dialog modal-lg">
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header" style="background-color:rgba(128, 191, 255,0.9);">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">View Details</h4>
-					<button class="tablink btn btn-info" onclick="details(event, 'clientDet')">Client Details</button>
-					<button class="tablink btn btn-info" onclick="details(event, 'addPet')">Add Pet</button>
-					<button id = "mytab" class="tablink btn btn-info" onclick="details(event, 'visitHistory')">Visit Details</button>
-					<button class="tablink btn btn-info" onclick="details(event, 'addHistory')">Add History</button>
-					<button class="tablink btn btn-info" onclick="details(event, 'addItem')">Add Item Used</button>
+                
+				<button class="tablink btn btn-info" onclick="details(event, 'clientDet')">Client Details</button>
+				<button class="tablink btn btn-info" onclick="details(event, 'addPet')">Add Pet</button>
+				<button id = "mytab" class="tablink btn btn-info" onclick="details(event, 'visitHistory')">Visit Details</button>
+				<button class="tablink btn btn-info" onclick="details(event, 'addHistory')">Add History</button>
+				<button class="tablink btn btn-info" onclick="details(event, 'addItem')">Add Item Used</button>
 					
 			</div>
 		
@@ -932,7 +943,4 @@ $('.modal').on('hidden.bs.modal', function (e) {
 		}
 
 
-
 </script>
-
-

@@ -1,11 +1,11 @@
 <div id="container">
-
-	<div  style="float:right;">
-		<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addservicemodal">
-	<span class="glyphicon glyphicon-plus"></span> Add service</button>
-	</div>
-	<h2>Services offered:</h2>
+<br/>
 	<div class="container-fluid box">
+        <div style="float:right;margin-top:20px;">
+            <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addservicemodal">
+        <span class="glyphicon glyphicon-plus"></span> Add service</button>
+        </div>
+        <h2>Services offered:</h2>
 <!--
 <table class="table" id="mytable">
 	<thead>
@@ -28,7 +28,7 @@
 					<li> '.$s['desc'].' </li>
 					<li> '.$s['id'].' </li> <hr>
 					<li> <p>
-						<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#updateservicemodal" onclick="data('.$s['id'].')">Edit</button>
+						<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#updateservicemodal" onclick="data('.$s['id'].')">Edit</button>
 						<a href="'.base_url('vetclinic/services/?id='.$s['id']).'" role="button" class="btn btn-danger btn-md" >Delete</a></p>
 					</li>
 				</div>
@@ -48,7 +48,7 @@
 					<li> '.$s['desc'].' </li>
 					<li> '.$s['id'].' </li> <hr>
 					<li> <p>
-						<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#updateservicemodal" onclick="data('.$s['id'].')">Edit</button>
+						<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#updateservicemodal" onclick="data('.$s['id'].')">Edit</button>
 						<a href="'.base_url('vetclinic/services/?id='.$s['id']).'" role="button" class="btn btn-danger btn-md" >Delete</a></p>
 					</li>
 				</div>
@@ -94,9 +94,9 @@
 					
 			</div>
 			<div class="modal-footer">
-			  <button type="submit" class="btn btn-default" name="add">Save</button>
-				  </form>
 			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  <button type="submit" class="btn btn-primary" name="add">Save</button>
+				  </form>
 			</div>
 		  </div>
 		  
@@ -143,9 +143,9 @@
 					
 			</div>
 			<div class="modal-footer">
-			  <button type="submit" class="btn btn-default" name="update">Save</button>
-				  </form>
 			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  <button type="submit" class="btn btn-primary" name="update">Save</button>
+				  </form>
 			</div>
 		  </div>
 		  

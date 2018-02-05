@@ -11,7 +11,7 @@
                        <span class="sr-only">Close</span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    Add Product
+                    ADD AN ITEM
                 </h4>
             </div>
             
@@ -35,8 +35,8 @@
             
             <!-- Modal Footer -->
             <div class="modal-footer">
-                <button name="additem" type="submit" class="btn btn-primary">Add Product</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button name="additem" type="submit" class="btn btn-primary">Add Product</button>
                 </form>
                 <?php echo form_close() ?>
             </div>

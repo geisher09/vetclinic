@@ -1,6 +1,7 @@
 <html>
 <head>
 <title><?php echo $title; ?></title>
+    
 	<meta name="viewport" content="width=device-width; initial-scale=1.0"/>
 	<link href="<?php echo base_url('assets/images/logo.png'); ?>" rel="icon" type="image/png"  />
 	<link href="<?php echo base_url('assets/css/overallcss.css'); ?>" rel="stylesheet" type="text/css"  />
@@ -8,14 +9,50 @@
 	<link href="<?php echo base_url('bootstrap/css/bootstrap-theme.min.css'); ?>" rel="stylesheet" type="text/css"  />
 	<link href="<?php echo base_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url('assets/css/default.css'); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo base_url('assets/css/calendarview.css'); ?>" rel="stylesheet" type="text/css" />
 	
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
 	<script src="<?php echo base_url("assets/js/jquery-3.2.1.min.js"); ?>"></script>
   	<script src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
   	<script src="<?php echo base_url("assets/js/canvasjs.min.js"); ?>"></script>
-	<script type="text/javascript" src="<?php echo base_url("assets/js/search.js"); ?>" /></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/js/search.js"); ?>" ></script>
 
+    <style type="text/css"> /*for calendar widget*/
+        div.calendar {
+            max-width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+        div.calendar table {
+            width: 100%;
+          }
+        div.dateField {
+            width: 140px;
+            padding: 6px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            color: #555;
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+          }
+    </style>
+	<script type="text/javascript" src="<?php echo base_url("assets/js/prototype.js"); ?>" ></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/js/calendarview.js"); ?>" ></script>
+    <script>
+          function setupCalendars() {
+            // Calendar
+            Calendar.setup(
+              {
+                dateField: 'embeddedDateField',
+                parentElement: 'embeddedCalendar'
+              }
+            )
+          }
 
+          Event.observe(window, 'load', function() { setupCalendars() })
+    </script>
 	
 </head>
 <body>
@@ -38,3 +75,18 @@
 		</ul>
 	</div>
 </nav>
+
+
+<div style="width:20%;height:580px;position:fixed;right:0;padding:10px;background-color:rgba(194,194,194,0.4);">
+<!--        calendar widget-->
+            <div id="embeddedExample" style="">
+              <div id="embeddedCalendar" style="">
+              </div>
+              <h4>Reminders:</h4>
+              <div id="embeddedDateField" class="dateField">
+                Select Date
+              </div>
+              <br />
+            </div>
+<!--    end of calendar widget-->
+</div>
