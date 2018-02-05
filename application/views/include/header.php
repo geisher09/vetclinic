@@ -17,7 +17,8 @@
   	<script src="<?php echo base_url("assets/js/canvasjs.min.js"); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/search.js"); ?>" ></script>
 
-    <style type="text/css"> /*for calendar widget*/
+<!--    for calendar widget-->
+    <style type="text/css">
         div.calendar {
             max-width: 250px;
             margin-left: auto;
@@ -38,7 +39,7 @@
             text-align: center;
           }
     </style>
-	<script type="text/javascript" src="<?php echo base_url("assets/js/prototype.js"); ?>" ></script>
+	<script type="text/javascript" src="<?php /*echo base_url("assets/js/prototype.js");*/ ?>" ></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/calendarview.js"); ?>" ></script>
     <script>
           function setupCalendars() {
@@ -53,6 +54,7 @@
 
           Event.observe(window, 'load', function() { setupCalendars() })
     </script>
+<!--    end of calendar widget-->
 	
 </head>
 <body>
@@ -83,6 +85,7 @@
               <div id="embeddedCalendar" style="">
               </div>
               <h4>Reminders:</h4>
+                <p>'la pang calendar... awww... :'( huhubels...</p>
               <div id="embeddedDateField" class="dateField">
                 Select Date
               </div>

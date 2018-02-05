@@ -60,7 +60,7 @@
     <table class="table" id="mytable">
         <thead>
             <tr class="th2">
-                <th>Item ID.</th>
+                <th>ID.</th>
                 <th>Action</th>
                 <th >Description</th>
                 <th style="text-align:center;"  >Date</th>

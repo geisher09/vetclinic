@@ -106,7 +106,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							<td style="text-align:center;"><?php echo $client['pets']; ?></td>
 							<td style="text-align:center;">	
 							<?php $c=$client['clientid'];?>				
-							<b class="btn viewdetailsbtn" id="<?php echo $c;?>" type="button" onclick="lol(this.id)" data-toggle="modal" data-target="#clientModal"><span class="glyphicon glyphicon-folder-open" aria-hidden="true">
+							<b class="btn viewdetailsbtn" id="<?php echo $c;?>" type="button" onclick="lol(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true">
 							<span class="tooltiptext2">View Details</span></span></b>
 							</td>
 						</tr>
