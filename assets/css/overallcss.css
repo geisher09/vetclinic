@@ -17,9 +17,9 @@
 	}
 	
 	.navbar-nav {
-		  -moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+		-moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+		-webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+		box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
 	}
 	
 	#menu {
@@ -90,13 +90,14 @@
 /*        width:1070px;*/
 		border-collapse: collapse;
 /*		overflow: hidden;*/
+		margin-top: 20px;
 	}
 	#mytable th{
 		color: white;
 		height: 30px;
 		border: none;
 		text-align: left;
-		font-family: Calibri;
+		font-family: 'Josefin Slab';
         padding: 5px 10px;
 	}
 	#mytable thead th {
@@ -112,10 +113,12 @@
 	#mytable tbody {
 		overflow-y: scroll;
 		overflow-x: hidden;
-		height: 300px;
+		height: 200px;
 	}
+	
 	#mytable tbody td {
-/*		width:250px;*/
+		width:290px;
+		margin-top: 20px;
 	}
 	
 	#mytable tbody tr:hover td{
@@ -128,7 +131,7 @@
 		padding-bottom: 25px;
 		padding-left: 20px;
 		padding-right: 20px;
-		font-size: 35px;
+		font-size: 20px;
         text-shadow: 1px 1px 1px grey;
 	}
 	
@@ -136,7 +139,6 @@
 		background-color: #5DADE2;
 		padding-top: 8px;
 		padding-bottom: 8px;
-		padding-left: 20px;
 		font-size: 20px;
         text-shadow: 1px 1px 1px grey;
 	}
@@ -199,12 +201,16 @@
 		background-color: #FFFFFF;
 	} */
 	
+	@media all and (max-width: 500px) {
+		.search input > .btnmod { display: none; }
+	}
+	
 	.search {
         padding: 5px 0;
         width: 230px;
         height: 30px;
         position: relative;
-        margin-left: 440px;
+		margin-left: 440px;
         margin-top: 14px;
     }
 	.search > .btnmod {
@@ -278,6 +284,77 @@
 		cursor: arrow;
 	}
 	
+	section {
+		position: relative;
+		height: 10%;
+	}
+	
+	
+	.demo a {
+		position: relative;
+		bottom: -50px;
+		left: 40%;
+		z-index: 2;
+		display: inline-block;
+		-webkit-transform: translate(0, -50%);
+		transform: translate(0, -50%);
+		color: #000;
+		font : normal 400 15px/1 'Josefin Sans', sans-serif;
+		letter-spacing: .1em;
+		text-decoration: none;
+		transition: opacity .3s;
+	}
+
+	.demo a:hover {
+		opacity: .5;
+		text-decoration: none;
+	}
+	
+	#section1 a {
+		padding-top: 60px;
+	}
+	
+	#section1 a span {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 24px;
+		height: 24px;
+		margin-left: -12px;
+		border-left: 1px solid #000;
+		border-bottom: 1px solid #000;
+		-webkit-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+		-webkit-animation: sdb04 2s infinite;
+		animation: sdb04 2s infinite;
+		box-sizing: border-box;
+	}
+	
+	@-webkit-keyframes sdb04 {
+		0% {
+			-webkit-transform: rotate(-45deg) translate(0, 0);
+		}
+		20% {
+			-webkit-transform: rotate(-45deg) translate(-10px, 10px);
+		}
+		40% {
+			-webkit-transform: rotate(-45deg) translate(0, 0);
+		}
+	}
+	
+	@keyframes sdb04 {
+		0% {
+			transform: rotate(-45deg) translate(0, 0);
+		}
+		20% {
+			transform: rotate(-45deg) translate(-10px, 10px);
+		}
+		40% {
+			transform: rotate(-45deg) translate(0, 0);
+		}
+	}
+	
+	
 	/************* schedule page *************/
 	#back{
 		padding: 0;
@@ -308,8 +385,8 @@
 		margin-left: 30px;
 		text-align: center;
 		position: static;
-		border-radius: 10px;
         box-shadow:5px 5px 15px grey;
+		font-family: Verdana;
 	}
 	
 	.boxed > ul {
@@ -325,4 +402,53 @@
 	
 	.box {
 		margin-left: 100px;
+	}
+	
+	.boxed2 {
+		float: left;
+		width: 120px;
+		min-width: 100px;
+		background-color: #2874A6;
+        padding: 20px 10px;
+		margin-right: 30px;
+		margin-top: 50px;
+		margin-left: 30px;
+		text-align: center;
+		position: static;
+        box-shadow:5px 5px 15px grey;
+		font-family: Verdana;
+	}
+	
+	.boxed2 > ul {
+		color: #fff;
+		font-size: 25px;
+	}
+	
+	.boxed2 > li {
+		list-style: none;
+		color: #fff;
+		font-size: 20px;
+	}
+	
+	#servtitle {
+		text-align: center;
+		color: #2471A3;
+		font-family: 'Josefin Slab';
+		font-size: 40px;
+	}
+	
+	#addserv {
+		color: #2471A3; 
+		text-align: center; 
+	}
+
+	#addserv button {
+		 background-color:  #F8F9F9;
+		 outline: none;
+	}
+	
+	#addserv button:hover, button:focus {
+		 color: #fff;
+		 background-color:  #2471A3;
+		 outline: none;
 	}

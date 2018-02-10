@@ -66,7 +66,7 @@
 	
 	
 </head>
-<body>
+<body style="margin-right: 250px;">
 	<div id='top'>
 
 		<div class='left'>

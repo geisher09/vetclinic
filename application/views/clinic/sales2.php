@@ -40,13 +40,13 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 		width:10%;
 	}
 </style>
-<div id="container" style="background-color: #E5E8E8;">
+<div id="container">
 
 	<div  style="overflow-x:hidden;" class="table-responsive">
 		<table class=" beta table-list-search" id="mytable">
 			<thead>
 				<tr class="th1">
-					<th>SALES</th>
+					<th style="font-size: 23px; padding-top: 15px; padding-bottom: 15px;">SALES</th>
 					<th></th>
 					<th></th>
 					<th></th>

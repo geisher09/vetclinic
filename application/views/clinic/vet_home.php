@@ -32,11 +32,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
         float: left;
     }
 </style> -->
-<style>
-	#mytable tbody td {
-		width:290px;
-	}
-</style>
+
 <div id="container">
 
 <!--
@@ -60,7 +56,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 <?php endif; ?>
 
 <!--table for clients-->
-<div style=" overflow-x:hidden;" class="table-responsive">
+<div class="table-responsive">
     <table class="beta table-list-search" id="mytable">
         <thead>
             <tr class="th1">

@@ -1,11 +1,12 @@
 <div id="container">
 <br/>
 	<div class="container-fluid box">
-        <div style="float:right;margin-top:20px;">
-            <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addservicemodal">
-        <span class="glyphicon glyphicon-plus"></span> Add service</button>
+	
+		<div id="servtitle"> Services Offered</div>
+        <div id="addserv">
+            <button type="button" class="btn btn-md" data-toggle="modal" data-target="#addservicemodal">
+			<span class="glyphicon glyphicon-plus"></span> Add Service</button>
         </div>
-        <h2>Services offered:</h2>
 <!--
 <table class="table" id="mytable">
 	<thead>
@@ -43,7 +44,7 @@
 				<?php 
 			foreach($treatment as $s){
 				echo '
-				<div class="col-lg-3 col-md-3 col-sm-3 boxed">
+				<div class="col-lg-3 col-md-3 col-sm-3 boxed2">
 					<ul> Treatment </ul> <hr>
 					<li> '.$s['desc'].' </li>
 					<li> '.$s['id'].' </li> <hr>
