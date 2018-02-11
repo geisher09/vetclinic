@@ -279,26 +279,36 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 						<div class="row">
 							<div class=" col-md-4 form-group">
 								<label for="">Client no:</label>
-								<input type="text" class="form-control form-inline" id="clientno" name="clientno" value="" disabled="true"/>
+							<input type="hidden" class="form-control form-inline" id="clientno1" name="clientno" value="" disabled="true"/> 
+							<p id="clientno" value=""></p>
+						<h1></h1>	 
 							</div>
 							<div class=" col-md-4 form-group">
 								<label for="">Name :</label>
-								<input type="text" class="form-control form-inline" id="custname" name="" value="" disabled="true"/>
+								<input type="text" class="form-control form-inline" id="custname1" name="" value="" disabled="true"/>
+										<p id="custname"  value=""></p>
 							</div>
 							
 							<div class="col-md-4 form-group">
 								<label for="">Contact No.:</label>
-								<input type="text" class="form-control" id="custcontactno" name="" value=""/>
+								<input type="text" class="form-control" id="custcontactno1" value=""/>
+										<p id="custcontactno"  value=""></p>
 							</div>	
+							<button class="btn btn-primary" id="editClient">EDIT</button>
+
+
+						<!-- 	<button class="btn btn-primary" id="modal">modal</button> -->
 						</div>
 						<div class="row">
 							<div class="col-md-6 form-group">
 								<label for="">Email:</label>
-								<input type="text" class="form-control" id="custemail" name="" value=""/>
+								<input type="text" class="form-control" id="custemail1" name="" value=""/>
+										<p id="custemail"  value=""></p>
 							</div>
 							<div class="col-md-6 form-group">
 								<label for="">Address:</label>
-								<input type="text" class="form-control" id="custaddress" name="" value=""/>
+								<input type="text" class="form-control" id="custaddress1" name="" value=""/>
+										<p id="custaddress" value=""></p>
 							</div>		
 						</div>
 			
@@ -357,7 +367,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 					</div>
 
 					<div>
-						<button type="button" onclick="" class="btn btn-primary" data-dismiss="modal">Save</button>
+						
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 					<?php echo form_close();?>
@@ -651,6 +661,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 	</div>
 </div>
 
+
 <!--Script for the item used-->
 <script>
 $('.modal').on('hidden.bs.modal', function (e) {
@@ -902,7 +913,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 				        	var obj = JSON.parse(data);
 				        	console.log(obj.pets);
 				        	//console.log(obj.services);
-				        	
+						
 				        	var s = "";
 				        	var v = "";
 				        	var d = "";
@@ -912,7 +923,9 @@ $('.modal').on('hidden.bs.modal', function (e) {
 								for(var i=0; i<parseInt(obj.pets.length); i++){
 									s += '<tr><td>'+obj.pets[i].petid+'</td><td>'+obj.pets[i].pname+'</td><td><button class="btn btn-info" id="'+obj.pets[i].petid+'"type="button" onclick="pop(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button></td><td><button class="tablink btn btn-info" id="'+obj.pets[i].petid+'"type="button" onclick="visit(this.id)"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button></tr>';
 		 					        v += '<option value='+obj.pets[i].petid+'>'+obj.pets[i].pname+'</option>';
+
 								}
+
 								$("#petsOwned").html(s);
 								$("#VpetsOwned").html(v);
 								
@@ -923,15 +936,21 @@ $('.modal').on('hidden.bs.modal', function (e) {
 								}
 								$("#Vdoctors").html(d);
 
+						//	alert(obj.client.clientid);
 							
-							
-						
+						//plain text
 							$('#addpetclientno').val(id);
-				        	$('#clientno').val(obj.client.clientid);
-				        	$("#custname").val(obj.client.cname);
-				        	$("#custemail").val(obj.client.email);
-				        	$("#custaddress").val(obj.client.address);
-				        	$("#custcontactno").val(obj.client.contactno);
+				        	$('#clientno').text(obj.client.clientid);
+				        	$("#custname").text(obj.client.cname);
+				        	$("#custemail").text(obj.client.email);
+				        	$("#custaddress").text(obj.client.address);
+				        	$("#custcontactno").text(obj.client.contactno);
+				        	//input fields value
+				        	$("#custemail1").val(obj.client.email);
+				        	$("#custaddress1").val(obj.client.address);
+				        	$("#custcontactno1").val(obj.client.contactno);
+				        	$('#clientno1').val(obj.client.clientid);
+    						$("#custname1").val(obj.client.cname);
 
 				          	$('#clientModal').modal('show');
 				        }

@@ -15,6 +15,7 @@
 	<script src="<?php echo base_url("assets/js/jquery-3.2.1.min.js"); ?>"></script>
   	<script src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
   	<script src="<?php echo base_url("assets/js/canvasjs.min.js"); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/js/myjs.js"); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/search.js"); ?>" ></script>
 
 <!--    for calendar widget-->

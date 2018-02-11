@@ -11,6 +11,8 @@ class vetclinic extends CI_Controller {
 			$this->load->model('history','history');
 			$this->load->model('services','services');
 			$this->load->model('itemhistory','itemhistory');
+
+
 		// $this->load->model('students','students');
 		// $this->load->model('course','course');
 	}
@@ -532,5 +534,20 @@ class vetclinic extends CI_Controller {
 		$this->load->view('include/footer');
 	}
 
+
+
+	public function upClient(){
+
+
+
+		$data=array('clientid'=>$this->input->post('id'),
+					'cname'=>$this->input->post('name'),
+					'contactno'=>$this->input->post('cnum'),
+					'email'=>$this->input->post('email'),
+					'address'=>$this->input->post('addr'));
+					$this->vet_model->editClient($data);
+					
+	}
 }
+
 ?>

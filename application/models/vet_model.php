@@ -294,6 +294,15 @@ private $table = "schedule";
 			$this->db->update($this->table, $data);
 			return TRUE;	
 		}
+		public function editClient($data){
+		
+
+			$this->db->where('clientid',$data['clientid']);
+			$this->db->update('client',$data);
+			return $data;	
+	
+		}
+
 
 	}
 
