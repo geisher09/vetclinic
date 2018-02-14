@@ -34,7 +34,12 @@ $("#editClient").click(function(e){
 					     data: {name:name,id:id,cnum:number,email:email,addr:address},
 					    success: function(msg){
 					 	
-						alert('UPDATED!');
+					
+
+					$("#custcontactno").text(number);				
+					$("#custemail").text(email);
+					$("#custaddress").text(address);
+					alert('UPDATED!');
 					         
 							  }
 	});

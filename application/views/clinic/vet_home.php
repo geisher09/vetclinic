@@ -333,34 +333,40 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 									<div class="form-group">
 										<span style="white-space: nowrap">
 										<label for="">Pet Name:</label>
-										<input type="text" class="form-control" id="petsname" name="petsname" value="">
+								<!-- 		<input type="text" class="form-control" id="petsname" name="petsname" value=""> -->
+								<p id="petsname"></p>
 										</span>
 									</div>
 							
 									<div class="form-group">
 										<label for="">Pet id:</label>
-										<input type="text" class="form-control" id="petsid" name="petsid" value="" disabled="true"/>
+										<!-- <input type="text" class="form-control" id="petsid" name="petsid" value="" disabled="true"/> -->
+										<p id="petsid"></p>
 									</div>
 							
 									<div class="form-group">
 										<label for="">Breed:</label>
-										<input type="text" class="form-control" id="petsbreed" name="petsbreed" value="" disabled="true"/>
-									</div>
+							<!-- <input type="text" class="form-control" id="petsbreed" name="petsbreed" value="" disabled="true"/>-->
+										<p id="petsbreed"></p>		
+								</div>
 							
 							
 									<div class="form-group">
 										<label for="">Birthday:</label>
-										<input type="text" class="form-control" id="petsbirthday" name="petsbirthday" value="" disabled="true"/>
+										<!-- <input type="text" class="form-control" id="petsbirthday" name="petsbirthday" value="" disabled="true"/> -->
+											<p id="petsbirthday"></p>
 									</div>	
 							
 									<div class="form-group">
 										<label for="">Sex:</label>
-										<input type="text" class="form-control" id="petssex" name="petssex" value="" disabled="true"/>
+							<!-- 			<input type="text" class="form-control" id="petssex" name="petssex" value="" disabled="true"/> -->
+											<p id="petssex"></p>
 									</div>
 
 									<div class="form-group">
 										<label for="">Markings:</label>
-										<input type="text" class="form-control" id="petsmarkings" name="petsmarkings" value=""/>
+										<!-- <input type="text" class="form-control" id="petsmarkings" name="petsmarkings" value=""/> -->
+											<p id="petsmarkings"></p>
 									</div>		
 									
 						</div>
@@ -769,12 +775,12 @@ $('.modal').on('hidden.bs.modal', function (e) {
 				        success: function(data) {
 				        	var obj = JSON.parse(data);
 				        	// console.log(obj.pet);
-				        	$('#petsid').val(obj.pet.petid);
-				        	$("#petsbreed").val(obj.pet.breed);
-				        	$("#petsname").val(obj.pet.pname);
-				        	$("#petsmarkings").val(obj.pet.markings);
-				        	$("#petssex").val(obj.pet.sex);
-				        	$("#petsbirthday").val(obj.pet.birthday);
+				        	$('#petsid').text(obj.pet.petid);
+				        	$("#petsbreed").text(obj.pet.breed);
+				        	$("#petsname").text(obj.pet.pname);
+				        	$("#petsmarkings").text(obj.pet.markings);
+				        	$("#petssex").text(obj.pet.sex);
+				        	$("#petsbirthday").text(obj.pet.birthday);
 				          $('#pet_detail').show();				          
 				        }
 				    });
