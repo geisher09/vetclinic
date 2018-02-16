@@ -69,10 +69,9 @@
 		  <div class="modal-content" id="registermodal">
 			<div class="modal-header" style="background-color:rgba(128, 191, 255,0.9);">
 			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-			  <h2 class="modal-title">Add Service</h2>
+			  <h3 class="modal-title">ADD SERVICE</h3>
 			</div>
-			<div class="modal-body" style="padding:50px;padding-top:0px;">
-					<br/>
+			<div class="modal-body" style="padding:10px;padding-top:0px;">
 					<br/>
 				  <form class="form-horizontal" action="" method="post">
 					
@@ -95,7 +94,7 @@
 					
 			</div>
 			<div class="modal-footer">
-			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 			  <button type="submit" class="btn btn-primary" name="add">Save</button>
 				  </form>
 			</div>

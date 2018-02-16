@@ -42,11 +42,45 @@
 	#container{
 		width: 80%;
         margin-bottom: 50px;
+        padding-top: 10px;
         min-height: 100px;
 /*      margin: auto;*/
 /*		padding: 30px auto auto auto;*/
 	}
-	
+    .reminder{
+        width:20%;
+        height:100%;
+        position:fixed;
+        right:0;
+        margin-top: 10px;
+        padding:10px;
+        background-color: #f1f3f3;
+    }
+    .reminder h4>.badge{
+        background-color: #ff3333;
+        margin-top: -5px;
+    }
+    .reminder>.event{
+        background-color:#E5E8E8;
+        width:100%;
+        padding:10px;
+        border-radius:10px;
+        margin:10px 0px;
+    }
+    .reminder .reminderdatetime{
+        background-color:#7dbde8;
+        margin:-10px;
+        margin-bottom: 10px;
+        padding:5px 10px; 
+    }
+    .reminder .reminderdatetime>p{
+        color:#FFF;
+        text-shadow: 2px 2px 2px #808080;
+        font-weight: bold;
+        font-size: 21px;
+/*        color:#FFF;*/
+        text-align: center;
+    }
 	/************* home page *************/
 	#addbutn {
 		display: inline-block;
@@ -61,7 +95,6 @@
         box-shadow: 0px 3px 3px #3175A2;
         transition:0.1s;
 	}
-	
 	#addbutn:hover { color: #fff;}
 	#addbutn:focus { color: #fff; box-shadow: 0px 1px 2px #3175A2 inset;}
 	
@@ -80,17 +113,14 @@
 		padding: 3px;
 		outline: none;
 	}
-	
 	#addbutn:hover .tooltiptext {
 		visibility: visible;
 		outline: none;
 	}
-	
 	#mytable{
-/*        width:1070px;*/
 		border-collapse: collapse;
 /*		overflow: hidden;*/
-		margin-top: 20px;
+/*		margin-top: 20px;*/
 	}
 	#mytable th{
 		color: white;
@@ -108,19 +138,16 @@
 		padding-top: 13px;
 		padding-bottom: 13px;
 		padding-left: 20px;
-		
 	}
 	#mytable tbody {
 		overflow-y: scroll;
 		overflow-x: hidden;
 		height: 200px;
 	}
-	
-	#mytable tbody td {
+	/*#mytable tbody td {
 		width:290px;
 		margin-top: 20px;
-	}
-	
+	}*/
 	#mytable tbody tr:hover td{
 		background-color:rgb(255,255,255);
 		color: #3498DB;
@@ -131,7 +158,7 @@
 		padding-bottom: 25px;
 		padding-left: 20px;
 		padding-right: 20px;
-		font-size: 20px;
+		font-size: 22px;
         text-shadow: 1px 1px 1px grey;
 	}
 	

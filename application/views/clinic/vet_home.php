@@ -32,6 +32,12 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
         float: left;
     }
 </style> -->
+<style>
+#mytable tbody td {
+    width:290px;
+	margin-top: 20px;
+}
+</style>
 
 <div id="container">
 
@@ -128,7 +134,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
       <div class="modal-content" id="registermodal">
         <div class="modal-header" style="background-color:white"><!--background-color:rgba(128, 191, 255,0.9)-->
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h2 class="modal-title">New Client Form</h2>
+          <h3 class="modal-title">NEW CLIENT FORM</h3>
         </div>
         <div class="modal-body" style="padding:60px;padding-top:0px;">
 				<br/>
@@ -380,7 +386,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				</div>
 					
 				<div class="container-fluid window" id="addPet">
-					<p class="lead text-center">Add a Pet</p>
+					<p class="lead text-center">Add Pet</p>
 					<div class="col-md-2"></div>
 					<form></form>
 					<?php echo form_open('vetclinic/savepet', ['class'=>'form-horizontal']); ?>
@@ -397,7 +403,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							</div>
 
 							<div class="form-group">
-								<label for="">Specie:</label>
+								<label for="">Species:</label>
 								<input type="text" class="form-control" id="addpetype" name="species"/>
 							</div>
 							
@@ -431,7 +437,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 
 						<div>
 							<button type="submit" class="btn btn-primary">Save</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 						</div>
 						<?php echo form_close();?>
 					</div>
@@ -622,17 +628,18 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 			<div class="container-fluid window" id="addItem">
 					
 						<div class="row">
-						
-							<div class="col-md-6">
+                            <div class="col-md-2"></div> 
+							<div class="col-md-8">
 								<p class="lead text-center">Add Item</p>
 								<?php echo form_open(site_url("vetclinic/inventory/")) ?>
 						            	<form action="" method="POST">
 						            		<div class="form-group">
-																<label>Item</label>
+																<label>Item:</label>
 																<select class="form-control" id="Vitems" name="itemid">
 																	
 																</select>
-						                    <label for="qty_used">Quantity</label>
+                                                <br/>
+						                    <label for="qty_used">Quantity:</label>
 						                      <input type="number" class="form-control" id="qty_used" name="qty_used" placeholder="Quantity"/>
 						               
 						            		</div>
@@ -642,18 +649,15 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 											</div>
 						            
 						            <!-- Modal Footer -->
+                                            <br />
 						            <div class="modal-footer">
-						                <button type="button" class="btn btn-default"
-						                        data-dismiss="modal">
-						                            Cancel
-						                </button>
-						                <button type="submit" class="btn btn-primary" name="itemuse">
-						                    Update
-						                </button>
+						                <button type="button" class="btn btn-default" data-dismiss="modal"> Cancel </button>
+						                <button type="submit" class="btn btn-primary" name="itemuse"> Update </button>
 						        <?php echo form_close() ?>
 
 
-			
+			                 
+                            <div class="col-md-2"></div> 
 			<!-----------------FOOTER ------------>
 			<!-- <div class="modal-footer">
 				<button type="button" onclick="" class="btn btn-primary" data-dismiss="modal">Save</button>

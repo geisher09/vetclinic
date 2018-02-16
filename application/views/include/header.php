@@ -9,7 +9,6 @@
 	<link href="<?php echo base_url('bootstrap/css/bootstrap-theme.min.css'); ?>" rel="stylesheet" type="text/css"  />
 	<link href="<?php echo base_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url('assets/css/default.css'); ?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo base_url('assets/css/calendarview.css'); ?>" rel="stylesheet" type="text/css" />
 	
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
 	<script src="<?php echo base_url("assets/js/jquery-3.2.1.min.js"); ?>"></script>
@@ -17,45 +16,6 @@
   	<script src="<?php echo base_url("assets/js/canvasjs.min.js"); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/myjs.js"); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/search.js"); ?>" ></script>
-
-<!--    for calendar widget-->
-    <style type="text/css">
-        div.calendar {
-            max-width: 250px;
-            margin-left: auto;
-            margin-right: auto;
-          }
-        div.calendar table {
-            width: 100%;
-          }
-        div.dateField {
-            width: 140px;
-            padding: 6px;
-            -webkit-border-radius: 6px;
-            -moz-border-radius: 6px;
-            color: #555;
-            background-color: white;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-          }
-    </style>
-	<script type="text/javascript" src="<?php /*echo base_url("assets/js/prototype.js");*/ ?>" ></script>
-	<script type="text/javascript" src="<?php echo base_url("assets/js/calendarview.js"); ?>" ></script>
-    <script>
-          function setupCalendars() {
-            // Calendar
-            Calendar.setup(
-              {
-                dateField: 'embeddedDateField',
-                parentElement: 'embeddedCalendar'
-              }
-            )
-          }
-
-          Event.observe(window, 'load', function() { setupCalendars() })
-    </script>
-<!--    end of calendar widget-->
 	
 </head>
 <body>
@@ -80,17 +40,27 @@
 </nav>
 
 
-<div style="width:20%;height:580px;position:fixed;right:0;padding:10px;background-color:rgba(194,194,194,0.4);">
-<!--        calendar widget-->
-            <div id="embeddedExample" style="">
-              <div id="embeddedCalendar" style="">
-              </div>
-              <h4>Reminders:</h4>
-                <p>'la pang calendar... awww... :'( huhubels...</p>
-              <div id="embeddedDateField" class="dateField">
-                Select Date
-              </div>
-              <br />
-            </div>
-<!--    end of calendar widget-->
-</div>
+<div class="reminder"><!--REMINDER DIV-->
+    <?php 
+        date_default_timezone_set('Asia/Manila');
+        $date=date('M. d, Y');
+        $time=date('h:i a');
+    ?>
+    <div class="reminderdatetime">
+            <!--<p><?php /*echo $time;*/ ?></p>-->
+            <p><?php echo $date; ?></p>
+    </div>
+    <h4>Reminders:&nbsp;<span class="badge">3</span></h4>
+        <div class="event">
+            <span><?php echo $date; ?> 01:01:01</span><!--time and date-->
+            <p>Event 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p><!--event-->
+        </div>
+        <div class="event">
+            <span><?php echo $date; ?> 01:01:01</span><!--time and date-->
+            <p>Event 2 Cras viverra lorem eget le egestas, ut venenatis lectus dignissim. Aenean eget blandit dui, et pretium est</p><!--event-->
+        </div>
+        <div class="event">
+            <span><?php echo $date; ?> 01:01:01</span><!--time and date-->
+            <p>Event 3 whatever</p><!--event-->
+        </div>
+</div><!--END OF REMINDER DIV-->

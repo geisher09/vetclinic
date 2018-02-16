@@ -11,7 +11,7 @@
 								   <span class="sr-only">Close</span>
 							</button>
 							<h4 class="modal-title" id="LabelHistory">
-							   Update Item Usage
+							   UPDATE ITEM USAGE
 							</h4>
 						</div>
 				

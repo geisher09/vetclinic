@@ -1,6 +1,6 @@
 <div id="container">
 
-<div style="width:100%; overflow:hidden;">
+<div style="width:100%; overflow:hidden;"><!--div for stocks-->
  <!--
 <div style="float:right; margin-top:20px;">
 	<button type="button" class="btn btn-success btn-md" id="addbtn"  data-toggle="modal" data-target="#myModalNorm">
@@ -10,8 +10,7 @@
 <table class="table" id="mytable">
 	<thead>
 		<tr class="th1">
-                <th>AVAILABLE STOCKS</th>
-                <th></th><th></th>
+                <th colspan="2">AVAILABLE STOCKS</th><th></th>
                 <th></th>
                 <th >
                     <div>
@@ -24,7 +23,7 @@
                 </th>
         </tr>
 		<tr class="th2">
-			<th style="text-align:center;">Item ID.</th>
+			<th style="text-align:center;width:100px;">Item ID.</th>
 			<th style="text-align:center;">Description</th>
 			<th style="text-align:center;">Price</th>
 			<th style="text-align:center;" >Stocks Left</th>
@@ -36,7 +35,7 @@
 		<?php
 						foreach($stock as $s){
 							echo '<tr style="height:20px;padding:-10px;">	
-									<td style="text-align:center;">'.$s['itemid'].'</td>
+									<td style="text-align:center;width:100px;">'.$s['itemid'].'</td>
 									<td style="text-align:center;">'.$s['item_desc'].'</td>
 									<td style="text-align:center;">'.$s['item_cost'].'</td>
 									<td style="text-align:center; ">'.$s['qty_left'].'</td>
@@ -59,7 +58,7 @@
 				?>
 	</tbody>
 </table>
-</div>
+</div><!--end of div for stocks-->
 
 <section id="section1" class="demo">
 	<a href="#section2"><span></span>See Transaction History</a>
@@ -70,7 +69,7 @@
 <br/>
 
 <section style="top:10%;" id="section2">
-<div style="width:100%; overflow:hidden;">	
+<div style="width:100%; overflow:hidden;">	<!--div for transactions-->
 	<!--
     <div  style="float:right;margin-top:20px;">
         <button type="button" class="btn btn-warning btn-md" id="addbtn"  data-toggle="modal" data-target="#myModalHistory">
@@ -93,10 +92,10 @@
                 </th>
             </tr>
             <tr class="th2">
-                <th>ID.</th>
-                <th>Action</th>
+                <th style="text-align:center;">Item ID.</th>
+                <th style="width:130px;">Action</th>
                 <th >Description</th>
-                <th style="text-align:center;"  >Date</th>
+                <th style="text-align:center;">Date</th>
             </tr>
         </thead>
         <tbody>
@@ -104,8 +103,8 @@
             <?php
                             foreach($itemhistory as $r){
                                 echo '	<tr>	
-                                        <td style="text-align:center;">'.$r['itemid'].'</td>
-                                        <td>'.$r['action'].'</td>
+                                        <td style="text-align:center;width:100px;">'.$r['itemid'].'</td>
+                                        <td style="width:130px;">'.$r['action'].'</td>
                                         <td>'.$r['description'].'</td>
                                         <td style="text-align:center;">'.$r['date'].'</td>
                             </tr>
@@ -114,7 +113,7 @@
                     ?>
         </tbody>
     </table>
-</div>
+</div><!--end of div for transactions-->
 
 
 <?php

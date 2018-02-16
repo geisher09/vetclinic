@@ -20,47 +20,41 @@
 	 var base_url="<?php echo base_url();?>"
 	</script>
 	<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        #top,
+        #calendar.fc-unthemed {
+            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+        }
+        #top {
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            padding: 0 10px;
+            line-height: 40px;
+            font-size: 12px;
+            color: #000;
+        }
+        #top .selector {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        #top select {
+            font: inherit; /* mock what Boostrap does, don't compete  */
+        }
 
-	body {
-		margin: 0;
-		padding: 0;
-		font-size: 14px;
-	}
+        .left { float: left }
+        .right { float: right }
+        .clear { clear: both }
 
-	#top,
-	#calendar.fc-unthemed {
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-	}
-
-	#top {
-		background: #eee;
-		border-bottom: 1px solid #ddd;
-		padding: 0 10px;
-		line-height: 40px;
-		font-size: 12px;
-		color: #000;
-	}
-
-	#top .selector {
-		display: inline-block;
-		margin-right: 10px;
-	}
-
-	#top select {
-		font: inherit; /* mock what Boostrap does, don't compete  */
-	}
-
-	.left { float: left }
-	.right { float: right }
-	.clear { clear: both }
-
-	#calendar {
-		max-width: 900px;
-		margin: 40px auto;
-		padding: 0 10px;
-	}
-
-</style>
+        #calendar {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 10px;
+        }
+    </style>
 	
 
 	
@@ -178,18 +172,18 @@
 	    	<div class="modal-content">
 	      		<div class="modal-header edit">
 	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        		<h4 class="modal-title" id="myModalLabel">Add Calendar Event</h4>
+	        		<h3 class="modal-title" id="myModalLabel">ADD EVENT</h3>
 	      		</div>
 	      		<div class="modal-body">
 	      			<?php echo form_open(site_url("vetclinic/add_event"), array("class" => "form-horizontal")) ?>
 	      			<div class="form-group">
-	                	<label for="p-in" class="col-md-4 label-heading">Title</label>
+	                	<label for="p-in" class="col-md-4 label-heading">Event Title:</label>
 	                	<div class="col-md-8 ui-front">
 	                    	<input type="text" class="form-control" name="name" value="" id="name">
 	                	</div>
 	        		</div>
 	        		<div class="form-group">
-	                	<label for="p-in" class="col-md-4 label-heading">Description</label>
+	                	<label for="p-in" class="col-md-4 label-heading">Description:</label>
 	                	<div class="col-md-8 ui-front">
 	                    	<input type="text" class="form-control" name="description" id="description">
 	                	</div>
@@ -263,7 +257,7 @@
 					    dayClick: function(date, jsEvent, view) {
 					        var start = date.format();
 					        var view = view.name;
-					        alert(start);
+					        /*alert(start);*/
 					        $('#start').val(start);
 					        $('#end').val(start);
 					        $('#addModal').modal();
