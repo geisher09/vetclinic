@@ -46,8 +46,8 @@
 								datasets : [
 									{
 										label: 'ITEMS',
-										backgroundColor: 'black',
-										borderColor: 'rgba(200, 200, 200, 0.75)',
+										backgroundColor: 'blue',
+										borderColor: 'lightblue',
 										hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
 										hoverBorderColor: 'rgba(200, 200, 200, 1)',
 										fill : false,
@@ -57,8 +57,8 @@
 									},
 									{
 										label: 'VISIT',
-										backgroundColor: 'red',
-										borderColor: 'rgba(200, 200, 200, 0.75)',
+										backgroundColor: 'green',
+										borderColor: 'lightgreen',
 										hoverBackgroundColor: 'rgba(200, 600, 200, 1)',
 										hoverBorderColor: 'rgba(200, 200, 200, 1)',
 										fill : false,
@@ -70,11 +70,30 @@
 								]
 							};
 
+							var options = {
+							title : {
+								display : true,
+								position : "top",
+								text : "Sales Chart",
+								fontSize : 50,
+								fontColor : "#111"
+							},
+							legend : {
+								display : true,
+								position : "bottom",
+								labels: {
+					                // This more specific font property overrides the global property
+					                fontSize : 25
+					            }
+							}
+						};
+
 							var ctx = $("#mycanvas");
 
 							var barGraph = new Chart(ctx, {
 								type: 'line',
-								data: chartdata
+								data: chartdata,
+								options: options
 							});   
 
 				        }
