@@ -41,7 +41,7 @@
 	}
 	#container{
 		width: 80%;
-        margin-bottom: 50px;
+        margin-bottom: 10px;
         padding-top: 10px;
         min-height: 100px;
 /*      margin: auto;*/
@@ -119,8 +119,6 @@
 	}
 	#mytable{
 		border-collapse: collapse;
-/*		overflow: hidden;*/
-/*		margin-top: 20px;*/
 	}
 	#mytable th{
 		color: white;
@@ -130,9 +128,7 @@
 		font-family: 'Josefin Slab';
         padding: 5px 10px;
 	}
-	#mytable thead th {
-/*		width:300px;*/
-	}
+	
 	#mytable td{
 		background-color: #E5E8E8;
 		padding-top: 13px;
@@ -140,18 +136,15 @@
 		padding-left: 20px;
 	}
 	#mytable tbody {
-		overflow-y: scroll;
+		overflow-y: auto;
 		overflow-x: hidden;
-		height: 200px;
 	}
-	/*#mytable tbody td {
-		width:290px;
-		margin-top: 20px;
-	}*/
+
 	#mytable tbody tr:hover td{
 		background-color:rgb(255,255,255);
 		color: #3498DB;
 	}
+	
 	.th1 {
 		background-color: #3498DB;
 		padding-top: 15px;
@@ -311,15 +304,24 @@
 		cursor: arrow;
 	}
 	
+	/*
 	section {
 		position: relative;
 		height: 10%;
+		display: inline-block
+	}*/
+	
+	#section1 {
+		flex: 0 0 auto;
 	}
 	
+	#section2 {
+		flex: 0 0 auto;
+	}
 	
 	.demo a {
 		position: relative;
-		bottom: -50px;
+		top: 500px;
 		left: 40%;
 		z-index: 2;
 		display: inline-block;
@@ -350,8 +352,8 @@
 		margin-left: -12px;
 		border-left: 1px solid #000;
 		border-bottom: 1px solid #000;
-		-webkit-transform: rotate(-45deg);
-		transform: rotate(-45deg);
+		-webkit-transform: rotate(-135deg);
+		transform: rotate(-135deg);
 		-webkit-animation: sdb04 2s infinite;
 		animation: sdb04 2s infinite;
 		box-sizing: border-box;
@@ -359,28 +361,33 @@
 	
 	@-webkit-keyframes sdb04 {
 		0% {
-			-webkit-transform: rotate(-45deg) translate(0, 0);
+			-webkit-transform: rotate(-135deg) translate(0, 0);
 		}
 		20% {
-			-webkit-transform: rotate(-45deg) translate(-10px, 10px);
+			-webkit-transform: rotate(-135deg) translate(-10px, 10px);
 		}
 		40% {
-			-webkit-transform: rotate(-45deg) translate(0, 0);
+			-webkit-transform: rotate(-135deg) translate(0, 0);
 		}
 	}
 	
 	@keyframes sdb04 {
 		0% {
-			transform: rotate(-45deg) translate(0, 0);
+			transform: rotate(-135deg) translate(0, 0);
 		}
 		20% {
-			transform: rotate(-45deg) translate(-10px, 10px);
+			transform: rotate(-135deg) translate(-10px, 10px);
 		}
 		40% {
-			transform: rotate(-45deg) translate(0, 0);
+			transform: rotate(-135deg) translate(0, 0);
 		}
 	}
 	
+	.horizontal {
+		overflow-x: hidden;
+		flex-wrap: nowrap;
+		display: flex;
+	}
 	
 	/************* schedule page *************/
 	#back{

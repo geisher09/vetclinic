@@ -537,9 +537,9 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				<div class="container-fluid window" id="addHistory">
 					
 						<div class="row">
+							<p class="lead text-center">Add History</p>
 						
 							<div class="col-md-6">
-								<p class="lead text-center">Add History</p>
 								<?php echo form_open('vetclinic/savehistory', ['class'=>'form-horizontal']); ?>
 								<div class="row">
 									<div class="row">
@@ -598,18 +598,41 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 									</div>
 
 									<select class="form-control" name="Select1" id="Select1">
-									  
 									</select>
+									</br>
+									<table class="table table-bordered table-hover" id="tab_logic">
+										<thead>
+											<tr>
+												<th class="text-center col-md-1" style="background-color:#d9d9d9">#</th>
+												<th class="text-center col-md-8" style="background-color:#d9d9d9">Item Used</th>
+												<th class="text-center col-md-3" style="background-color:#d9d9d9">Quantity</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr id='addr0'>
+												<td class="text-center">
+													1
+												</td>
+												<td>
+													<input type="text" name='item0'  placeholder='Item' class="form-control"/>
+												</td>
+												<td>
+													<input type="number" name='qty0' placeholder='Qty' class="form-control"/>
+												</td>
+											</tr>
+											<tr id='addr1'></tr>
+										</tbody>
+									</table>
+									<div class="btn-group">
+										<a id="add_row" class="btn btn-primary pull-center">+</a>
+										<a id="delete_row" class="pull-right btn btn-danger">-</a>	
+									</div>
 
 								<div class=" col-md-12 form-group">
 									<h4 class="text-right">Total Cost: (Php)</h4>
 									<input type="number" name='totalCost' placeholder='0.00' class="form-control"/>
 								</div>
 
-								<div>
-									<button type="submit" class="btn btn-primary">Save</button>
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
 							
 							</div>
 						</div>
@@ -622,6 +645,10 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				<button type="button" onclick="" class="btn btn-primary" data-dismiss="modal">Save</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div> -->
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-primary">Save</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
 			</div>
 
 
@@ -674,6 +701,23 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 
 <!--Script for the item used-->
 <script>
+
+$(document).ready(function(){
+     var i=1;
+     $("#add_row").click(function(){
+      $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><input name='item"+i+"' type='text' placeholder='Item' class='form-control input-md'  /> </td><td><input name='qty"+i+"' type='number' placeholder='Qty'  class='form-control input-md'></td>");
+
+      $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+      i++; 
+  });
+     $("#delete_row").click(function(){
+    	 if(i>1){
+		 $("#addr"+(i-1)).html('');
+		 i--;
+		 }
+	 });
+});
+
 $('.modal').on('hidden.bs.modal', function (e) {
   if($('.modal').hasClass('in')) {
     $('body').addClass('modal-open');

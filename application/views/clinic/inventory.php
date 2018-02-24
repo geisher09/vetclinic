@@ -1,8 +1,9 @@
-<div id="container">
+<div id="container" >
 
-<div style="width:100%; overflow:hidden;"><!--div for stocks-->
- <!--
-<div style="float:right; margin-top:20px;">
+<div class="horizontal">
+<!--<div style="width:100%; overflow:hidden;">-->
+<!--div for stocks-->
+<!--<div style="float:right; margin-top:20px;">
 	<button type="button" class="btn btn-success btn-md" id="addbtn"  data-toggle="modal" data-target="#myModalNorm">
 	<span class="glyphicon glyphicon-plus"></span> Add an Item</button>
 </div> -->
@@ -58,29 +59,24 @@
 				?>
 	</tbody>
 </table>
-</div><!--end of div for stocks-->
+<!--</div>--><!--end of div for stocks-->
 
 <section id="section1" class="demo">
 	<a href="#section2"><span></span>See Transaction History</a>
 </section>
-
 <!-- Add Product Modal + Add Stock Modal & Update History + View Full History Moda -->
 	
-<br/>
-
-<section style="top:10%;" id="section2">
-<div style="width:100%; overflow:hidden;">	<!--div for transactions-->
-	<!--
-    <div  style="float:right;margin-top:20px;">
-        <button type="button" class="btn btn-warning btn-md" id="addbtn"  data-toggle="modal" data-target="#myModalHistory">
-        <span class="glyphicon glyphicon-plus"></span>&nbsp;Sell an Item</button>
-    </div> -->
-	</section>
+<section style="margin-left: 500px;" id="section2" class="demo">
+<!--<div style="width:100%; overflow:hidden;">-->
+<!--div for transactions-->
+<!--<div  style="float:right;margin-top:20px;">
+    <button type="button" class="btn btn-warning btn-md" id="addbtn"  data-toggle="modal" data-target="#myModalHistory">
+    <span class="glyphicon glyphicon-plus"></span>&nbsp;Sell an Item</button>
+</div> -->
     <table class="table" id="mytable">
         <thead>
 			<tr class="th1">
-                <th>TRANSACTIONS</th>
-                <th></th><th></th>
+                <th colspan="3">TRANSACTIONS</th>
                 <th >
                     <div>
                         <button type="button" class="btn btn-md" id="addbutn"  data-toggle="modal" data-target="#myModalHistory">
@@ -92,30 +88,33 @@
                 </th>
             </tr>
             <tr class="th2">
-                <th style="text-align:center;">Item ID.</th>
-                <th style="width:130px;">Action</th>
+                <th >Item ID.</th>
+                <th  >Action</th>
                 <th >Description</th>
-                <th style="text-align:center;">Date</th>
+                <th  >Date</th>
             </tr>
         </thead>
+
         <tbody>
 
             <?php
                             foreach($itemhistory as $r){
                                 echo '	<tr>	
-                                        <td style="text-align:center;width:100px;">'.$r['itemid'].'</td>
-                                        <td style="width:130px;">'.$r['action'].'</td>
-                                        <td>'.$r['description'].'</td>
-                                        <td style="text-align:center;">'.$r['date'].'</td>
+                                        <td style="text-align:center;">'.$r['itemid'].'</td>
+                                        <td style="text-align:left;">'.$r['action'].'</td>
+                                        <td style="text-align:left;">'.$r['description'].'</td>
+                                        <td style="text-align:left;">'.$r['date'].'</td>
                             </tr>
                             ';
                     }
                     ?>
         </tbody>
     </table>
-</div><!--end of div for transactions-->
+<!--</div>--><!--end of div for transactions-->
+</section>
 
-
+</div>
+</div>
 <?php
 	include "addstockmodal.php";
 	include "updatehistory.php";
