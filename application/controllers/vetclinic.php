@@ -41,6 +41,9 @@ class vetclinic extends CI_Controller {
 		$allitems= $this->vet_model->getAllitems($this->input->post('id'));
 		$treatments = $this->vet_model->getServices($this->input->post('id'));
 		$grooms = $this->vet_model->getGrooms($this->input->post('id'));
+		$sales1 = $this->vet_model->getSales($this->input->post('id'));
+		$sales2 = $this->vet_model->getSales2($this->input->post('id'));
+		$sales = array_merge($sales1, $sales2);
 		$output = array(
 						"client" => $client,
 						"pet" => $pet,
@@ -51,7 +54,10 @@ class vetclinic extends CI_Controller {
 						"vets" => $vets,
 						"allitems" => $allitems,
 						"treatments" => $treatments,
-						"grooms" => $grooms
+						"grooms" => $grooms,
+						"sales1" => $sales1,
+						"sales2" => $sales2,
+						"sales" => $sales
 
 				);
 		//output to json format
@@ -263,7 +269,10 @@ class vetclinic extends CI_Controller {
 		$sales = $this->vet_model->getSales();
 		$sales2 = $this->vet_model->getSales2();
 		$this->load->view('include/header',$header_data);
-		$this->load->view('clinic/sales2',['sal'=>$sales,'sal2'=>$sales2]);
+		//$this->load->view('clinic/sales2',['sal'=>$sales,'sal2'=>$sales2]);
+		//$this->load->view('clinic/chart',['sal2'=>$sales2]);
+		$this->load->view('clinic/saleschart');
+		//print_r($sales2);
 		$this->load->view('include/footer');
 
 	}

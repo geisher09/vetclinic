@@ -835,6 +835,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 		}
 
 
+
 		function history(id){
 			$('#pet_detail').hide();
 			document.getElementById("itemsused").innerHTML="";
