@@ -72,8 +72,46 @@ $(document).ready(function(){
 					var prc=$(this).val();
 				  	// $(".prd").val('hi');	
   					var y= $(this);		
-							var sum = 0;
 				
+					var sum = 0;
+					$.ajax({
+			   				type: "POST",
+						    url: base_url+"/veterinary/vetclinic/ItemPrice",
+						     data: {id:x},
+						    success: function(msg){
+							console.log(msg);
+									var price = JSON.parse(msg);
+
+									// alert(price.item_cost)
+									add=price[0].item_cost*prc;
+										
+									$(y).closest('tr').find('.prd').val(add);
+									 $(".prd").each(function(){
+								        sum += +$(this).val();
+								   });
+
+									 $("#TotalSum").text("₱ "+sum.toLocaleString("en"));
+									 $("#hiddenSum").val(sum);
+								  }
+
+
+
+
+
+					});
+
+				});	
+				//query for chaning item
+					$(document).on('change','.Vitems',function(){
+					var base_url = window.location.origin;
+					var id = "";
+					var x=$(this).closest('tr').find(':selected').val();
+					var prc=$(this).closest('tr').find('input').val();
+  					var y= $(this);		
+					var sum = 0.0;
+					
+					if(prc!=0){
+					
 					$.ajax({
 			   				type: "POST",
 						    url: base_url+"/veterinary/vetclinic/ItemPrice",
@@ -89,8 +127,8 @@ $(document).ready(function(){
 									 $(".prd").each(function(){
 								        sum += +$(this).val();
 								    });
-									 $("#TotalSum").text(sum);
-							
+								 $("#TotalSum").text("₱ "+sum.toLocaleString("en"));
+								 $("#hiddenSum").val(sum);
 								  }
 
 
@@ -98,24 +136,13 @@ $(document).ready(function(){
 
 
 					});
-	
-									
-			
+				}
 
-								
-	 	
 				});	
 				
-
-				$('#clientModal').on('hidden.bs.modal', function () {
-					 location.reload();
-				 	});
+							$('#clientModal').on('hidden.bs.modal', function () {
+								 location.reload();
+							 	});
 
 				});
-			// $document.on('click','addtm',function(){
-
-			// 		$(this).val();
-
-
-
-			// });
+	

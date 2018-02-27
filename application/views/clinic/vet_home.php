@@ -622,7 +622,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 													
 													
 													<input type="number" name='qty0' id="myitem0" placeholder='Qty' class="form-control addtm"/>
-													<input class='prd' type='hidden'></input>
+													<input id="prdid0" class='prd' type='hidden'></input>
 												</td>
 											</tr>
 											<tr id='addr1'>
@@ -636,7 +636,10 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 
 											<td colspan="3">
 
-												<div class="col-md-1">Total: </div> <div class="col-md-11" id="TotalSum"></div>
+												<div class="col-md-1">Total: </div> <div class="col-md-11" id="TotalSum">
+												
+												</div>
+												<input type="hidden" id="hiddenSum" /> <!-- compute sum hidden field-->
 											</td>
 										</tr>
 									</tfoot>
@@ -645,6 +648,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										
 
 									</table>
+
 									<div class="btn-group">
 										<a id="add_row" class="btn btn-primary pull-center"  onclick="sos(this.id)">+</a>
 										<a id="delete_row" class="pull-right btn btn-danger">-</a>	
@@ -801,8 +805,8 @@ $('.modal').on('hidden.bs.modal', function (e) {
 		      var i=1;
 		       sos(this.id);
 		     $("#add_row").click(function(){
-		     	
-		      $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><select class='form-control Vitems'><option></option></select></td><td><input name='qty"+i+"' type='number' placeholder='Qty' id='myitem"+i+"' class='form-control input-md addtm'><input class='prd' type='hidden'></input></td>");
+		    
+		      $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><select class='form-control Vitems'><option></option></select></td><td><input name='qty"+i+"' type='number' placeholder='Qty' id='myitem"+i+"' class='form-control input-md addtm'><input id='prdid"+i+"' value='0' class='prd' type='hidden'></input></td>");
 
 		      $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
 
@@ -813,9 +817,21 @@ $('.modal').on('hidden.bs.modal', function (e) {
 		      i++; 
 		  });
 		     $("#delete_row").click(function(){
+										 	var last=$('input[class*="prd"]').length;
+											var min =0;
+											min = $("#hiddenSum").val()-$("#prdid"+(i-1)).val();
+											
+											$("#TotalSum").text("₱ "+min.toLocaleString("en"));
+										
+
 		    	 if(i>1){
 				 $("#addr"+(i-1)).html('');
+
+
+											// alert($("#prdid"+(last)).val());
+
 				 i--;
+
 				 }
 			 });
 			 var ID = $("#hiddenIDNo").val();
