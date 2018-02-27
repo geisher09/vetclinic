@@ -27,7 +27,14 @@ class vetclinic extends CI_Controller {
 		$this->load->view('clinic/vet_home', ['cl'=>$clients,'al'=>$lastclient,'stock'=>$stocks]);			
 		$this->load->view('include/footer');
 	}
+	public function ItemPrice(){
 
+		$items = $this->vet_model->myItem($this->input->post('id'));
+		echo json_encode($items);
+
+
+
+	}
 	public function ajax_list()
 	{
 		$this->load->model('vet_model');

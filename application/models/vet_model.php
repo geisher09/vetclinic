@@ -86,6 +86,13 @@
 			return $query->result_array();
 
 		}
+		public function myItem($id){
+				$this->db->from('itemstock');
+				$this->db->where('itemid',$id);
+				$query = $this->db->get();
+
+				return $query->result_array();
+		}
 
 		public function getItems($id){
 			

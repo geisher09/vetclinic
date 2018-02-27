@@ -272,7 +272,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				<button class="tablink btn btn-info" onclick="details(event, 'clientDet')">Client Details</button>
 				<button class="tablink btn btn-info" onclick="details(event, 'addPet')">Add Pet</button>
 				<button id = "mytab" class="tablink btn btn-info" onclick="details(event, 'visitHistory')">Visit Details</button>
-				<button class="tablink btn btn-info" onclick="details(event, 'addHistory')">Add History</button>
+				<button class="tablink btn btn-info" id="hstry" onclick="details(event, 'addHistory'); " >Add History</button>
 				<button class="tablink btn btn-info" onclick="details(event, 'addItem')">Add Item Used</button>
 					
 			</div>
@@ -482,11 +482,11 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							<div class="row">
 								<div class=" col-md-12 form-group">
 									<label for="">Findings :</label>
-									<textarea id="visitfindings"class="form-control" name="findings" rows="2" readonly>Findings here.</textarea>
+									<textarea id="visitfindings" class="form-control" name="findings" rows="2" readonly>Findings here.</textarea>
 								</div>
 							</div>
 				
-							<div class="row">
+							<div class="row ">
 								<div class="col-md-12 form-group">
 									<label for="">Recommendations :</label>
 									<textarea id="visitrecom" class="form-control" name="findings" rows="2" readonly>Recommendations.</textarea>
@@ -527,7 +527,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 									<h4 class="text-right">Total Cost: (Php)</h4>
 								</div>
 								<div class=" col-md-6 form-inline pull-to-left">
-									<input type="number" name='totalCost' placeholder='0.00' class="form-control" id="visitcost" readonly />
+									<input type="number" name='totalCost' placeholder='0.00' class="form-control ad" id="visitcost" readonly />
 								</div>
 							</div>
 						</form>
@@ -609,22 +609,44 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 											</tr>
 										</thead>
 										<tbody>
+											
 											<tr id='addr0'>
+
 												<td class="text-center">
 													1
 												</td>
 												<td>
-													<input type="text" name='item0'  placeholder='Item' class="form-control"/>
+													<select class='form-control Vitems'><option></option></select>
 												</td>
 												<td>
-													<input type="number" name='qty0' placeholder='Qty' class="form-control"/>
+													
+													
+													<input type="number" name='qty0' id="myitem0" placeholder='Qty' class="form-control addtm"/>
+													<input class='prd' type='hidden'></input>
 												</td>
 											</tr>
-											<tr id='addr1'></tr>
+											<tr id='addr1'>
+												
+
+											</tr>
+										<tfoot>
+												
+											<tr>
+
+
+											<td colspan="3">
+
+												<div class="col-md-1">Total: </div> <div class="col-md-11" id="TotalSum"></div>
+											</td>
+										</tr>
+									</tfoot>
+								
 										</tbody>
+										
+
 									</table>
 									<div class="btn-group">
-										<a id="add_row" class="btn btn-primary pull-center">+</a>
+										<a id="add_row" class="btn btn-primary pull-center"  onclick="sos(this.id)">+</a>
 										<a id="delete_row" class="pull-right btn btn-danger">-</a>	
 									</div>
 
@@ -662,7 +684,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 						            	<form action="" method="POST">
 						            		<div class="form-group">
 																<label>Item:</label>
-																<select class="form-control" id="Vitems" name="itemid">
+																<select class="form-control" id="Vitemss" name="itemid">
 																	
 																</select>
                                                 <br/>
@@ -702,21 +724,48 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 <!--Script for the item used-->
 <script>
 
-$(document).ready(function(){
-     var i=1;
-     $("#add_row").click(function(){
-      $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><input name='item"+i+"' type='text' placeholder='Item' class='form-control input-md'  /> </td><td><input name='qty"+i+"' type='number' placeholder='Qty'  class='form-control input-md'></td>");
+// $(document).ready(function(){
+//      var i=1;
+// 	 var sum = 0;
+// 	 	 var value;
 
-      $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
-      i++; 
-  });
-     $("#delete_row").click(function(){
-    	 if(i>1){
-		 $("#addr"+(i-1)).html('');
-		 i--;
-		 }
-	 });
-});
+	
+
+  //   var Contain = "";
+  //         $("#add_row").click(function(){
+       
+  //               $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><input name='item"+i+"' type='text' placeholder='Item' class='form-control input-md'  /> </td><td><input name='qty"+i+"' id='myitem"+i+"' type='number' placeholder='Qty'  class='form-control input-md addtm'></td>");
+				
+      		
+  //     $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+
+  //     					$('input 		.addtm').each(function(){
+  //     							alert($(this).val());
+
+  //     							// alert(value);
+  //     							console.log(value);
+
+  //     					});
+
+  //     		     i++; 
+      	
+
+      
+ 
+
+  // });
+  //    $("#delete_row").click(function(){
+  //   	 if(i>1){
+		//  $("#addr"+(i-1)).html('');
+		//  i--;
+		//  }
+	 // });
+
+     		
+// });
+
+
+
 
 $('.modal').on('hidden.bs.modal', function (e) {
   if($('.modal').hasClass('in')) {
@@ -742,18 +791,25 @@ $('.modal').on('hidden.bs.modal', function (e) {
 		$(document).ready(function() {
 		  $('#modal-6').on('show.bs.modal', function(e) {
 		    var id = $(e.relatedTarget).data('id');
-		    alert(id);
+
+				    alert(id);
 		  });
 		});
-		
+		//adding rowss
 		$(document).ready(function(){
-
+				var value="";
 		      var i=1;
+		       sos(this.id);
 		     $("#add_row").click(function(){
 		     	
-		      $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><select class='form-control' id='Vitems2'><option></option></select></td><td><input name='qty"+i+"' type='number' placeholder='Qty'  class='form-control input-md'></td>");
+		      $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><select class='form-control Vitems'><option></option></select></td><td><input name='qty"+i+"' type='number' placeholder='Qty' id='myitem"+i+"' class='form-control input-md addtm'><input class='prd' type='hidden'></input></td>");
 
 		      $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+
+      		  	for(var a=0 ;a<i; a++){
+    		  		value =  $("#myitem"+a).val();
+      				
+      				}
 		      i++; 
 		  });
 		     $("#delete_row").click(function(){
@@ -913,12 +969,13 @@ $('.modal').on('hidden.bs.modal', function (e) {
 				   			for(var i=0; i<parseInt(obj.allitems.length); i++){
 		 					        ai += '<option value='+obj.allitems[i].itemid+'>'+obj.allitems[i].itemid+'-'+obj.allitems[i].item_desc+'</option>';
 		 					        //hi += '<option value='+obj.allitems[i].stockno+'>'+obj.allitems[i].item_desc+'</option>';
-
+		 					 
 								}
+
 							$("#additemId").val(id);
-							$("#Vitems").html(ai);
+							$(".Vitems").last().html(ai);
 							//$("#Vitems2").html('<option value="wsss">wsss</option>');
-				          $(details(event,'addItem')).show();			          
+				          		          
 				        }
 				    });
 		}
