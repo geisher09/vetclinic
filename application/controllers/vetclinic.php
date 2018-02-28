@@ -41,8 +41,25 @@ class vetclinic extends CI_Controller {
 		$allitems= $this->vet_model->getAllitems($this->input->post('id'));
 		$treatments = $this->vet_model->getServices($this->input->post('id'));
 		$grooms = $this->vet_model->getGrooms($this->input->post('id'));
-		$sales1 = $this->vet_model->getSales($this->input->post('id'));
-		$sales2 = $this->vet_model->getSales2($this->input->post('id'));
+		
+		$startDate = date('Y-m-d',strtotime('October 8, 2017')); //$startDate and $endDate == range of dates
+		$dates[] = $startDate; 									 //$dates == array of dates in the range given
+		$endDate = date('Y-m-d',strtotime('October 14, 2017'));
+		$i = 0;
+		$d = '';
+		while(strcmp($d, $endDate) != 0){ //loop to get dates in the range given
+			$d = date('Y-m-d',strtotime('+1 day', strtotime($dates[$i])));
+			$dates[] = $d;
+			++$i;
+		}
+
+		foreach($dates as $d){ //loop to get sum per date
+			$sales1[] = $this->vet_model->getSalesSum($d);
+			$sales2[] = $this->vet_model->getSalesSum2($d);
+		}
+
+		//$sales1 = $this->vet_model->getSales($this->input->post('id'));
+		//$sales2 = $this->vet_model->getSales2($this->input->post('id'));
 		$sales = array_merge($sales1, $sales2);
 		$output = array(
 						"client" => $client,
@@ -57,7 +74,8 @@ class vetclinic extends CI_Controller {
 						"grooms" => $grooms,
 						"sales1" => $sales1,
 						"sales2" => $sales2,
-						"sales" => $sales
+						"sales" => $sales,
+						"dates" => $dates
 
 				);
 		//output to json format
