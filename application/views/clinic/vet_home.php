@@ -591,7 +591,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										<label class="radio-inline">
 											<input value="Treatment" type="radio" name="optradio">Treatment
 										</label>
-											<input class="btn btn-warning"id="buttoncheck" type="button" name="btn" value="Click"></input>
+											<input class="btn btn-warning" id="buttoncheck" type="button" name="btn" value="Click"></input>
 									        <br />
 									        <input type="hidden" id="btn_get" name="get_btn_value"></input>
 									        <br />
@@ -611,7 +611,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										<tbody>
 											
 											<tr id='addr0'>
-
+												
 												<td class="text-center">
 													1
 												</td>
@@ -621,7 +621,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 												<td>
 													
 													
-													<input type="number" name='qty0' id="myitem0" placeholder='Qty' class="form-control addtm"/>
+													<input type="number" name='qty0' id="myitem0" placeholder='Qty' class="form-control addtm" min="0"/>
 													<input id="prdid0" class='prd' type='hidden'></input>
 												</td>
 											</tr>
@@ -639,7 +639,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 												<div class="col-md-1">Total: </div> <div class="col-md-11" id="TotalSum">
 												
 												</div>
-												<input type="hidden" id="hiddenSum" /> <!-- compute sum hidden field-->
+												<input type="hidden" name="hiddenSum" id="hiddenSum" /> <!-- compute sum hidden field-->
 											</td>
 										</tr>
 									</tfoot>
@@ -662,6 +662,10 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							
 							</div>
 						</div>
+								<div class="modal-footer">
+									<button type="submit" id="sbmtbtn" class="btn btn-primary">Save</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
 				<?php echo form_close(); ?>
 
 
@@ -671,10 +675,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				<button type="button" onclick="" class="btn btn-primary" data-dismiss="modal">Save</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div> -->
-								<div class="modal-footer">
-									<button type="submit" class="btn btn-primary">Save</button>
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
+						
 			</div>
 
 
@@ -685,12 +686,11 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							<div class="col-md-8">
 								<p class="lead text-center">Add Item</p>
 								<?php echo form_open(site_url("vetclinic/inventory/")) ?>
-						            	<form action="" method="POST">
+						         
 						            		<div class="form-group">
-																<label>Item:</label>
-																<select class="form-control" id="Vitemss" name="itemid">
-																	
-																</select>
+												<label>Item:</label>
+												<select class="form-control" id="Vitemss" name="itemid">						
+												</select>
                                                 <br/>
 						                    <label for="qty_used">Quantity:</label>
 						                      <input type="number" class="form-control" id="qty_used" name="qty_used" placeholder="Quantity"/>
@@ -698,7 +698,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 						            		</div>
 
 						            		<div class="form-group">
-												<input type="hidden" id="additemId" name="additemId"/>
+												
 											</div>
 						            
 						            <!-- Modal Footer -->
@@ -806,7 +806,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 		       sos(this.id);
 		     $("#add_row").click(function(){
 		    
-		      $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><select class='form-control Vitems'><option></option></select></td><td><input name='qty"+i+"' type='number' placeholder='Qty' id='myitem"+i+"' class='form-control input-md addtm'><input id='prdid"+i+"' value='0' class='prd' type='hidden'></input></td>");
+		      $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><select class='form-control Vitems'><option></option></select></td><td><input name='qty"+i+"' type='number' placeholder='Qty' id='myitem"+i+"' class='form-control input-md addtm' min='0'><input id='prdid"+i+"' value='0' class='prd' type='hidden'></input></td>");
 
 		      $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
 
@@ -959,6 +959,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 				        	var obj = JSON.parse(data);
 				        	 console.log(obj.visits);
 				        	 var s = "";
+
 				        	if(parseInt(obj.visits.length) > 0){
 								for(var i=0; i<parseInt(obj.visits.length); i++){
 									s += '<tr><td>'+obj.visits[i].visitdate+'</td><td>'+obj.visits[i].petid+'</td><td>'+obj.visits[i].case_type+'</td><td><button class="btn btn-info" id="'+obj.visits[i].visitid+'"type="button" onclick="history(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button></td><td><button class="btn btn-info" id="'+obj.visits[i].visitid+'"type="button" "type="button" onclick="sos(this.id)"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button></tr>';
@@ -1049,7 +1050,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 				        	var ai = "", hi="";
 							if(parseInt(obj.pets.length) > 0){
 								for(var i=0; i<parseInt(obj.pets.length); i++){
-									s += '<tr><td>'+obj.pets[i].petid+'</td><td>'+obj.pets[i].pname+'</td><td><button class="btn btn-info" id="'+obj.pets[i].petid+'"type="button" onclick="pop(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button></td><td><button class="tablink btn btn-info" id="'+obj.pets[i].petid+'"type="button" onclick="visit(this.id)"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button></tr>';
+									s += '<tr><td>'+obj.pets[i].petid+'</td><td>'+obj.pets[i].pname+'</td><td><button class="btn btn-info" id="'+obj.pets[i].petid+'"type="button" onclick="pop(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button></td><td><button class="tablink btn btn-info" id="'+obj.pets[i].petid+'"type="button" onclick="visit(this.id)"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>s</button></tr>';
 		 					        v += '<option value='+obj.pets[i].petid+'>'+obj.pets[i].pname+'</option>';
 
 								}

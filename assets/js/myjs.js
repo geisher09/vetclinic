@@ -72,7 +72,7 @@ $(document).ready(function(){
 					var prc=$(this).val();
 				  	// $(".prd").val('hi');	
   					var y= $(this);		
-				
+			       
 					var sum = 0;
 					$.ajax({
 			   				type: "POST",
@@ -93,15 +93,20 @@ $(document).ready(function(){
 									 $("#TotalSum").text("₱ "+sum.toLocaleString("en"));
 									 $("#hiddenSum").val(sum);
 								  }
-
-
-
-
-
 					});
 
 				});	
-				//query for chaning item
+				//disable negative
+				$(document).ready(function(){
+						$(document).on('keyup','.addtm',function(){
+								 var num = this.value.match(/^\d+$/);
+									  if (num === null) {	
+	      							 this.value = "";
+	   								 }
+						});
+
+				});
+				//query for changing item
 					$(document).on('change','.Vitems',function(){
 					var base_url = window.location.origin;
 					var id = "";
@@ -119,10 +124,11 @@ $(document).ready(function(){
 						    success: function(msg){
 							console.log(msg);
 									var price = JSON.parse(msg);
-
+									console.log(msg);
 									// alert(price.item_cost)
+							
 									add=price[0].item_cost*prc;
-										
+	
 									$(y).closest('tr').find('.prd').val(add);
 									 $(".prd").each(function(){
 								        sum += +$(this).val();
@@ -139,10 +145,44 @@ $(document).ready(function(){
 				}
 
 				});	
-				
+						//clear modal on close 
 							$('#clientModal').on('hidden.bs.modal', function () {
 								 location.reload();
 							 	});
 
+							});
+				//revent submit if form not complete
+
+
+				$("document").ready(function(e){
+							$("#sbmtbtn").click(function(e){
+
+								e.preventDefault();
+								var base_url = window.location.origin;
+								var x=0;
+								var y=0;
+								var a= $("#VpetsOwned").val();
+								$('.addtm').each(function(){
+										 x=$(this).closest('tr').find(':selected').val();
+										 y= $(this).val();
+									
+									
+										 	$.ajax({
+												type: "POST",
+						  						  url: base_url+"/veterinary/vetclinic/itemUsed",
+						   						  data: {id:x,item:y,pet:a},
+						   						 success: function(msg){
+													console.log(msg);
+													
+								 				 }
+
+									});
+										 	
+								});
+							
+								
+
+							});
+
+
 				});
-	

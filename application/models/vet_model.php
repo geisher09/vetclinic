@@ -245,10 +245,26 @@
 			      'findings' => $this->input->post('findings') ,
 			      'recommendation' => $this->input->post('recom'),
 			      'case_type' => $this->input->post('optradio'),
-			      'visit_cost' => $this->input->post('totalCost')
+			      'visit_cost' => $this->input->post('totalCost')+$this->input->post('hiddenSum'),
+
 			   );
 
 			return $this->db->insert('visit', $vdata);
+
+		}
+		public function itemUsage($data){
+			  $this->db->select('qty_left');
+			$this->db->where('itemid',$data['id']);
+			$query= $this->db->get('itemstock');
+			$stock= $query->row()->qty_left;
+			$min= $stock-$data['item'];
+			//update
+		$this->db->set('qty_left',$min);
+		$this->db->where('itemid',$data['id']);
+		$this->db->update('itemstock');
+
+
+			return $min;
 
 		}
 

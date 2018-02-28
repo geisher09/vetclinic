@@ -232,6 +232,25 @@ class vetclinic extends CI_Controller {
 
 	}
 
+	//bawas item 
+	public function itemUsed(){
+			$data=array('id'=>$this->input->post('id'),
+				        'item'=>$this->input->post('item'));
+			
+		
+			date_default_timezone_set('Asia/Manila');
+			$date=date('Y-m-d H:i:s');
+			$pet=$this->input->post('pet');
+			$yr=date('y');
+			$petv=$this->vet_model->getLastpetvisit();
+			$petv=$petv+1;
+			 $id = $yr.'-'.$pet.'-'.$petv;
+
+			$this->vet_model->addItemUsed($data['id'],$id);
+			$item=$this->vet_model->itemUsage($data);
+			print_r($id);
+	}
+
 	public function savehistory(){
 
 
