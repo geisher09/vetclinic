@@ -117,6 +117,19 @@
 
 			return $query->result_array();
 		}
+		
+		public function getSalesSum($date=null){
+			$this->db->select_sum('visit_cost');
+			$this->db->from('visit');
+			$this->db->where("CAST(visitdate as date) = '$date'");
+
+			$query = $this->db->get();
+			$result = $query->row_array();
+			if($result['visit_cost'] == null)
+				return 0;
+			else
+				return $result['visit_cost'];
+		}
 
 		public function getSales2(){
 			$serv="Sold Item";
@@ -130,6 +143,19 @@
 			return $query->result_array();
 		}
 
+		public function getSalesSum2($date=null){
+			$serv = "Sold Item";
+			$this->db->select_sum('total_cost');
+			$this->db->from('itemhistory');
+			$this->db->where("CAST(date as date) = '$date' AND action='$serv'");
+
+			$query = $this->db->get();
+			$result = $query->row_array();
+			if($result['total_cost'] == null)
+				return 0;
+			else
+				return $result['total_cost'];
+		}
 
 		public function getOwnvisits($id){
 

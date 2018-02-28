@@ -31,7 +31,7 @@
 				        	var visit_cost = [];
 
 
-				        	for(var i in obj.sales2){
+				        	/*for(var i in obj.sales2){
 				        		date.push("Date " + obj.sales2[i].date);
 				        		total_cost.push(obj.sales2[i].total_cost);
 				        	}
@@ -39,7 +39,17 @@
 				        	for(var i in obj.sales1){
 				        		visitdate.push("Date " + obj.sales1[i].visitdate);
 				        		visit_cost.push(obj.sales1[i].visit_cost);
-				        	}
+							}*/
+							
+							for(var i in obj.dates){
+								date.push("Date " + obj.dates[i]);
+								visitdate.push("Date " + obj.dates[i]);
+							}
+
+							for(var n in obj.sales1){
+								visit_cost.push(obj.sales1[n]);
+								total_cost.push(obj.sales2[n]);
+							}
 
 				        	var chartdata = {
 								labels: date,
