@@ -177,6 +177,14 @@
 
 		}
 
+		public function saveDates(){
+			$ddata = array(
+					'start' => $this->input->post('startdate'),
+					'end' => $this->input->post('enddate'),
+				);
+			return $ddata;
+		}
+
 		public function savePets($finalid){
 			$this->getClients();
 			$pdata = array(

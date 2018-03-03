@@ -1,28 +1,47 @@
 <style type="text/css">
 			#chart-container {
 				width: 80%;
-				height: auto;
+				height: auto;	
 			}
 </style>
 
 <body>
+
+	<!-- <form method="POST" action="<?php echo base_url('vetclinic/sales');?>" > -->
+		<div id="chart-date" class="col-sm-3">
+				<label>Start date:</label><input type="date" class="form-control" id="startdate" name="startdate" />
+				<label>End date:</label><input type="date" class="form-control" id="enddate" name="enddate" />
+		</div>
+
+		<div>
+			<br /><br /><br />
+	          <button type="reset" class="btn btn-default">Cancel</button>
+	          <button type="button" onclick="realTimeSalesChart()" class="btn btn-primary">Save</button>
+	    </div>
+<!--     </form> -->
+
 	<div id="chart-container">
 			<canvas id="mycanvas"></canvas>
-		</div>
+	</div>
+	
 </body>
 
 
 <script type="text/javascript">
 
 
-		$(document).ready(function(id){
-			$.ajax({
+		$(document).ready(function(){
+			realTimeSalesChart();
+		})
+
+function realTimeSalesChart(){
+	$.ajax({
 			        type: 'POST',
-			        url: 'ajax_list',
-			        data:{id: id},
+			        url: 'filter_date',
+			        data:{startDate :$("#startdate").val(),endDate:$("#enddate").val()},
 				        success: function(data) {
 				        	var obj = JSON.parse(data);
-				        	console.log(obj.sales2);
+				        	console.log(obj);
 
 				        	var date = [];
 				        	var total_cost = [];
@@ -107,11 +126,6 @@
 							});   
 
 				        }
-				    });
-
-
-
-			})
-
-
+				    });	
+}
 </script>

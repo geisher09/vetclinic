@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class vetclinic extends CI_Controller {
 
+	public $sdate =	 "2017-10-01";
+	public $edate = "2017-10-20";
+
 	public function __construct(){
 		parent::__construct();
 			$this->load->model('vet_model','vet_model');
@@ -11,10 +14,15 @@ class vetclinic extends CI_Controller {
 			$this->load->model('history','history');
 			$this->load->model('services','services');
 			$this->load->model('itemhistory','itemhistory');
-
-
-		// $this->load->model('students','students');
-		// $this->load->model('course','course');
+			$dat = $this->vet_model->saveDates();
+			$GLOBALS['datestart'] = $dat['start'];
+			$GLOBALS['dateend'] = $dat['end'];
+			$GLOBALS['startDate'] = date('Y-m-d',strtotime('October 6, 2017'));//$startDate and $endDate == range of dates;
+			$GLOBALS['dates'] = $GLOBALS['startDate'];
+			$GLOBALS['endDate'] = date('Y-m-d',strtotime('October 19, 2017'));
+			// $GLOBALS['startDate'] = date('Y-m-d',strtotime('October 6, 2017'));//$startDate and $endDate == range of dates;
+			// $GLOBALS['dates'] = $GLOBALS['startDate'];
+			// $GLOBALS['endDate'] = date('Y-m-d',strtotime('October 19, 2017'));
 	}
 	public function index()
 	{
@@ -48,10 +56,31 @@ class vetclinic extends CI_Controller {
 		$allitems= $this->vet_model->getAllitems($this->input->post('id'));
 		$treatments = $this->vet_model->getServices($this->input->post('id'));
 		$grooms = $this->vet_model->getGrooms($this->input->post('id'));
-		
-		$startDate = date('Y-m-d',strtotime('October 8, 2017')); //$startDate and $endDate == range of dates
-		$dates[] = $startDate; 									 //$dates == array of dates in the range given
-		$endDate = date('Y-m-d',strtotime('October 14, 2017'));
+
+		$output = array(
+						"client" => $client,
+						"pet" => $pet,
+						"pets" => $pets,
+						"visits" => $visits,
+						"visit" => $visit,
+						"items" => $items,
+						"vets" => $vets,
+						"allitems" => $allitems,
+						"treatments" => $treatments,
+						"grooms" => $grooms
+
+				);
+		echo json_encode($output);
+
+	}
+	public function filter_date()
+	{
+		$datestart = date("Y-m-d", strtotime("-1 week"));
+		$dateend = date("Y-m-d");
+
+		$startDate = $this->input->post('startDate') == "" ? $datestart : $this->input->post('startDate');
+		$dates[] = $startDate; 									 
+		$endDate = $this->input->post('endDate') == "" ? $dateend : $this->input->post('endDate');								
 		$i = 0;
 		$d = '';
 		while(strcmp($d, $endDate) != 0){ //loop to get dates in the range given
@@ -64,28 +93,14 @@ class vetclinic extends CI_Controller {
 			$sales1[] = $this->vet_model->getSalesSum($d);
 			$sales2[] = $this->vet_model->getSalesSum2($d);
 		}
-
-		//$sales1 = $this->vet_model->getSales($this->input->post('id'));
-		//$sales2 = $this->vet_model->getSales2($this->input->post('id'));
 		$sales = array_merge($sales1, $sales2);
 		$output = array(
-						"client" => $client,
-						"pet" => $pet,
-						"pets" => $pets,
-						"visits" => $visits,
-						"visit" => $visit,
-						"items" => $items,
-						"vets" => $vets,
-						"allitems" => $allitems,
-						"treatments" => $treatments,
-						"grooms" => $grooms,
 						"sales1" => $sales1,
 						"sales2" => $sales2,
 						"sales" => $sales,
 						"dates" => $dates
 
 				);
-		//output to json format
 		echo json_encode($output);
 	}
 	
@@ -185,6 +200,16 @@ class vetclinic extends CI_Controller {
 				$this->load->view('include/footer');
             }
 		}
+
+	public function savedate(){
+
+		$this->load->model('vet_model');
+
+		$start = $this->input->post('startdate');
+		$end = $this->input->post('enddate');
+		//$this->load->view('clinic/saleschart');
+		return [$start,$end];
+	}
 
 	public function savepet(){
 
@@ -309,15 +334,38 @@ class vetclinic extends CI_Controller {
 	public function sales()
 	{
 		$header_data['title'] = "Sales";
-		$this->load->model('vet_model','getSales');
-		$sales = $this->vet_model->getSales();
-		$sales2 = $this->vet_model->getSales2();
 		$this->load->view('include/header',$header_data);
+		$this->sdate = "2017-08-02";//$startDate and $endDate == range of dates
+		$this->edate = "2017-08-17";								 //$dates == array of dates in the range given
+		// $this->ajax_list($this->sdate,$this->edate);
+		// $i = 0;
+		// $d = '';
+		// while(strcmp($d, $endDate) != 0){ //loop to get dates in the range given
+		// 	$d = date('Y-m-d',strtotime('+1 day', strtotime($dates[$i])));
+		// 	$dates[] = $d;
+		// 	++$i;
+		// }
+
+		// foreach($dates as $d){ //loop to get sum per date
+		// 	$sales1[] = $this->vet_model->getSalesSum($d);
+		// 	$sales2[] = $this->vet_model->getSalesSum2($d);
+		// }
+		// $sales = array_merge($sales1, $sales2);
+
+		// $output = array(
+		// 				"sales1" => $sales1,
+		// 				"sales2" => $sales2,
+		// 				"sales" => $sales,
+		// 				"dates" => $dates
+		// 		);
+		// $date['s'] = $GLOBALS['datestart'];
+		// $date['e'] = $GLOBALS['dateend'];
+		// return $output;
 		//$this->load->view('clinic/sales2',['sal'=>$sales,'sal2'=>$sales2]);
 		//$this->load->view('clinic/chart',['sal2'=>$sales2]);
 		$this->load->view('clinic/saleschart');
-		//print_r($sales2);
 		$this->load->view('include/footer');
+		
 
 	}
 
