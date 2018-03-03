@@ -86,10 +86,9 @@ $(document).ready(function(){
 									// console.log(price[0].qty_left);
 									// alert(price.item_cost)
 									if(parseInt(price[0].qty_left)<prc){
-
 										alert("Item out of stock, "+price[0].qty_left+" left");
-										//alert(price[0].qty_left);
-										
+								//alert(price[0].qty_left);	
+									y.val('');
 									}
 									else{
 									add=price[0].item_cost*prc;
@@ -122,6 +121,7 @@ $(document).ready(function(){
 					var id = "";
 					var x=$(this).closest('tr').find(':selected').val();
 					var prc=$(this).closest('tr').find('input').val();
+					var z=$(this).closest('tr').find('input');
   					var y= $(this);		
 					var sum = 0.0;
 					
@@ -137,14 +137,31 @@ $(document).ready(function(){
 									console.log(msg);
 									// alert(price.item_cost)
 							
+									if(parseInt(price[0].qty_left)<prc){
+										alert("Item out of stock, "+price[0].qty_left+" left");
+									//alert(price[0].qty_left);	
+										z.val('');
 									add=price[0].item_cost*prc;
-	
+								
+
 									$(y).closest('tr').find('.prd').val(add);
 									 $(".prd").each(function(){
 								        sum += +$(this).val();
-								    });
-								 $("#TotalSum").text("₱ "+sum.toLocaleString("en"));
-								 $("#hiddenSum").val(sum);
+								   });
+									  $("#TotalSum").text("₱ "+sum.toLocaleString("en"));
+									 $("#hiddenSum").val(sum);
+									}
+									else{
+									add=price[0].item_cost*prc;
+										
+									$(y).closest('tr').find('.prd').val(add);
+									 $(".prd").each(function(){
+								        sum += +$(this).val();
+								   });
+
+									 $("#TotalSum").text("₱ "+sum.toLocaleString("en"));
+									 $("#hiddenSum").val(sum);
+									}
 								  }
 
 
