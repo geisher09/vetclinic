@@ -4,11 +4,10 @@
     
 	<meta name="viewport" content="width=device-width; initial-scale=1.0"/>
 	<link href="<?php echo base_url('assets/images/logo.png'); ?>" rel="icon" type="image/png"  />
-	<link href="<?php echo base_url('assets/css/overallcss.css'); ?>" rel="stylesheet" type="text/css"  />
 	<link href="<?php echo base_url('bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css"  />
 	<link href="<?php echo base_url('bootstrap/css/bootstrap-theme.min.css'); ?>" rel="stylesheet" type="text/css"  />
 	<link href="<?php echo base_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo base_url('assets/css/default.css'); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo base_url('assets/css/overallcss.css'); ?>" rel="stylesheet" type="text/css"  />
 	
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
 	<script src="<?php echo base_url("assets/js/jquery-3.2.1.min.js"); ?>"></script>
@@ -17,6 +16,13 @@
   	<script src="<?php echo base_url("assets/js/canvasjs.min.js"); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/myjs.js"); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/search.js"); ?>" ></script>
+    <script type="text/javascript">// js for active link
+        $(document).ready(function() {
+            var url = window.location.protocol + "//" + window.location.host + window.location.pathname;
+//            alert(url);
+            $('#menu li a[href="'+ url +'"]').addClass('activeLink');
+        })
+    </script>
 	
 </head>
 <body>
@@ -45,7 +51,6 @@
 		</ul>
 	</div>
 </nav>
-
 
 <div class="reminder"><!--REMINDER DIV-->
     <?php 

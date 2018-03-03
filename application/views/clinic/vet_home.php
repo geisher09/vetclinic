@@ -32,12 +32,6 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
         float: left;
     }
 </style> -->
-<style>
-#mytable tbody td {
-    width:290px;
-	margin-top: 20px;
-}
-</style>
 
 <div id="container">
 
@@ -63,11 +57,11 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 
 <!--table for clients-->
 <div class="table-responsive">
-    <table class="beta table-list-search" id="mytable">
+    <table class="beta table-list-search" id="mytable" style="width:100%;">
         <thead>
             <tr class="th1">
-                <th>LIST OF CLIENTS</th>
-                <th></th><th></th>
+                <th colspan="2">LIST OF CLIENTS</th>
+                <th></th>
                 <th >
                     <div>
                         <button type="button" class="btn btn-md" id="addbutn"  data-toggle="modal" data-target="#addclientmodal">
@@ -106,7 +100,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 						<?php } ?>
 							<td><?php echo $client['cname']?></td>
 							<td style="text-align:center;"><?php echo $client['pets']; ?></td>
-							<td style="text-align:center;">	
+							<td style="text-align:center;width:260px;">	
 							<?php $c=$client['clientid'];?>				
 							<b class="btn viewdetailsbtn" id="<?php echo $c;?>" type="button" onclick="lol(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true">
 							<span class="tooltiptext2">View Details</span></span></b>
@@ -167,7 +161,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 			  		</div>
 				</div>
 				<div class="form-group">
-				  <label class=" col-sm-3" for="contact">Contact no.:</label>
+				  <label class=" col-sm-3" for="contact">Contact #:</label>
 				  <div class="col-sm-8">          
 					<input type="text" class="form-control" id="contact"  name="contactno">
 				  </div>
@@ -177,7 +171,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 			  		</div>
 				</div>
 				<div class="form-group">
-				  <label class=" col-sm-3" for="email">Email Add.:</label>
+				  <label class=" col-sm-3" for="email">E-mail:</label>
 				  <div class="col-sm-8">          
 					<input type="text" class="form-control" id="email"  name="email">
 				  </div>
@@ -566,7 +560,6 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										</select>
 									</div>
 									<br />
-									
 									<div class=" col-md-12 form-group">
 										<label for="">Findings :</label>
 										<textarea class="form-control" name="findings" rows="4">Findings here.</textarea>
@@ -650,8 +643,8 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 									</table>
 
 									<div class="btn-group">
-										<a id="add_row" class="btn btn-primary pull-center"  onclick="sos(this.id)">+</a>
-										<a id="delete_row" class="pull-right btn btn-danger">-</a>	
+										<a id="add_row" class="btn btn-primary pull-center"  onclick="sos(this.id)" title="Add row">+</a>
+										<a id="delete_row" class="pull-right btn btn-danger" title="Delete row">-</a>	
 									</div>
 
 								<div class=" col-md-12 form-group">
@@ -728,48 +721,6 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 <!--Script for the item used-->
 <script>
 
-// $(document).ready(function(){
-//      var i=1;
-// 	 var sum = 0;
-// 	 	 var value;
-
-	
-
-  //   var Contain = "";
-  //         $("#add_row").click(function(){
-       
-  //               $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><input name='item"+i+"' type='text' placeholder='Item' class='form-control input-md'  /> </td><td><input name='qty"+i+"' id='myitem"+i+"' type='number' placeholder='Qty'  class='form-control input-md addtm'></td>");
-				
-      		
-  //     $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
-
-  //     					$('input 		.addtm').each(function(){
-  //     							alert($(this).val());
-
-  //     							// alert(value);
-  //     							console.log(value);
-
-  //     					});
-
-  //     		     i++; 
-      	
-
-      
- 
-
-  // });
-  //    $("#delete_row").click(function(){
-  //   	 if(i>1){
-		//  $("#addr"+(i-1)).html('');
-		//  i--;
-		//  }
-	 // });
-
-     		
-// });
-
-
-
 
 $('.modal').on('hidden.bs.modal', function (e) {
   if($('.modal').hasClass('in')) {
@@ -821,7 +772,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 											var min =0;
 											min = $("#hiddenSum").val()-$("#prdid"+(i-1)).val();
 											
-											$("#TotalSum").text("₱ "+min.toLocaleString("en"));
+											$("#TotalSum").text("? "+min.toLocaleString("en"));
 										
 
 		    	 if(i>1){
@@ -1085,6 +1036,5 @@ $('.modal').on('hidden.bs.modal', function (e) {
 				        }
 			});
 		}
-
 
 </script>

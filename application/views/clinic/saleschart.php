@@ -7,23 +7,28 @@
 
 <body>
 
-	<!-- <form method="POST" action="<?php echo base_url('vetclinic/sales');?>" > -->
-		<div id="chart-date" class="col-sm-3">
-				<label>Start date:</label><input type="date" class="form-control" id="startdate" name="startdate" />
-				<label>End date:</label><input type="date" class="form-control" id="enddate" name="enddate" />
-		</div>
-
-		<div>
-			<br /><br /><br />
-	          <button type="reset" class="btn btn-default">Cancel</button>
-	          <button type="button" onclick="realTimeSalesChart()" class="btn btn-primary">Save</button>
-	    </div>
-<!--     </form> -->
-
-	<div id="chart-container">
+	<div id="chart-container" style="margin-bottom:130px;">
 			<canvas id="mycanvas"></canvas>
 	</div>
-	
+		<!-- <form method="POST" action="<?php echo base_url('vetclinic/sales');?>" > -->
+		<div id="chart-date" class="row salesDate" >
+            <div class="col-md-1 col-sm-1"></div>
+            <div class="col-md-4 col-sm-4">
+				<label>Start date:</label><input type="date" class="form-control" id="startdate" name="startdate" />
+            </div>
+            <div class="col-md-4 col-sm-4">
+				<label>End date:</label><input type="date" class="form-control" id="enddate" name="enddate" />
+            </div>
+            
+            <div class="col-md-2 col-sm-2">
+                <br />
+                  <button type="reset" class="btn btn-default">Cancel</button>
+                  <button type="button" onclick="realTimeSalesChart()" class="btn btn-primary">Save</button>
+            </div>
+            <div class="col-md-1 col-sm-1"></div>
+		</div>
+
+<!--     </form> -->
 </body>
 
 
@@ -61,8 +66,8 @@ function realTimeSalesChart(){
 							}*/
 							
 							for(var i in obj.dates){
-								date.push("Date " + obj.dates[i]);
-								visitdate.push("Date " + obj.dates[i]);
+								date.push("Date: " + obj.dates[i]);
+								visitdate.push("Date: " + obj.dates[i]);
 							}
 
 							for(var n in obj.sales1){
@@ -104,7 +109,8 @@ function realTimeSalesChart(){
 								display : true,
 								position : "top",
 								text : "Sales Chart",
-								fontSize : 50,
+								fontSize : 45,
+                                fontFamily : "Vollkorn Black",
 								fontColor : "#111"
 							},
 							legend : {
