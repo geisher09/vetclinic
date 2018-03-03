@@ -31,9 +31,12 @@
 			return $query->result();
 
 		}
+		//chrstnv
 
 		public function getStocks(){
-			$query = $this->db->get('itemstock');
+		 $this->db->from('itemstock');
+			$this->db->where('qty_left !=',5);
+			$query = $this->db->get();
 			return $query->result();
 		}
 
@@ -62,10 +65,21 @@
 		}
 
 		public function getAllitems(){
-			$query = $this->db->get('itemstock');
+			 $this->db->from('itemstock');
+			$this->db->where('qty_left !=',0);
+			$query = $this->db->get();
 			return $query->result();
 
 		}
+		//chrstnv
+		public function notification(){
+			 $this->db->from('itemstock');
+			$this->db->where('qty_left =',0);
+			$query = $this->db->get();
+			return $query->num_rows();
+
+		}
+
 
 		public function getLastClient(){
 			$query = $this->db->query("SELECT clientid FROM client ORDER BY clientid DESC LIMIT 1");
@@ -225,7 +239,11 @@
 			      'items_used' => $option
 			   );
 			//print_r($pdata);
-			return $this->db->insert('items_used', $idata);
+		   $this->db->insert('items_used', $idata);
+        	 $this->db->from('itemstock');
+			$this->db->where('qty_left =',0);
+			$query = $this->db->get();
+			return $query->num_rows();
 		}
 
 		public function getLastpetvisit(){

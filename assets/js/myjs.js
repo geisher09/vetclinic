@@ -74,6 +74,7 @@ $(document).ready(function(){
   					var y= $(this);		
 			       
 					var sum = 0;
+
 					$.ajax({
 			   				type: "POST",
 						    url: base_url+"/veterinary/vetclinic/ItemPrice",
@@ -81,8 +82,16 @@ $(document).ready(function(){
 						    success: function(msg){
 							console.log(msg);
 									var price = JSON.parse(msg);
-
+									
+									// console.log(price[0].qty_left);
 									// alert(price.item_cost)
+									if(parseInt(price[0].qty_left)<prc){
+
+										alert("Item out of stock, "+price[0].qty_left+" left");
+										//alert(price[0].qty_left);
+										
+									}
+									else{
 									add=price[0].item_cost*prc;
 										
 									$(y).closest('tr').find('.prd').val(add);
@@ -92,6 +101,7 @@ $(document).ready(function(){
 
 									 $("#TotalSum").text("₱ "+sum.toLocaleString("en"));
 									 $("#hiddenSum").val(sum);
+									}
 								  }
 					});
 
@@ -149,7 +159,6 @@ $(document).ready(function(){
 							$('#clientModal').on('hidden.bs.modal', function () {
 								 location.reload();
 							 	});
-
 							});
 				//revent submit if form not complete
 
@@ -172,8 +181,10 @@ $(document).ready(function(){
 						  						  url: base_url+"/veterinary/vetclinic/itemUsed",
 						   						  data: {id:x,item:y,pet:a},
 						   						 success: function(msg){
-													console.log(msg);
-													
+						   						 	$("#hstryform").submit();
+														   $('#clientModal').modal('hide');
+														   alert('Record added successfully');		
+
 								 				 }
 
 									});
@@ -186,3 +197,12 @@ $(document).ready(function(){
 
 
 				});
+
+		
+
+
+
+
+
+
+		

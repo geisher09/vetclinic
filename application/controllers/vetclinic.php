@@ -27,11 +27,13 @@ class vetclinic extends CI_Controller {
 	public function index()
 	{
 		$header_data['title'] = "Records";		
-		$this->load->view('include/header',$header_data);
+		
 		$this->load->model('vet_model');
 		$clients = $this->vet_model->getClients();
 		$stocks = $this->vet_model->getStocks();
+		$header_data['notif']=$this->vet_model->notification();
 		$lastclient = $this->vet_model->getLastClient();	
+		$this->load->view('include/header',$header_data);
 		$this->load->view('clinic/vet_home', ['cl'=>$clients,'al'=>$lastclient,'stock'=>$stocks]);			
 		$this->load->view('include/footer');
 	}
@@ -43,6 +45,7 @@ class vetclinic extends CI_Controller {
 
 
 	}
+
 	public function ajax_list()
 	{
 		$this->load->model('vet_model');
@@ -141,7 +144,7 @@ class vetclinic extends CI_Controller {
 		$data['grooming'] = $this->services->read($condition);
 		$condition = array('type'=>'Treatment');
 		$data['treatment'] = $this->services->read($condition);
-		
+		$header_data['notif']=$this->vet_model->notification();
 
 
 		$this->load->view('include/header',$header_data);
@@ -271,9 +274,9 @@ class vetclinic extends CI_Controller {
 			$petv=$petv+1;
 			 $id = $yr.'-'.$pet.'-'.$petv;
 
-			$this->vet_model->addItemUsed($data['id'],$id);
+			$notif = $this->vet_model->addItemUsed($data['id'],$id);
 			$item=$this->vet_model->itemUsage($data);
-			print_r($id);
+			echo $notif;
 	}
 
 	public function savehistory(){
@@ -323,7 +326,7 @@ class vetclinic extends CI_Controller {
 	public function sched()
 	{
 		$header_data['title'] = "Schedule";
-		
+		$header_data['notif']=$this->vet_model->notification();
 		$this->load->view('include/header',$header_data);
 		$this->load->model('vet_model','schedule');
 		$this->load->view('clinic/sched');
@@ -334,6 +337,7 @@ class vetclinic extends CI_Controller {
 	public function sales()
 	{
 		$header_data['title'] = "Sales";
+		$header_data['notif']=$this->vet_model->notification();
 		$this->load->view('include/header',$header_data);
 		$this->sdate = "2017-08-02";//$startDate and $endDate == range of dates
 		$this->edate = "2017-08-17";								 //$dates == array of dates in the range given
@@ -497,6 +501,7 @@ class vetclinic extends CI_Controller {
 
 
 	public function inventory(){
+		$header_data['notif']=$this->vet_model->notification();
 		if(isset($_POST['additem'])){
 			
 			$validate = array (

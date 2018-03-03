@@ -34,9 +34,9 @@
 		
 		<?php
 						foreach($stock as $s){
-							echo '<tr style="height:20px;padding:-10px;">	
+							echo '<tr  style="height:20px;padding:-10px;" class="'.($s['qty_left']==0?'redrow':'').'">	
 									<td style="text-align:center;width:100px;">'.$s['itemid'].'</td>
-									<td style="text-align:center;">'.$s['item_desc'].'</td>
+									<td style="text-align:center;"  >'.$s['item_desc'].'</td>
 									<td style="text-align:center;">'.$s['item_cost'].'</td>
 									<td style="text-align:center; ">'.$s['qty_left'].'</td>
 								<td style="width:200px;">

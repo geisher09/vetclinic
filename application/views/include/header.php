@@ -33,10 +33,10 @@
 		<ul class="nav navbar-nav" id="menu">
 				<li> <img src="<?php echo base_url('assets/images/logo.png');?>" alt="Deloso Veterinary Clinic" class="logo" /> </li>
 				<li style="float:right;"><a href="<?php echo base_url('vetclinic/services'); ?>">&nbsp;Services</a></li>
-				<li style="float:right;" class="dropdown">
-					<a href="#">Inventory &nbsp;<span class="badge" style="background-color: red;">2</span></a>
+				<li style="float:right;" class="dropdown" >
+					<a href="#" >Inventory &nbsp;<?=($notif!=0?'<span class="badge" style="background-color: red;">'.$notif.'</span>':'')?></a>
 					<ul style="border:0px;" class="dropdown-menu">
-						<a href="<?php echo base_url('vetclinic/inventory'); ?>" style="border-top: 0px;"> Stocks</a>
+						<a href="<?php echo base_url('vetclinic/inventory'); ?>" style="border-top: 0px;"> Stocks &nbsp;<?=($notif!=0?'<span class="badge" style="background-color: red;">'.$notif.'</span>':'')?></a>
 						<a href="<?php echo base_url('vetclinic/history'); ?>" style="border-top: 0px;"> History</a>
 					</ul>
 				</li>

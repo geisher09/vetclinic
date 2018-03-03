@@ -531,10 +531,12 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				<div class="container-fluid window" id="addHistory">
 					
 						<div class="row">
-							<p class="lead text-center">Add History</p>
+							<p class="lead text-center">Add Historys</p>
 						
 							<div class="col-md-6">
-								<?php echo form_open('vetclinic/savehistory', ['class'=>'form-horizontal']); ?>
+								<?php 
+								$attributes = array('class'=>'form-horizontal','id'=>'hstryform');
+								echo form_open('vetclinic/savehistory', $attributes); ?>
 								<div class="row">
 									<div class="row">
 										<div class="col-md-6">
