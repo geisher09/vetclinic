@@ -25,14 +25,20 @@
 <nav class="navbar">
 	<div class="row">
 		<ul class="nav navbar-nav" id="menu">
-				<li id="title">
-					<img src="<?php echo base_url('assets/images/logo.png');?>" alt="Deloso Veterinary Clinic" class="logo" /> </li>
-				<li style="float:right;"><a href="<?php echo base_url('vetclinic/services'); ?>"><!--<span class="glyphicon glyphicon-tasks"></span>-->&nbsp;Services</a></li>
-				<li style="float:right;"><a href="<?php echo base_url('vetclinic/inventory'); ?>"><!--<span class="glyphicon glyphicon-list-alt"></span>-->&nbsp;Inventory</a></li>
-				<li style="float:right;"><a href="<?php echo base_url('vetclinic/sales'); ?>"><!--<span class="glyphicon glyphicon-stats"></span>-->&nbsp;Sales</a></li>
-				<li style="float:right;"><a href="<?php echo base_url('vetclinic/sched'); ?>"><!--<span class="glyphicon glyphicon-calendar"></span>-->&nbsp;Schedule</a></li>
-				<li style="float:right;"><a href="<?php echo base_url('vetclinic'); ?>"><!--<span class="glyphicon glyphicon-plus-sign"></span>-->&nbsp;Records</a></li>
-				<li class="search">
+				<li> <img src="<?php echo base_url('assets/images/logo.png');?>" alt="Deloso Veterinary Clinic" class="logo" /> </li>
+				<li style="float:right;"><a href="<?php echo base_url('vetclinic/services'); ?>">&nbsp;Services</a></li>
+				<li style="float:right;" class="dropdown">
+					<a href="#">Inventory &nbsp;<span class="badge" style="background-color: red;">2</span></a>
+					<ul style="border:0px;" class="dropdown-menu">
+						<a href="<?php echo base_url('vetclinic/inventory'); ?>" style="border-top: 0px;"> Stocks</a>
+						<a href="<?php echo base_url('vetclinic/history'); ?>" style="border-top: 0px;"> History</a>
+					</ul>
+				</li>
+				
+				<li style="float:right;"><a href="<?php echo base_url('vetclinic/sales'); ?>">&nbsp;Sales</a></li>
+				<li style="float:right;"><a href="<?php echo base_url('vetclinic/sched'); ?>">&nbsp;Schedule</a></li>
+				<li style="float:right;"><a href="<?php echo base_url('vetclinic'); ?>">&nbsp;Records</a></li>
+				<li style="float:right;" class="search">
 					<input type="text" name="q" onkeyup="search()"  id="search"/>
 					<button type="submit" class="btn btnmod"><span class="glyphicon glyphicon-search"></span></button>
 				</li>

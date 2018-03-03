@@ -23,18 +23,51 @@
 	}
 	
 	#menu {
-		list-style-type: none; margin: 0; padding: 0; width: 100%;
-		background-color: #fff;  overflow: hidden;
-		position: fixed; top: 0; height: 70px; z-index: 999;
+		list-style-type: none; 
+		margin: 0; 
+		padding: 0; 
+		width: 100%;
+		background-color: #fff;  
+		position: fixed; 
+		top: 0; 
+		height: 70px; 
+		z-index: 999;
 	}
 	#menu li a {
 		display: block; color: grey; text-decoration: none; padding-top:25px;
-		text-align: center; font-family: Champagne&Limousines; font-size: 14px; 
+		font-family: Champagne&Limousines; font-size: 14px; 
 		transition: 0.3s; margin-right: 30px;
 	}
 	#menu li a:hover {  color:#3498DB; border-top:2px solid #3498DB; background-color: #fff;}
-	#menu li a:focus {  color:#3498DB; border-top:2px solid #3498DB; background-color: #fff;}
+	#menu li a:active {  color:#3498DB; border-top:2px solid #3498DB; background-color: #fff;}
 	
+	.dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
+	.dropdown-menu {
+		display: none;
+		position: absolute;
+		right: 0;
+		background-color: #f9f9f9;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1000;	
+	}
+
+	.dropdown-menu a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
+	.dropdown-menu a:hover {background-color: #f1f1f1}
+
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
+
 	#title{
 		font-family: Cambria; font-size: 31px; padding:2px;
 		background-color:#fff; -webkit-text-stroke: 0.5px black; color: #3385ff;
@@ -227,16 +260,13 @@
 	
 	.search {
         padding: 5px 0;
-        width: 230px;
-        height: 30px;
         position: relative;
-		margin-left: 440px;
-        margin-top: 14px;
+        top: 14px;
     }
 	.search > .btnmod {
 		font-size: 14px;
 		font-family: "Verdana";
-		margin-left: 190px;
+		right: 15px;
 		position: absolute;
 		background-color: #fff;
 		color: grey;
@@ -259,6 +289,7 @@
     .search input {
         position: absolute;
         width: 0px;
+		right: 15px;
         margin-left: 210px;
         -webkit-transition: all 0.5s ease-in-out;
         -moz-transition: all 0.5s ease-in-out;
@@ -467,7 +498,7 @@
 	#servtitle {
 		text-align: center;
 		color: #2471A3;
-		font-family: 'Josefin Slab';
+		font-family: 'Vollkorn Black';
 		font-size: 40px;
 	}
 	

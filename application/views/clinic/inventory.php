@@ -1,6 +1,5 @@
 <div id="container" >
 
-<div class="horizontal">
 <!--<div style="width:100%; overflow:hidden;">-->
 <!--div for stocks-->
 <!--<div style="float:right; margin-top:20px;">
@@ -61,12 +60,9 @@
 </table>
 <!--</div>--><!--end of div for stocks-->
 
-<section id="section1" class="demo">
-	<a href="#section2"><span></span>See Transaction History</a>
-</section>
+
 <!-- Add Product Modal + Add Stock Modal & Update History + View Full History Moda -->
 	
-<section style="margin-left: 500px;" id="section2" class="demo">
 <!--<div style="width:100%; overflow:hidden;">-->
 <!--div for transactions-->
 <!--<div  style="float:right;margin-top:20px;">
@@ -111,7 +107,7 @@
         </tbody>
     </table>
 <!--</div>--><!--end of div for transactions-->
-</section>
+
 
 </div>
 </div>
