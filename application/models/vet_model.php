@@ -341,6 +341,13 @@ private $table = "schedule";
 		    				->get("schedule");
 		}
 
+		public function getEventsByDate($date){
+			$this->db->where("CAST(startdate as date) = '$date'");
+			$query = $this->db->get("schedule");
+
+			return $query->result_array();
+		}
+
 		public function add_event($data)
 		{
 		    $this->db->insert("schedule", $data);

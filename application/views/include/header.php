@@ -62,17 +62,25 @@
             <!--<p><?php /*echo $time;*/ ?></p>-->
             <p><?php echo $date; ?></p>
     </div>
-    <h4>Reminders:&nbsp;<span class="badge">3</span></h4>
-        <div class="event">
-            <span><?php echo $date; ?> 01:01:01</span><!--time and date-->
-            <p>Event 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p><!--event-->
+    <h4>Reminders:&nbsp;<span class="badge"><?php echo (isset($eventCounter)) ? $eventCounter : '0'; ?></span></h4>
+        <!--
+		<div class="event">
+            <span><?php //echo $date; ?> 01:01:01</span><!- -time and date- ->
+            <p>Event 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p><!- -event- ->
         </div>
-        <div class="event">
-            <span><?php echo $date; ?> 01:01:01</span><!--time and date-->
-            <p>Event 2 Cras viverra lorem eget le egestas, ut venenatis lectus dignissim. Aenean eget blandit dui, et pretium est</p><!--event-->
-        </div>
-        <div class="event">
-            <span><?php echo $date; ?> 01:01:01</span><!--time and date-->
-            <p>Event 3 whatever</p><!--event-->
-        </div>
+		-->
+		<?php
+			if(isset($events)){
+				foreach($events as $e){
+					echo '
+						<div class="event">
+							<p><strong>'.$e['title'].'</strong></p>
+							<p>'.$e['description'].'</p>
+						</div>
+						';
+				}
+			}
+		?>
+		
+        
 </div><!--END OF REMINDER DIV-->
