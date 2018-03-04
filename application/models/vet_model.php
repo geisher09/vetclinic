@@ -145,6 +145,20 @@
 				return $result['visit_cost'];
 		}
 
+		// public function getSalesSumMonth(){
+		// 	$this->db->select_sum('visit_cost');
+		// 	$this->db->from('visitdate');
+		// 	$df = DATE_FORMAT('visitdate', "%M-%Y");
+		// 	$this->db->group_by($df);
+
+		// 	$query = $this->db->get();
+		// 	$result = $query->row_array();
+		// 	if($result['visit_cost'] == null)
+		// 		return 0;
+		// 	else
+		// 		return $result['visit_cost'];
+		// }
+
 		public function getSales2(){
 			$serv="Sold Item";
 			$this->db->select('a.itemid,a.item_desc,b.itemid,b.action,b.date,b.total_cost');
