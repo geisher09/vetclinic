@@ -1,3 +1,14 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+
 <style type="text/css">
 			#chart-container {
 				width: 80%;
@@ -14,10 +25,10 @@
 		<div id="chart-date" class="row salesDate" >
             <div class="col-md-1 col-sm-1"></div>
             <div class="col-md-4 col-sm-4">
-				<label>Start date:</label><input type="date" class="form-control" id="startdate" name="startdate" />
+				<label>Start date:</label><input type="text" class="form-control" id="startdate" name="startdate" />
             </div>
             <div class="col-md-4 col-sm-4">
-				<label>End date:</label><input type="date" class="form-control" id="enddate" name="enddate" />
+				<label>End date:</label><input type="text" class="form-control" id="enddate" name="enddate" />
             </div>
             
             <div class="col-md-2 col-sm-2">
@@ -34,10 +45,32 @@
 
 <script type="text/javascript">
 
-
 		$(document).ready(function(){
-			realTimeSalesChart();
-		})
+			
+		
+		    $( "#startdate").datepicker(
+		    	{
+		    		dateFormat: 'yy-mm-dd',
+		    		beforeShow: function(){
+					    $("#startdate").datepicker("option", {
+					      maxDate: $("#enddate").datepicker('getDate')
+					    });
+					  }
+		    	}
+		    );
+
+		    $("#enddate").datepicker(
+		    	{
+				  dateFormat: 'yy-mm-dd',
+				  beforeShow: function(){
+				    $("#enddate").datepicker("option", {
+				      minDate: $("#startdate").datepicker('getDate')
+				    });
+				  }
+			});
+			
+		    realTimeSalesChart();
+  		} );
 
 function realTimeSalesChart(){
 	$.ajax({
@@ -134,4 +167,4 @@ function realTimeSalesChart(){
 				        }
 				    });	
 }
-</script>
+</script>	
