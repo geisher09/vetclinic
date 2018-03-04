@@ -233,6 +233,19 @@
 
 		}
 
+		public function addItemUsed2($option,$visitid){
+			$idata = array(
+				  //'visitid' => $visitid,
+			      'items_used' => $option
+			   );
+			//print_r($pdata);
+		   $this->db->insert('items_used', $idata);
+        	 $this->db->from('itemstock');
+			$this->db->where('qty_left =',0);
+			$query = $this->db->get();
+			return $query->num_rows();
+		}
+
 		public function addItemUsed($option,$visitid){
 			$idata = array(
 				  'visitid' => $visitid,

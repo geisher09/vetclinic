@@ -574,7 +574,7 @@ class vetclinic extends CI_Controller {
 
 			$data = array('qty_left'=>$left);
 			$this->itemstock->update($data,$condition);
-			$this->vet_model->addItemUsed($option,$visitid);
+			$this->vet_model->addItemUsed2($option,$visitid);
 
 			$data = array(
 					'itemid'=>$option,

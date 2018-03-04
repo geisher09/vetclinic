@@ -63,8 +63,13 @@
 		    	{
 				  dateFormat: 'yy-mm-dd',
 				  beforeShow: function(){
+
+				  	test = $("#startdate").datepicker('getDate');
+				    testm = new Date(test.getTime());
+				    testm.setDate(testm.getDate() + 1);
+
 				    $("#enddate").datepicker("option", {
-				      minDate: $("#startdate").datepicker('getDate')
+				      minDate: testm
 				    });
 				  }
 			});
