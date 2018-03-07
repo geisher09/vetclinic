@@ -291,7 +291,7 @@ class vetclinic extends CI_Controller {
 								'qty'=>$data['item'],
 								'total_cost'=>$prd);
 				$this->itemhistory->create($input);
-			echo 'hio';
+			echo $notif;
 	}
 
 	public function savehistory(){
