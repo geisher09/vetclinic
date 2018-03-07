@@ -44,10 +44,19 @@
 				<li style="float:right;"><a href="<?php echo base_url('vetclinic/sales'); ?>">&nbsp;Sales</a></li>
 				<li style="float:right;"><a href="<?php echo base_url('vetclinic/sched'); ?>">&nbsp;Schedule</a></li>
 				<li style="float:right;"><a href="<?php echo base_url('vetclinic'); ?>">&nbsp;Records</a></li>
-				<li style="float:right;" class="search">
+				<li style="float:right;" class="dropdown">
+					<a href="#">
+						<i class="glyphicon glyphicon-bell" style="margin-top:5px;"> </i> 
+						<span class="badge1" data-badge="2"> </span> </a>
+						<ul style="border:0px;" class="dropdown-menu">
+							<a href="#" style="border-top: 0px;"> Some Notifs </a>
+						</ul>
+					
+				</li>
+				<?=$title!='Records'?'':'<li style="float:right;" class="search">
 					<input type="text" name="q" onkeyup="search()"  id="search"/>
 					<button type="submit" class="btn btnmod"><span class="glyphicon glyphicon-search"></span></button>
-				</li>
+				</li>'?>
 		</ul>
 	</div>
 </nav>

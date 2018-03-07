@@ -11,6 +11,7 @@
 
 	<link href="<?php echo base_url('assets/fullcalendar.min.css'); ?>" rel='stylesheet' />
 	<link href="<?php echo base_url('assets/fullcalendar.print.min.css'); ?>" rel='stylesheet' media='print' />
+	<link href="<?php echo base_url('assets/jquery-ui.css'); ?>" rel='stylesheet' />
 	<script src="<?php echo base_url('assets/moment.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/fullcalendar.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/theme-chooser.js'); ?>"></script>
@@ -51,16 +52,27 @@
 
         #calendar {
             max-width: 900px;
-            margin: 40px auto;
+            margin: 60px auto;
             padding: 0 10px;
         }
+		
+		.btn-default {background-color: #AED6F1; color: #2980B9; border-color: #2980B9;}
+		.btn-default:hover {background-color: #D6EAF8; color: #2980B9; border-color: #2980B9;}
+		.btn-default:focus {background-color: #D6EAF8; color: #2980B9; border-color: #2980B9;}
+		.btn-default.active {background-color: #3498DB; color: white;}
+		.btn-default.active:hover {background-color: #3498DB; color: white;}
+		.btn-default.active:focus {background-color: #3498DB; color: white;}
+		.fc-center {font-family: Vollkorn Black; color: #2980B9;}
+		.fc-day-header {color:#2980B9; background-color: #F2F4F4;}
+		th.fc-week-number {color:#2980B9; background-color: #F2F4F4;}
+		
     </style>
 	
 
 	
 	
 </head>
-<body style="margin-right: 250px;">
+<body style="margin-right: 250px;"> <!--
 	<div id='top'>
 
 		<div class='left'>
@@ -110,7 +122,7 @@
 		</div>
 
 		<div class='clear'></div>
-	</div>
+	</div> -->
 
 	<div id='calendar'></div>
 
@@ -209,7 +221,7 @@
 
 				init: function(themeSystem) {
 					$('#calendar').fullCalendar({
-						themeSystem: themeSystem,
+						themeSystem: 'bootstrap3',
 						header: {
 							left: 'prev,next today',
 							center: 'title',
