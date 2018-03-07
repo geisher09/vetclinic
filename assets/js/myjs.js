@@ -191,7 +191,7 @@ $(document).ready(function(){
 								$('.addtm').each(function(){
 										 x=$(this).closest('tr').find(':selected').val();
 										 y= $(this).val();
-									
+								
 									
 										 	$.ajax({
 												type: "POST",
@@ -200,11 +200,14 @@ $(document).ready(function(){
 						   						 success: function(msg){
 						   						 	$("#hstryform").submit();
 														   $('#clientModal').modal('hide');
-														   alert('Record added successfully');		
+														   alert(msg);		
 
 								 				 }
 
 									});
+
+
+
 										 	
 								});
 							
@@ -214,9 +217,6 @@ $(document).ready(function(){
 
 
 				});
-
-		
-
 
 
 

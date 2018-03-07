@@ -531,7 +531,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				<div class="container-fluid window" id="addHistory">
 					
 						<div class="row">
-							<p class="lead text-center">Add Historys</p>
+							<p class="lead text-center">Add History</p>
 						
 							<div class="col-md-6">
 								<?php 

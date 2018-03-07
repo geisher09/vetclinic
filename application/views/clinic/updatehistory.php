@@ -38,7 +38,7 @@
                         data-dismiss="modal">
                             Cancel
                 </button>
-                <button type="submit" class="btn btn-primary" name="itemuse">
+                <button type="submit" class="btn btn-primary" name="itemuse" onclick="">
                     Update
                 </button>
                 <?php echo form_close() ?>

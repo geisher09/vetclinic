@@ -261,6 +261,8 @@ class vetclinic extends CI_Controller {
 
 
 	}
+	//chrstnv 
+
 
 	//bawas item 
 	public function itemUsed(){
@@ -276,9 +278,20 @@ class vetclinic extends CI_Controller {
 			$petv=$petv+1;
 			 $id = $yr.'-'.$pet.'-'.$petv;
 
-			$notif = $this->vet_model->addItemUsed($data['id'],$id);
+			$notif = $this->vet_model->addItemUsed($id,$data['item']);
 			$item=$this->vet_model->itemUsage($data);
-			echo $notif;
+			//to transaction
+
+				$details=$this->vet_model->myItem($data['id']);
+				$prd = $data['item']*$details[0]['item_cost'];
+				
+				$input = array('itemid'=>$data['id'],
+								'action'=>'Sold Item',
+								'description'=>'Sold Item: Item '.$details[0]['itemid'].'-'.$details[0]['item_desc'].' sold '.$data['item'].' pc/s with total cost of '.$prd. ' only '.$details[0]['qty_left']. ' pc/s left',
+								'qty'=>$data['item'],
+								'total_cost'=>$prd);
+				$this->itemhistory->create($input);
+			echo 'hio';
 	}
 
 	public function savehistory(){
@@ -539,13 +552,12 @@ class vetclinic extends CI_Controller {
 			$data = array(
 					'itemid'=>$last,
 					'qty'=>$qty,
-					'serviceid'=>'SER-000',
 					'action'=>'Add Product',
 					'description'=>'Add Product: Item ' .$last .' - '  .$desc .' with ' .$qty . ' pc/s and price of ' .$price .' added ' ,
-					'total_cost'=>$price
-						);
+					'total_cost'=>$price);
 		$this->itemhistory->create($data);}}
 		}
+		//chrstnv item
 		if(isset($_POST['itemuse'])){
 			$option = $this->input->post("itemid", TRUE);
 			$qty = $this->input->post("qty_used", TRUE);
@@ -579,7 +591,6 @@ class vetclinic extends CI_Controller {
 			$data = array(
 					'itemid'=>$option,
 					'qty'=>$qty,
-					'serviceid'=>'SER-000',
 					'action'=>'Sold Item',
 					'description'=>'Sold Item: Item '.$option .' - '  .$desc . ' sold ' .$qty .' pc/s with total cost of ' .$price.'. Only ' .$left . ' pc/s left ' ,
 					'total_cost'=>$price
@@ -618,7 +629,7 @@ class vetclinic extends CI_Controller {
 			$data = array(
 					'itemid'=>$option,
 					'qty'=>$qty,
-					'serviceid'=>'SER-000',
+		
 					'action'=>'Add Stock',
 					'description'=>'Add Stock: Item '.$option .' - '.$desc .' added ' .$addedstock.' pc/s',
 					'total_cost'=>$price

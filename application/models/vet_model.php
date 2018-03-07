@@ -100,6 +100,7 @@
 			return $query->result_array();
 
 		}
+		//chrstnv
 		public function myItem($id){
 				$this->db->from('itemstock');
 				$this->db->where('itemid',$id);
@@ -267,7 +268,17 @@
 
 			return $query->num_rows();
 		}
+		//chrstnv: item transaction to history
 
+
+		// public function addToHistory{
+
+
+
+
+
+
+		// }
 		public function saveHistory(){
 			date_default_timezone_set('Asia/Manila');
 			$date=date('Y-m-d H:i:s');
@@ -287,6 +298,7 @@
 			      'visit_cost' => $this->input->post('totalCost')+$this->input->post('hiddenSum'),
 
 			   );
+
 
 			return $this->db->insert('visit', $vdata);
 
