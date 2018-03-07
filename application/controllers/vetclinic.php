@@ -8,6 +8,7 @@ class vetclinic extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+			date_default_timezone_set('Asia/Manila');
 			$this->load->model('vet_model','vet_model');
 			$this->load->model('itemstock','itemstock');
 			$this->load->model('itemusage','itemusage');
