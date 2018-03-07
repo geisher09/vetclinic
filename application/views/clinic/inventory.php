@@ -43,7 +43,7 @@
 								<form method="POST" action="">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="add_stock" name="add_stock"/>
+                                            <input type="number" class="form-control minqty " id="add_stock" name="add_stock" min="1"/>
                                             <input type="hidden" class="form-control" id="itemid" name="itemid" value="'.$s['itemid'].'"/>
                                         </div>
                                         <div class="class="col-sm-6">

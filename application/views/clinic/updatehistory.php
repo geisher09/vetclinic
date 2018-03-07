@@ -38,7 +38,7 @@
                         data-dismiss="modal">
                             Cancel
                 </button>
-                <button type="submit" class="btn btn-primary" name="itemuse" onclick="">
+                <button type="submit" class="btn btn-primary" name="itemuse" onclick="window.location.reload( true );">
                     Update
                 </button>
                 <?php echo form_close() ?>
@@ -47,7 +47,12 @@
     </div>
 </div>
 		
-	
+	<script>
+function myFunction() {
+    location.reload();
+    alert('hi');
+}
+</script>
 	
 	
 
