@@ -81,7 +81,7 @@ class vetclinic extends CI_Controller {
 	}
 	public function filter_date()
 	{
-		$datestart = date("Y-m-d", strtotime("-1 week"));
+		$datestart = date("Y-m-d", strtotime("-6 days"));
 		$dateend = date("Y-m-d");
 
 		$startDate = $this->input->post('startDate') == "" ? $datestart : $this->input->post('startDate');
