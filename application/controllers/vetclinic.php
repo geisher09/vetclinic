@@ -362,7 +362,7 @@ class vetclinic extends CI_Controller {
 		$header_data['notif']=$this->vet_model->notification();
 		$this->load->view('include/header',$header_data);
 		$this->load->model('vet_model','schedule');
-		$this->load->view('clinic/sched');
+		 $this->load->view('clinic/sched');
 		$this->load->view('include/footer');
 
 	}
