@@ -1,9 +1,11 @@
 <!-- Modal -->
+
 <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
+
             <div class="modal-header">
                 <button type="button" class="close" 
                    data-dismiss="modal">
@@ -17,27 +19,32 @@
             
             <!-- Modal Body -->
             <div class="modal-body">
-            <?php echo form_open(site_url("vetclinic/inventory/")) ?>
+            <?php echo form_open("vetclinic/inventory/",['id'=>'addInventory']) ?>
             <form action="" method="POST">
-				  <div class="form-group">
+				  <div class="form-group" >
+                    <div id="descerror">
 					<label for="item_desc">Description:</label>
 					<input type="text" class="form-control" id="item_desc" name="item_desc" />
-				
+                    <p id="descerror1" class="valerror"></p>
+				    </div>
+                    <div id="costerror">
 					<label for="item_cost">Price:</label>
 					<input type="number" step=0.01 class="form-control" id="item_cost" name="item_cost" />
-				
-				
+                      <p id="costerror1" class="valerror"></p>
+				    </div>
+				    <div id="qtyerror">
 					<label for="qty_left">Quantity:</label>
 					<input type="number" class="form-control" id="qty_left" name="qty_left" />
-                    
-				</div>
+                    <p id="qtyerror1" class="valerror"></p>
+                     </div>
+		  
                </div>
             
             <!-- Modal Footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button name="additem" type="submit" class="btn btn-primary">Add Product</button>
-                </form>
+                <button name="additem" id="sbmtItem" value="" type="submit" class="btn btn-primary">Add Product</button>
+      
                 <?php echo form_close() ?>
             </div>
         </div>

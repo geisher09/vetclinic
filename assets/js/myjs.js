@@ -435,7 +435,79 @@ $(document).ready(function(){
 
 				});
 			
+				//add item validation
 
+				$(document).ready(function(){
+
+					$('#sbmtItem').click(function(e){
+						e.preventDefault();
+						var base_url = window.location.origin;
+						var desc =$('#item_desc').val();
+						var cost =$('#item_cost').val();
+						var qty =$('#qty_left').val();
+
+						$.ajax({
+												type: "POST",
+						  						  url: base_url+"/veterinary/vetclinic/validateItem",
+						   						  data: {desc:desc,cost:cost,qty:qty},
+						   						 success: function(msg){
+
+						   						 	console.log(msg);
+						   						var obj = JSON.parse(msg);
+
+						   						if(msg=='true'){
+						   							$('#addInventory').submit();
+						   								alert('hi');				   						}
+						   					else{
+												if(obj.desc!=null){
+													$("#descerror1").html(obj.desc);	
+													$("#descerror").addClass("has-error has-feedback");
+													// $("#cnume").append("<span id='cnume1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+
+												}
+												else{
+													$("#descerror1").remove(obj.desc);	
+													$("#descerror").removeClass("has-error has-feedback");
+													// $("#cnume1").remove();
+
+												}
+												if(obj.cost!=null){
+										         	$("#costerror1").html(obj.cost);	
+													$("#costerror").addClass("has-error has-feedback");
+													// $("#addre").append("<span id='addre1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+												  }
+												  else{
+													$("#costerror1").remove(obj.cost);	
+													$("#costerror").removeClass("has-error has-feedback");
+													// $("#addre1").remove();
+
+												}
+												 if(obj.qty!=null){
+												 	$("#qtyerror1").html(obj.qty);	
+													$("#qtyerror").addClass("has-error has-feedback");
+													// $("#emaile").append("<span id='emaile1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+												 }
+												 else{
+													$("#qtyerror1").remove(obj.qty);	
+													$("#qtyerror").removeClass("has-error has-feedback");
+													// $("#emaile1").remove();
+
+													}
+
+
+						   						 }
+						   						}
+
+
+
+
+
+
+						});
+
+
+					});
+				});
 
 
 
