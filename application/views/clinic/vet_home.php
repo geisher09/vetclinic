@@ -580,13 +580,13 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 								
 									<label>Service Type:</label>
 									<div class="col-md-12">
-										<label class="radio-inline">
-											<input value="Grooming" type="radio" name="optradio">Grooming
+										<label class="radio-inline" >
+											<input value="Grooming" type="radio" class="srvcs" name="optradio"><span class="srvcss">Grooming</span>
 										</label>
-										<label class="radio-inline">
-											<input value="Treatment" type="radio" name="optradio">Treatment
+										<label class="radio-inline" >
+											<input value="Treatment" type="radio" class="srvcs" name="optradio"><span class="srvcss"> Treatment</span>
 										</label>
-											<input class="btn btn-warning" id="buttoncheck" type="button" name="btn" value="Click"></input>
+											<!-- <input class="btn btn-warning" id="buttoncheck" type="button" name="btn" value="Click"></input> -->
 									        <br />
 									        <input type="hidden" id="btn_get" name="get_btn_value"></input>
 									        <br />
@@ -805,13 +805,13 @@ $('.modal').on('hidden.bs.modal', function (e) {
 			 }
 		});
 		
-		$(function() {
-        $('#buttoncheck').click(function () {
-            var var_name = $("input[name='optradio']:checked").val();
-            $('#btn_get').val(var_name);
-            newp(var_name);
-        });
-    	});
+		// $(function() {
+  //       $('#buttoncheck').click(function () {
+  //           var var_name = $("input[name='optradio']:checked").val();
+  //           $('#btn_get').val(var_name);
+  //           newp(var_name);
+  //       });
+  //   	});
 
 
     	function newp(type){
@@ -937,7 +937,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 				         	 console.log(id);
 				         	 var ai = "";
 				   			for(var i=0; i<parseInt(obj.allitems.length); i++){
-		 					        ai += '<option value='+obj.allitems[i].itemid+'>'+obj.allitems[i].itemid+'-'+obj.allitems[i].item_desc+'</option>';
+		 					        ai += '<option value='+obj.allitems[i].itemid+'>'+obj.allitems[i].item_desc+'</option>';
 		 					        //hi += '<option value='+obj.allitems[i].stockno+'>'+obj.allitems[i].item_desc+'</option>';
 		 					 
 								}

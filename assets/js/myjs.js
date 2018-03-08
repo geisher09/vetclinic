@@ -113,9 +113,17 @@ $(document).ready(function(){
 	      							 this.value = "";
 	   								 }
 						});
+						$(document).on('keyup','.minqty',function(){
+								 var num = this.value.match(/^\d+$/);
+									  if (num === null) {	
+	      							 this.value = "";
+	   								 }
+						});
 
 				});
-				//query for changing item
+
+
+					//query for changing item
 					$(document).on('change','.Vitems',function(){
 					var base_url = window.location.origin;
 					var id = "";
@@ -182,8 +190,16 @@ $(document).ready(function(){
 
 				$("document").ready(function(e){
 							$("#sbmtbtn").click(function(e){
-
 								e.preventDefault();
+								if($("#btn_get").val()=='')
+								{
+
+									alert('Please select Service type');
+
+									$(".srvcss").css("color","red");
+								}
+								else {
+								
 								var base_url = window.location.origin;
 								var x=0;
 								var y=0;
@@ -200,7 +216,7 @@ $(document).ready(function(){
 						   						 success: function(msg){
 						   						 	$("#hstryform").submit();
 														   $('#clientModal').modal('hide');
-														   alert(msg);		
+														   alert('Record save successfully');		
 
 								 				 }
 
@@ -211,10 +227,19 @@ $(document).ready(function(){
 										 	
 								});
 							
-								
+								}
 
 							});
 
+
+
+							// radio button
+
+
+							$(".srvcs").click(function(){
+								newp($(this).val());
+								$("#btn_get").val($(this).val());
+							});
 
 				});
 

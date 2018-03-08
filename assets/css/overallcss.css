@@ -6,6 +6,13 @@
 		-o-background-size: cover;
 		background-size: cover;*/
 	}
+	.option{
+
+		color:red;
+
+
+
+	}
    .redrow {
 		color: red;
 	}
@@ -16,6 +23,24 @@
 		margin-top: 10px;
 		float:left;
 		border-radius: 10px;
+	}
+	.badge1{
+		position:relative;
+	}
+	
+	.badge1[data-badge]:after {
+		content:attr(data-badge);
+		position:absolute;
+		bottom:10px;
+		left:5px;
+		font-size:.8em;
+		background: red;
+		color:white;
+		width:15px;height:15px;
+		text-align:center;
+		line-height:15px;
+		border-radius:50%;
+		border: none;
 	}
 	
 	.navbar-nav {
