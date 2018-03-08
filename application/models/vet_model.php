@@ -249,10 +249,9 @@
 
 		public function addItemUsed($option,$visitid){
 			$idata = array(
-				  'visitid' => $visitid,
-			      'items_used' => $option
-			   );
-			//print_r($pdata);
+				  'visitid' => $option,
+			      'items_used' => $visitid);
+			// print_r($idata)
 		   $this->db->insert('items_used', $idata);
         	 $this->db->from('itemstock');
 			$this->db->where('qty_left =',0);
@@ -295,7 +294,7 @@
 			      'findings' => $this->input->post('findings') ,
 			      'recommendation' => $this->input->post('recom'),
 			      'case_type' => $this->input->post('optradio'),
-			      'visit_cost' => $this->input->post('totalCost')+$this->input->post('hiddenSum'),
+			      'visit_cost' => $this->input->post('totalCost')+$this->input->post('hiddenSum')
 
 			   );
 

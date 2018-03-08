@@ -270,7 +270,7 @@ class vetclinic extends CI_Controller {
 			$data=array('id'=>$this->input->post('id'),
 				        'item'=>$this->input->post('item'));
 			
-		
+			// print_r($data);
 			date_default_timezone_set('Asia/Manila');
 			$date=date('Y-m-d H:i:s');
 			$pet=$this->input->post('pet');
@@ -292,7 +292,7 @@ class vetclinic extends CI_Controller {
 								'qty'=>$data['item'],
 								'total_cost'=>$prd);
 				$this->itemhistory->create($input);
-			echo $notif;
+		print_r($notif);
 	}
 
 	public function savehistory(){
@@ -654,20 +654,50 @@ class vetclinic extends CI_Controller {
 		$this->load->view('include/footer');
 	}
 
+	public function validate(){
+			$this->form_validation->set_rules('cnum','Contact','required|min_length[11]|max_length[11]|numeric');
+			$this->form_validation->set_message('cnum','Invalid phone number');
+	  		$this->form_validation->set_rules('addr', 'address', 'required');
+		 	$this->form_validation->set_rules('email', 'Email address', 'required|valid_email');
+		 	if($this->form_validation->run()){
 
+
+		 		echo 'true';
+
+		 	}
+		 	else
+		 	{
+		 		if(form_error('cnum')!=null){
+		 			$data['cnum']=form_error('cnum');
+		 		}
+		 			if(form_error('addr')!=null){
+		 			$data['addr']=form_error('addr');
+		 		}
+		 			if(form_error('email')!=null){
+		 			$data['email']= form_error('email');
+		 			
+		 		}
+		 		
+		 		echo json_encode($data);
+		 	}
+
+
+
+
+	}
 
 	public function upClient(){
+		
 
-
-
-		$data=array('clientid'=>$this->input->post('id'),
+					$data=array('clientid'=>$this->input->post('id'),
 					'cname'=>$this->input->post('name'),
 					'contactno'=>$this->input->post('cnum'),
 					'email'=>$this->input->post('email'),
 					'address'=>$this->input->post('addr'));
 					$this->vet_model->editClient($data);
-					
-	}
+				
+
+				}
 }
 
 ?>

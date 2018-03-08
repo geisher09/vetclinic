@@ -6,6 +6,27 @@
 		-o-background-size: cover;
 		background-size: cover;*/
 	}
+	#btnfordetails{
+
+		background-color: red;
+		color: red;
+
+	}
+	input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.valerror{
+	color:red;
+	
+
+}
+.window2{
+	display: none;
+}
+
 	.option{ color:red; }
    .redrow { color: red; }
 	.logo{
