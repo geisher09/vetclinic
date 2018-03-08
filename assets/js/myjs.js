@@ -322,6 +322,118 @@ $(document).ready(function(){
 							
 				});
 
+
+
+				$(document).ready(function(){
+
+						$('#sbmtPet').click(function(e){
+		var base_url = window.location.origin;
+							e.preventDefault();
+							var pname=$('#Mypetname').val();
+							var ptype=$('#addpetype').val();
+							var pbreed=$('#addpetbreed').val();
+							var pbday=$('#addpetbday').val();
+							var pmark=$('#addpetmarkings').val();
+							
+							$.ajax({
+													type: "POST",
+						  						  url: base_url+"/veterinary/vetclinic/validatePet",
+						   						  data: {name:pname,type:ptype,breed:pbreed,bday:pbday,mark:pmark},
+						   						 success: function(msg){
+						   						 	console.log(msg);
+						   						 	if(msg=='true'){
+						   					// 	 		$("#Peterror").text('');	
+														// $("#Perror").removeClass("has-error has-feedback");
+														// $("#addrerror").text('');	
+														// $("#addre").removeClass("has-error has-feedback");
+														// $("#emailerror").text('');	
+														// $("#emaile").removeClass("has-error has-feedback");
+														// $("#custcontactno").text(number);				
+														// $("#custemail").text(email);
+														// $("#custaddress").text(address);
+						   						 $('#addPetForm').submit();
+
+
+
+						   						 	}
+						   						 	else{
+
+						   						var obj = JSON.parse(msg);
+
+												if(obj.name!=null){
+													$("#Peterror").html(obj.name);	
+													$("#Perror").addClass("has-error has-feedback");
+													// $("#cnume").append("<span id='cnume1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+
+												}
+												else{
+													$("#Peterror").remove(obj.name);	
+													$("#Perror").removeClass("has-error has-feedback");
+													// $("#cnume1").remove();
+
+												}
+												if(obj.type!=null){
+										         	$("#Typeerror").html(obj.type);	
+													$("#Terror").addClass("has-error has-feedback");
+													// $("#addre").append("<span id='addre1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+												  }
+												  else{
+													$("#Typeerror").remove(obj.type);	
+													$("#Terror").removeClass("has-error has-feedback");
+													// $("#addre1").remove();
+
+												}
+												 if(obj.breed!=null){
+												 	$("#Breerror").html(obj.breed);	
+													$("#Berror").addClass("has-error has-feedback");
+													// $("#emaile").append("<span id='emaile1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+												 }
+												 else{
+													$("#Breerror").remove(obj.breed);	
+													$("#Berror").removeClass("has-error has-feedback");
+													// $("#emaile1").remove();
+
+													}
+												 if(obj.bday!=null){
+												 	$("#Bdayerror").html(obj.bday);	
+													$("#Derror").addClass("has-error has-feedback");
+													// $("#emaile").append("<span id='emaile1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+												 }
+												 else{
+													$("#Bdayerror").remove(obj.bday);	
+													$("#Derror").removeClass("has-error has-feedback");
+													// $("#emaile1").remove();
+
+													}
+											     if(obj.mark!=null){
+												 	$("#Markerror").html(obj.mark);	
+													$("#Merror").addClass("has-error has-feedback");
+													// $("#emaile").append("<span id='emaile1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+												 }
+												 else{
+													$("#Markerror").remove(obj.mark);	
+													$("#Merror").removeClass("has-error has-feedback");
+													// $("#emaile1").remove();
+
+													}
+
+
+
+						   						 	}
+
+						   						
+
+
+						   						 }
+
+
+
+							});
+
+
+						});
+
+				});
 			
 
 

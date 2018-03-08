@@ -249,14 +249,8 @@ class vetclinic extends CI_Controller {
 
 		 // echo $lpetid;
 
-			$this->form_validation->set_rules('pname', 'Pet Name', 'required');
-	  		$this->form_validation->set_rules('birthday', 'Birthday', 'required');
-		 	$this->form_validation->set_rules('markings', 'Markings', 'required');
-	  		$this->form_validation->set_rules('breed', 'Breed', 'required');
-		 	$this->form_validation->set_rules('species', 'Specie', 'required');
-			$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+			
             
-            if ($this->form_validation->run()){
              	$this->load->model('vet_model');
              	if (($this->vet_model->saveAddPet($lpetid))){
              		$this->session->set_flashdata('response', 'Saved Succesfully!');
@@ -266,18 +260,9 @@ class vetclinic extends CI_Controller {
 				 }
 				return redirect('vetclinic');
 
-            }
+         
 
-            else{
-            	$this->session->set_flashdata('responsed', 'Failed to save! (Please input necessary details)');
-            	$header_data['title'] = "Clinic";		
-				$this->load->view('include/header',$header_data);
-				$this->load->model('vet_model');
-				$clients = $this->vet_model->getClients();
-				$lastclient = $this->vet_model->getLastClient();	
-				$this->load->view('clinic/vet_home', ['cl'=>$clients,'al'=>$lastclient]);
-				$this->load->view('include/footer');
-            }
+            
 
 
 
@@ -682,6 +667,64 @@ class vetclinic extends CI_Controller {
 		$this->load->view('clinic/inventory',$data);
 
 		$this->load->view('include/footer');
+	}
+	function space($str)
+		{
+		     if (! preg_match('/^[a-zA-Z\s]+$/',$str)) {	
+        $this->form_validation->set_message('space', 'The %s field may only contain alpha characters ');
+        return FALSE;
+   		 }		
+
+   		  else {
+        return TRUE;
+    	}
+		} 
+	public function validatePet()
+	{
+			$this->form_validation->set_rules('name','Pet name','required|min_length[2]|callback_space');
+		
+	  		$this->form_validation->set_rules('type', 'Pet type', 'trim|required|min_length[2]|callback_space');
+		 	$this->form_validation->set_rules('breed', 'Breed', 'trim|required|callback_space');
+		 	$this->form_validation->set_rules('bday', 'Birthday', 'required');
+		 	$this->form_validation->set_rules('mark', 'Markings', 'alpha|min_length[2]');
+		 	
+		 	if($this->form_validation->run()){
+
+
+		 		echo 'true';
+
+		 	}
+		 	else{
+
+		 		if(form_error('name')!=null){
+		 			$data['name']=form_error('name');
+		 		}
+		 			if(form_error('type')!=null){
+		 			$data['type']=form_error('type');
+		 		}
+		 			if(form_error('breed')!=null){
+		 			$data['breed']= form_error('breed');
+		 			
+		 		}
+		 			if(form_error('bday')!=null){
+		 			$data['bday']= form_error('bday');
+		 			
+		 		}
+		 			if(form_error('mark')!=null){
+		 			$data['mark']= form_error('mark');
+		 			
+		 		}
+		 		
+		 		echo json_encode($data);
+
+
+		 	}
+
+
+
+
+
+
 	}
 
 	public function validate(){

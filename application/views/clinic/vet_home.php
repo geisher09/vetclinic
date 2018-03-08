@@ -385,12 +385,13 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 					<p class="lead text-center">Add Pet</p>
 					<div class="col-md-2"></div>
 					<form></form>
-					<?php echo form_open('vetclinic/savepet', ['class'=>'form-horizontal']); ?>
+					<?php echo form_open('vetclinic/savepet', ['class'=>'form-horizontal','id'=>'addPetForm']); ?>
 					<div class="col-md-8">
-							<div class="form-group">
+							<div class="form-group" id="Perror">
 								<span style="white-space: nowrap">
 								<label for="">Pet Name:</label>
-								<input type="text" class="form-control" id="pname" name="pname" />
+								<input type="text" class="form-control" id="Mypetname" name="pname" />
+								<p id="Peterror" class="valerror"></p>
 								</span>
 							</div>
 							
@@ -398,24 +399,28 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 								<input type="hidden" id="addpetclientno" name="addpetclientno"/>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group" id="Terror">
 								<label for="">Species:</label>
 								<input type="text" class="form-control" id="addpetype" name="species"/>
+								<p id="Typeerror" class="valerror"></p>
 							</div>
 							
-							<div class="form-group">
+							<div class="form-group" id="Berror">
 								<label for="">Breed:</label>
 								<input type="text" class="form-control" id="addpetbreed" name="breed"/>
+								<p id="Breerror" class="valerror"></p>
 							</div>
 							
-							<div class="form-group">
+							<div class="form-group" id="Derror">
 								<label for="">Birthday:</label>
 								<input type="date" class="form-control" id="addpetbday" name="birthday"/>
+								<p id="Bdayerror" class="valerror"></p>
 							</div>	
 							
-							<div class="form-group">
+							<div class="form-group" id="Merror">
 								<label for="">Markings:</label>
 								<input type="text" class="form-control" id="addpetmarkings" name="markings"/>
+								<p id="Markerror" class="valerror"></p>
 							</div>
 
 
@@ -423,7 +428,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 								<label class=" col-sm-3" for="sex">Sex:</label>
 								  <div class="col-sm-8">
 									<label class="radio-inline">
-									  <input type="radio" id="addpetsex" name="sex" value="m">Male
+									  <input type="radio" id="addpetsex" name="sex" value="m" checked>Male
 									</label>
 									<label class="radio-inline">
 									  <input type="radio" id="addpetsex" name="sex" value="f">Female
@@ -432,7 +437,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							</div>
 
 						<div>
-							<button type="submit" class="btn btn-primary">Save</button>
+							<button type="submit" id="sbmtPet" class="btn btn-primary">Save</button>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 						</div>
 						<?php echo form_close();?>
