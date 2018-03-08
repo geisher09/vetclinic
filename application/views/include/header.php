@@ -96,27 +96,6 @@
 		</ul>
 	</div>
 </nav>
-
-<div class="reminder"><!--REMINDER DIV-->
-    <?php 
-        date_default_timezone_set('Asia/Manila');
-        $date=date('M. d, Y');
-        $time=date('h:i a');
-    ?>
-    <div class="reminderdatetime">
-            <!--<p><?php /*echo $time;*/ ?></p>-->
-            <p><?php echo $date; ?></p>
-    </div>
-    <h4>Reminders:&nbsp;<span class="badge"><?php echo (isset($eventCounter)) ? $eventCounter : '0'; ?></span></h4>
-        <!--
-		<div class="event">
-            <span><?php //echo $date; ?> 01:01:01</span><!- -time and date- ->
-            <p>Event 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p><!- -event- ->
-        </div>
-		-->
-		
-        
-</div><!--END OF REMINDER DIV-->
 <script type="text/javascript">
 
 		$(document).ready(function(){

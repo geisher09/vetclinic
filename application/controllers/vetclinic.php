@@ -160,6 +160,10 @@ class vetclinic extends CI_Controller {
 			$this->services->del($data);
 		}
 		$header_data['title'] = "Services Offered";
+		$header_data['notif']=$this->vet_model->notification();
+		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
+		$header_data['eventCounter'] = count($header_data['events']);
+		$header_data['items'] = $this->vet_model->getAllZeroitems();
 		$condition = array('type'=>'Grooming');
 		$data['grooming'] = $this->services->read($condition);
 		$condition = array('type'=>'Treatment');
@@ -245,14 +249,8 @@ class vetclinic extends CI_Controller {
 
 		 // echo $lpetid;
 
-			$this->form_validation->set_rules('pname', 'Pet Name', 'required');
-	  		$this->form_validation->set_rules('birthday', 'Birthday', 'required');
-		 	$this->form_validation->set_rules('markings', 'Markings', 'required');
-	  		$this->form_validation->set_rules('breed', 'Breed', 'required');
-		 	$this->form_validation->set_rules('species', 'Specie', 'required');
-			$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+			
             
-            if ($this->form_validation->run()){
              	$this->load->model('vet_model');
              	if (($this->vet_model->saveAddPet($lpetid))){
              		$this->session->set_flashdata('response', 'Saved Succesfully!');
@@ -262,18 +260,9 @@ class vetclinic extends CI_Controller {
 				 }
 				return redirect('vetclinic');
 
-            }
+         
 
-            else{
-            	$this->session->set_flashdata('responsed', 'Failed to save! (Please input necessary details)');
-            	$header_data['title'] = "Clinic";		
-				$this->load->view('include/header',$header_data);
-				$this->load->model('vet_model');
-				$clients = $this->vet_model->getClients();
-				$lastclient = $this->vet_model->getLastClient();	
-				$this->load->view('clinic/vet_home', ['cl'=>$clients,'al'=>$lastclient]);
-				$this->load->view('include/footer');
-            }
+            
 
 
 
@@ -360,6 +349,9 @@ class vetclinic extends CI_Controller {
 	{
 		$header_data['title'] = "Schedule";
 		$header_data['notif']=$this->vet_model->notification();
+		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
+		$header_data['eventCounter'] = count($header_data['events']);
+		$header_data['items'] = $this->vet_model->getAllZeroitems();
 		$this->load->view('include/header',$header_data);
 		$this->load->model('vet_model','schedule');
 		 $this->load->view('clinic/sched');
@@ -371,6 +363,9 @@ class vetclinic extends CI_Controller {
 	{
 		$header_data['title'] = "Sales";
 		$header_data['notif']=$this->vet_model->notification();
+		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
+		$header_data['eventCounter'] = count($header_data['events']);
+		$header_data['items'] = $this->vet_model->getAllZeroitems();
 		$this->load->view('include/header',$header_data);
 		$this->sdate = "2017-08-02";//$startDate and $endDate == range of dates
 		$this->edate = "2017-08-17";								 //$dates == array of dates in the range given
@@ -535,45 +530,32 @@ class vetclinic extends CI_Controller {
 
 	public function inventory(){
 		$header_data['notif']=$this->vet_model->notification();
-		if(isset($_POST['additem'])){
+		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
+		$header_data['eventCounter'] = count($header_data['events']);
+		$header_data['items'] = $this->vet_model->getAllZeroitems();
+		if(isset($_POST['item_desc'])){
+		
 			
-			$validate = array (
-				array('field'=>'item_desc','label'=>'Description','rules'=>'trim|required|min_length[2]'),
-				array('field'=>'item_cost','label'=>'Item Cost','rules'=>'trim|required|min_length[1]'),
-				array('field'=>'qty_left','label'=>'Quantity','rules'=>'trim|required|min_length[1]'),
-			);
-			$this->form_validation->set_rules($validate);
+			$desc = $this->input->post("item_desc");
+			$price = $this->input->post("item_cost");
+			$qty = $this->input->post("qty_left");
 			
-			if ($this->form_validation->run()===FALSE){
-				$data['errors'] = validation_errors();
-			}
-			
-			else{
-			
-			$desc = $this->input->post("item_desc", TRUE);
-			$price = $this->input->post("item_cost", TRUE);
-			$qty = $this->input->post("qty_left", TRUE);
-			if($qty<=0 || $price<=0){
-				
-				echo "<script type='text/javascript'>alert('Invalid Input');</script>";
-				
-			}
-			else{
-			$data = array(
+			$data2 = array(
 					'itemid'=>null,
 					'item_desc'=>$desc,
 					'qty_left'=>$qty,
 					'item_cost'=>$price
 					);
-			$this->itemstock->create($data);
+			$this->itemstock->create($data2);
 			$last = $this->itemstock->c();
-			$data = array(
+			$data1 = array(
 					'itemid'=>$last,
 					'qty'=>$qty,
 					'action'=>'Add Product',
 					'description'=>'Add Product: Item ' .$last .' - '  .$desc .' with ' .$qty . ' pc/s and price of ' .$price .' added ' ,
 					'total_cost'=>$price);
-		$this->itemhistory->create($data);}}
+		$this->itemhistory->create($data1);
+		//print_r($_POST);
 		}
 		//chrstnv item
 		if(isset($_POST['itemuse'])){
@@ -669,6 +651,99 @@ class vetclinic extends CI_Controller {
 		$this->load->view('clinic/inventory',$data);
 
 		$this->load->view('include/footer');
+	}
+	function space($str)
+		{
+		     if (! preg_match('/^[a-zA-Z\s]+$/',$str)) {	
+        $this->form_validation->set_message('space', 'Please input a valid Description');
+        return FALSE;
+   		 }		
+
+   		  else {
+        return TRUE;
+    	}
+		} 
+		public function validateItem(){
+
+			// print_r($_POST);
+			$this->form_validation->set_rules('desc','Description','required|min_length[2]|callback_space');
+	  		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|min_length[2]');
+		 	$this->form_validation->set_rules('qty', 'Quantity', 'trim|required');
+
+		 	if($this->form_validation->run()){
+
+		 		echo 'true';
+
+
+		 	}
+		 	else{
+		 		if(form_error('desc')!=null){
+		 			$data['desc']=form_error('desc');
+		 		}
+		 			if(form_error('cost')!=null){
+		 			$data['cost']=form_error('cost');
+		 		}
+		 			if(form_error('qty')!=null){
+		 			$data['qty']= form_error('qty');
+		 			
+		 		}
+		 		echo json_encode($data);
+
+
+
+		 	}
+
+
+
+
+
+		}
+	public function validatePet()
+	{
+			$this->form_validation->set_rules('name','Pet name','required|min_length[2]|callback_space');
+		
+	  		$this->form_validation->set_rules('type', 'Pet type', 'trim|required|min_length[2]|callback_space');
+		 	$this->form_validation->set_rules('breed', 'Breed', 'trim|required|callback_space');
+		 	$this->form_validation->set_rules('bday', 'Birthday', 'required');
+		 	$this->form_validation->set_rules('mark', 'Markings', 'alpha|min_length[2]');
+		 	
+		 	if($this->form_validation->run()){
+
+
+		 		echo 'true';
+
+		 	}
+		 	else{
+
+		 		if(form_error('name')!=null){
+		 			$data['name']=form_error('name');
+		 		}
+		 			if(form_error('type')!=null){
+		 			$data['type']=form_error('type');
+		 		}
+		 			if(form_error('breed')!=null){
+		 			$data['breed']= form_error('breed');
+		 			
+		 		}
+		 			if(form_error('bday')!=null){
+		 			$data['bday']= form_error('bday');
+		 			
+		 		}
+		 			if(form_error('mark')!=null){
+		 			$data['mark']= form_error('mark');
+		 			
+		 		}
+		 		
+		 		echo json_encode($data);
+
+
+		 	}
+
+
+
+
+
+
 	}
 
 	public function validate(){

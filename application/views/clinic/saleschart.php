@@ -12,7 +12,7 @@
 
 <style type="text/css">
     #chart-container {
-        width: 80%;
+        width: 100%;
         height: auto;	
         margin-top:5px;
     }
@@ -25,7 +25,7 @@
         text-align: center;
         cursor: pointer;
         outline: none;
-        color: black;	
+        color: white;	
         background-color: #4d94ff;
         border: none;
         border-radius: 5px;
@@ -64,8 +64,8 @@
 				<label>End date:</label><input type="text" class="form-control" id="enddate" name="enddate" />
             </div>            
             <div class="col-md-2 col-sm-2">
-                <button type="reset" class="btn button btn-default">Cancel</button>
-                <button type="button" onclick="realTimeSalesChart()" class="btn button btn-primary">Save</button>
+                <button type="reset" class="button">Cancel</button>
+                <button type="button" onclick="realTimeSalesChart()" class="button">Save</button>
             </div>
             <div class="col-md-1 col-sm-1"></div>
 		</div>
