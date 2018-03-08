@@ -551,7 +551,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										$date=date('m-d-Y');
 										?>
 										<div class="col-md-6">
-											<h4 name="date" class="text-center">Date :</b><?php echo $date;?></h4>
+											<h4 name="date" class="text-center"><b>Date: </b><?php echo $date;?></h4>
 										</div>
 									</div>
 									<hr />

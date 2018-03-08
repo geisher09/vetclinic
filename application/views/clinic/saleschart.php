@@ -1,8 +1,9 @@
 <head>
-  <meta charset="utf-8">
+<!--  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Datepicker - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <title>jQuery UI Datepicker - Default functionality</title>-->
+<!--  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/datepicker.css'); ?>">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -10,48 +11,50 @@
 </head>
 
 <style type="text/css">
-			#chart-container {
-				width: 80%;
-				height: auto;	
-				margin-top:5px;
-			}
-
-			.button {
-			  margin-top:25px;
-			  padding: 5px 10px;
-			  font-size: 15px;
-			  font-family: Josefin Slab;
-			  text-align: center;
-			  cursor: pointer;
-			  outline: none;
-			  color: black;	
-			  background-color: #4d94ff;
-			  border: none;
-			  border-radius: 5px;
-			  box-shadow: 0 5px #999;
-			}
-
-			.button:hover {background-color: #003d99}
-
-			.button:active {
-			  background-color: #003d99;
-			  box-shadow: 0 5px #666;
-			  transform: translateY(4px);
-			}
-
+    #chart-container {
+        width: 80%;
+        height: auto;	
+        margin-top:5px;
+    }
+    .button {
+        margin-top:25px;
+        padding: 5px 10px;
+        font-size: 15px;
+        font-family: Poppins;
+        font-weight: light;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: black;	
+        background-color: #4d94ff;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 5px #999;
+    }
+    .button:hover {background-color: #003d99}
+    .button:active {
+        background-color: #003d99;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+    input[type='text']{
+        background: url(<?php echo base_url('assets/images/calendar.png');?>) no-repeat;
+        padding: 2px;
+        padding-left: 30px;
+    }
 </style>
 
 <body>
-		<div class="btn-group">
+    <div class="btn-group" style="margin-left:50px;">
 	    <button type="button" class="button" onclick="dailySalesChart()">Daily</button>
 	    <button type="button" class="button" onclick="monthlySalesChart()">Monthly</button>
 	    <button type="button" class="button">Yearly</button>
-	  </div>
+    </div>
 
 	<div id="chart-container" style="margin-top:-40px;">
 			<canvas id="mycanvas"></canvas>
 	</div>
-		<!-- <form method="POST" action="<?php echo base_url('vetclinic/sales');?>" > -->
+    <!-- <form method="POST" action="<?php echo base_url('vetclinic/sales');?>" > -->
 		<div id="chart-date" class="row salesDate" >
             <div class="col-md-1 col-sm-1"></div>
             <div class="col-md-4 col-sm-4">
@@ -61,19 +64,16 @@
 				<label>End date:</label><input type="text" class="form-control" id="enddate" name="enddate" />
             </div>            
             <div class="col-md-2 col-sm-2">
-                <br />
-                  <button type="reset" class="btn btn-default">Cancel</button>
-                  <button type="button" onclick="realTimeSalesChart()" class="btn btn-primary">Save</button>
+                <button type="reset" class="btn button btn-default">Cancel</button>
+                <button type="button" onclick="realTimeSalesChart()" class="btn button btn-primary">Save</button>
             </div>
             <div class="col-md-1 col-sm-1"></div>
 		</div>
-
-<!--     </form> -->
+    <!--     </form> -->
 </body>
 
 
 <script type="text/javascript">
-
 		$(document).ready(function(){
 			
 		
@@ -87,16 +87,13 @@
 					  }
 		    	}
 		    );
-
 		    $("#enddate").datepicker(
 		    	{
 				  dateFormat: 'yy-mm-dd',
 				  beforeShow: function(){
-
 				  	test = $("#startdate").datepicker('getDate');
 				    testm = new Date(test.getTime());
 				    testm.setDate(testm.getDate() + 1);
-
 				    $("#enddate").datepicker("option", {
 				      minDate: testm
 				    });
@@ -178,7 +175,7 @@ function realTimeSalesChart(){
 								text : "Sales Chart",
 								fontSize : 45,
                                 fontFamily : "Vollkorn Black",
-								fontColor : "#111"
+								fontColor : "#2471A3"
 							},
 							legend : {
 								display : true,
