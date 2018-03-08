@@ -533,45 +533,29 @@ class vetclinic extends CI_Controller {
 		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
 		$header_data['eventCounter'] = count($header_data['events']);
 		$header_data['items'] = $this->vet_model->getAllZeroitems();
-		if(isset($_POST['additem'])){
+		if(isset($_POST['item_desc'])){
+		
 			
-			$validate = array (
-				array('field'=>'item_desc','label'=>'Description','rules'=>'trim|required|min_length[2]'),
-				array('field'=>'item_cost','label'=>'Item Cost','rules'=>'trim|required|min_length[1]'),
-				array('field'=>'qty_left','label'=>'Quantity','rules'=>'trim|required|min_length[1]'),
-			);
-			$this->form_validation->set_rules($validate);
+			$desc = $this->input->post("item_desc");
+			$price = $this->input->post("item_cost");
+			$qty = $this->input->post("qty_left");
 			
-			if ($this->form_validation->run()===FALSE){
-				$data['errors'] = validation_errors();
-			}
-			
-			else{
-			
-			$desc = $this->input->post("item_desc", TRUE);
-			$price = $this->input->post("item_cost", TRUE);
-			$qty = $this->input->post("qty_left", TRUE);
-			if($qty<=0 || $price<=0){
-				
-				echo "<script type='text/javascript'>alert('Invalid Input');</script>";
-				
-			}
-			else{
-			$data = array(
+			$data2 = array(
 					'itemid'=>null,
 					'item_desc'=>$desc,
 					'qty_left'=>$qty,
 					'item_cost'=>$price
 					);
-			$this->itemstock->create($data);
+			$this->itemstock->create($data2);
 			$last = $this->itemstock->c();
-			$data = array(
+			$data1 = array(
 					'itemid'=>$last,
 					'qty'=>$qty,
 					'action'=>'Add Product',
 					'description'=>'Add Product: Item ' .$last .' - '  .$desc .' with ' .$qty . ' pc/s and price of ' .$price .' added ' ,
 					'total_cost'=>$price);
-		$this->itemhistory->create($data);}}
+		$this->itemhistory->create($data1);
+		//print_r($_POST);
 		}
 		//chrstnv item
 		if(isset($_POST['itemuse'])){
@@ -671,7 +655,7 @@ class vetclinic extends CI_Controller {
 	function space($str)
 		{
 		     if (! preg_match('/^[a-zA-Z\s]+$/',$str)) {	
-        $this->form_validation->set_message('space', 'The %s field may only contain alpha characters ');
+        $this->form_validation->set_message('space', 'Please input a valid Description');
         return FALSE;
    		 }		
 
@@ -679,6 +663,41 @@ class vetclinic extends CI_Controller {
         return TRUE;
     	}
 		} 
+		public function validateItem(){
+
+			// print_r($_POST);
+			$this->form_validation->set_rules('desc','Description','required|min_length[2]|callback_space');
+	  		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|min_length[2]');
+		 	$this->form_validation->set_rules('qty', 'Quantity', 'trim|required');
+
+		 	if($this->form_validation->run()){
+
+		 		echo 'true';
+
+
+		 	}
+		 	else{
+		 		if(form_error('desc')!=null){
+		 			$data['desc']=form_error('desc');
+		 		}
+		 			if(form_error('cost')!=null){
+		 			$data['cost']=form_error('cost');
+		 		}
+		 			if(form_error('qty')!=null){
+		 			$data['qty']= form_error('qty');
+		 			
+		 		}
+		 		echo json_encode($data);
+
+
+
+		 	}
+
+
+
+
+
+		}
 	public function validatePet()
 	{
 			$this->form_validation->set_rules('name','Pet name','required|min_length[2]|callback_space');
