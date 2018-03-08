@@ -45,7 +45,7 @@
 		<div class="btn-group">
 	    <button type="button" class="button" onclick="dailySalesChart()">Daily</button>
 	    <button type="button" class="button" onclick="monthlySalesChart()">Monthly</button>
-	    <button type="button" class="button">Yearly</button>
+	    <button type="button" class="button" onclick="yearlySalesChart()">Yearly</button>
 	  </div>
 
 	<div id="chart-container" style="margin-top:-40px;">
@@ -300,4 +300,98 @@ function monthlySalesChart(){
 				        }
 				    });	
 }
+
+	function yearlySalesChart(){
+		console.log('test');
+		$.ajax({
+			url: 'ajax_yearly',
+			success: function(data) {
+							//console.log(data);
+				        	var obj = JSON.parse(data);
+							
+				        	var date = [];
+				        	var total_cost = [];
+				        	var visitdate = [];
+				        	var visit_cost = [];
+
+
+				        	/*for(var i in obj.sales2){
+				        		date.push("Date " + obj.sales2[i].date);
+				        		total_cost.push(obj.sales2[i].total_cost);
+				        	}
+
+				        	for(var i in obj.sales1){
+				        		visitdate.push("Date " + obj.sales1[i].visitdate);
+				        		visit_cost.push(obj.sales1[i].visit_cost);
+							}*/
+							
+							for(var i in obj.dates){
+								date.push("Date: " + obj.dates[i]);
+								visitdate.push("Date: " + obj.dates[i]);
+							}
+
+							for(var n in obj.sales1){
+								visit_cost.push(obj.sales1[n]);
+								total_cost.push(obj.sales2[n]);
+							}
+
+				        	var chartdata = {
+								labels: date,
+								datasets : [
+									{
+										label: 'ITEMS',
+										backgroundColor: 'blue',
+										borderColor: 'lightblue',
+										hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+										hoverBorderColor: 'rgba(200, 200, 200, 1)',
+										fill : false,
+										lineTension : 0,
+										pointRadius : 5,
+										data: total_cost
+									},
+									{
+										label: 'VISIT',
+										backgroundColor: 'green',
+										borderColor: 'lightgreen',
+										hoverBackgroundColor: 'rgba(200, 600, 200, 1)',
+										hoverBorderColor: 'rgba(200, 200, 200, 1)',
+										fill : false,
+										lineTension : 0,
+										pointRadius : 5,
+										data: visit_cost
+									}
+
+								]
+							};
+
+							var options = {
+							title : {
+								display : true,
+								position : "top",
+								text : "Sales Chart",
+								fontSize : 45,
+                                fontFamily : "Vollkorn Black",
+								fontColor : "#111"
+							},
+							legend : {
+								display : true,
+								position : "bottom",
+								labels: {
+					                // This more specific font property overrides the global property
+					                fontSize : 25
+					            }
+							}
+						};
+
+							var ctx = $("#mycanvas");
+
+							var barGraph = new Chart(ctx, {
+								type: 'line',
+								data: chartdata,
+								options: options
+							});   
+
+				        }
+		});
+	}
 </script>	

@@ -172,6 +172,36 @@
 				return $result['total_cost'];
 		}
 
+		public function getSalesSumPerMonth($month,$year){
+			$this->db->select_sum('visit_cost');
+			$this->db->from('visit');
+			$this->db->where("MONTH(visitdate) = '$month'");
+			$this->db->where("YEAR(visitdate) = '$year'");
+
+			$query = $this->db->get();
+			$result = $query->row_array();
+			if($result['visit_cost'] == null)
+				return 0;
+			else
+				return $result['visit_cost'];
+		}
+
+		public function getSalesSumPerMonth2($month,$year){
+			$serv = "Sold Item";
+			$this->db->select_sum('total_cost');
+			$this->db->from('itemhistory');
+			$this->db->where("MONTH(date) = '$month'");
+			$this->db->where("YEAR(date) = '$year'");
+			$this->db->where('action',$serv);
+
+			$query = $this->db->get();
+			$result = $query->row_array();
+			if($result['total_cost'] == null)
+				return 0;
+			else
+				return $result['total_cost'];
+		}
+
 		public function getOwnvisits($id){
 
 			$this->db->from('visit');

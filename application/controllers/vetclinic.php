@@ -109,6 +109,22 @@ class vetclinic extends CI_Controller {
 				);
 		echo json_encode($output);
 	}
+
+	public function ajax_yearly(){
+		$year=date('Y');
+		for($month=1;$month<=12;$month++){
+			$sales1[] = $this->vet_model->getSalesSumPerMonth($month,2017);
+			$sales2[] = $this->vet_model->getSalesSumPerMonth2($month,2017);
+			$dates[] = date('F',mktime(0,0,0,$month));	
+		}
+		
+		$output = array(
+			"sales1" => $sales1,
+			"sales2" => $sales2,
+			"dates" => $dates
+		);
+		echo json_encode($output);
+	}
 	
 	public function services(){
 		
