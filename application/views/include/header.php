@@ -20,7 +20,17 @@
         $(document).ready(function() {
             var url = window.location.protocol + "//" + window.location.host + window.location.pathname;
 //            alert(url);
-            $('#menu li a[href="'+ url +'"]').addClass('activeLink');
+            if(url == "<?php echo base_url('vetclinic/inventory'); ?>"){
+                url = '#';
+                $('#menu li a[href="'+ url +'"]').addClass('active');
+                
+               }
+            else if(url == "<?php echo base_url('vetclinic/history'); ?>"){
+                url = '#';
+                $('#menu li a[href="'+ url +'"]').addClass('active');
+               }
+            else
+                $('#menu li a[href="'+ url +'"]').addClass('active');
         })
     </script>
 	
@@ -32,22 +42,31 @@
 	<div class="row">
 		<ul class="nav navbar-nav" id="menu">
 				<li> <img src="<?php echo base_url('assets/images/logo.png');?>" alt="Deloso Veterinary Clinic" class="logo" /> </li>
-				<li style="float:right;"><a href="<?php echo base_url('vetclinic/services'); ?>">&nbsp;Services</a></li>
+            <li style="float:right;"><a href="<?php echo base_url('vetclinic/services'); ?>"  class="<?=$title=='Services Offered'?'activeLink':''?>">&nbsp;<span class="<?=$title=='Services Offered'?'active':''?>">Services</span></a></li>
 				<li style="float:right;" class="dropdown" >
-					<a href="#" >Inventory &nbsp;<?=($notif!=0?'<span class="badge" style="background-color: red;">'.$notif.'</span>':'')?></a>
+                    <a href="#" class="<?=$title=='Inventory'?'activeLink':''?>" ><span class="<?=$title=='Inventory'?'active':''?>">Inventory </span>&nbsp;<?=($notif!=0?'<span class="badge" style="background-color: red;">'.$notif.'</span>':'')?></a>
 					<ul style="border:0px;" class="dropdown-menu">
 						<a href="<?php echo base_url('vetclinic/inventory'); ?>" style="border-top: 0px;"> Stocks &nbsp;<?=($notif!=0?'<span class="badge" style="background-color: red;">'.$notif.'</span>':'')?></a>
 						<a href="<?php echo base_url('vetclinic/history'); ?>" style="border-top: 0px;"> History</a>
 					</ul>
 				</li>
 				
-				<li style="float:right;"><a href="<?php echo base_url('vetclinic/sales'); ?>">&nbsp;Sales</a></li>
-				<li style="float:right;"><a href="<?php echo base_url('vetclinic/sched'); ?>">&nbsp;Schedule</a></li>
-				<li style="float:right;"><a href="<?php echo base_url('vetclinic'); ?>">&nbsp;Records</a></li>
-				<li style="float:right;" class="search">
+            <li style="float:right;"><a  href="<?php echo base_url('vetclinic/sales'); ?>" class="<?=$title=='Sales'?'activeLink':''?>" >&nbsp;<span class="<?=$title=='Sales'?'active':''?>">Sales</span></a></li>
+				<li style="float:right;"><a href="<?php echo base_url('vetclinic/sched'); ?>" class="<?=$title=='Schedule'?'activeLink':''?>">&nbsp;<span class="<?=$title=='Schedule'?'active':''?>">Schedule</span></a></li>
+				<li style="float:right;"><a  href="<?php echo base_url('vetclinic'); ?>" class="<?=$title=='Records'?'activeLink':''?>">&nbsp;<span class="<?=$title=='Records'?'active':''?>">Records</span></a></li>
+				<li style="float:right;" class="dropdown">
+					<a href="">
+						<i class="glyphicon glyphicon-bell" style="margin-top:5px;"> </i> 
+						<span class="badge1" data-badge="2"> </span> </a>
+						<ul style="border:0px;" class="dropdown-menu">
+							<a href="#" style="border-top: 0px;"> Some Notifs </a>
+						</ul>
+					
+				</li>
+				<?=$title!='Records'?'':'<li style="float:right;" class="search">
 					<input type="text" name="q" onkeyup="search()"  id="search"/>
 					<button type="submit" class="btn btnmod"><span class="glyphicon glyphicon-search"></span></button>
-				</li>
+				</li>'?>
 		</ul>
 	</div>
 </nav>
