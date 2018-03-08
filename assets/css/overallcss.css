@@ -115,7 +115,8 @@ input::-webkit-inner-spin-button {
 		background-color:#fff; -webkit-text-stroke: 0.5px black; color: #3385ff;
 	}
 	#container{
-		width: 80%;
+		width: 100%;
+		margin: 0px auto;
         margin-bottom: 10px;
         padding-top: 10px;
         min-height: 100px;
@@ -558,11 +559,11 @@ input::-webkit-inner-spin-button {
 		 outline: none;
 	}
     .salesDate{
-        width:78%;
+        width:100%;
         margin:0px auto;
         padding:10px 0px 50px;
         margin-top: 20px;
 /*        bottom: 0;*/
-        position:absolute;
+        /*position:absolute;*/
         background-color: rgba(225,225,225,0.5);
     }

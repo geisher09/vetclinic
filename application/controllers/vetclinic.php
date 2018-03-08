@@ -160,6 +160,10 @@ class vetclinic extends CI_Controller {
 			$this->services->del($data);
 		}
 		$header_data['title'] = "Services Offered";
+		$header_data['notif']=$this->vet_model->notification();
+		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
+		$header_data['eventCounter'] = count($header_data['events']);
+		$header_data['items'] = $this->vet_model->getAllZeroitems();
 		$condition = array('type'=>'Grooming');
 		$data['grooming'] = $this->services->read($condition);
 		$condition = array('type'=>'Treatment');
@@ -360,6 +364,9 @@ class vetclinic extends CI_Controller {
 	{
 		$header_data['title'] = "Schedule";
 		$header_data['notif']=$this->vet_model->notification();
+		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
+		$header_data['eventCounter'] = count($header_data['events']);
+		$header_data['items'] = $this->vet_model->getAllZeroitems();
 		$this->load->view('include/header',$header_data);
 		$this->load->model('vet_model','schedule');
 		$this->load->view('clinic/sched');
@@ -371,6 +378,9 @@ class vetclinic extends CI_Controller {
 	{
 		$header_data['title'] = "Sales";
 		$header_data['notif']=$this->vet_model->notification();
+		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
+		$header_data['eventCounter'] = count($header_data['events']);
+		$header_data['items'] = $this->vet_model->getAllZeroitems();
 		$this->load->view('include/header',$header_data);
 		$this->sdate = "2017-08-02";//$startDate and $endDate == range of dates
 		$this->edate = "2017-08-17";								 //$dates == array of dates in the range given
@@ -535,6 +545,9 @@ class vetclinic extends CI_Controller {
 
 	public function inventory(){
 		$header_data['notif']=$this->vet_model->notification();
+		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
+		$header_data['eventCounter'] = count($header_data['events']);
+		$header_data['items'] = $this->vet_model->getAllZeroitems();
 		if(isset($_POST['additem'])){
 			
 			$validate = array (
