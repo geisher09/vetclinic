@@ -6,16 +6,8 @@
 		-o-background-size: cover;
 		background-size: cover;*/
 	}
-	.option{
-
-		color:red;
-
-
-
-	}
-   .redrow {
-		color: red;
-	}
+	.option{ color:red; }
+   .redrow { color: red; }
 	.logo{
 		height: 40px;
 		width: 40px;
@@ -66,7 +58,9 @@
 		transition: 0.3s; margin-right: 30px;
 	}
 	#menu li a:hover {  color:#3498DB; border-top:2px solid #3498DB; background-color: #fff;}
-	.activeLink {  color:#3498DB; border-top:2px solid #3498DB; background-color: #fff;}
+    .active {  color:#3498DB; background-color: #fff;}
+    .activeLink {  color:#3498DB; border-top:2px solid #3498DB; background-color: #fff;}
+
 
 	.dropdown {
 		position: relative;
@@ -111,6 +105,7 @@
         position:fixed;
         right:0;
         margin-top: 10px;
+/*        margin-right: 5px;*/
         padding:10px;
         background-color: #f1f3f3;
         overflow: auto;
@@ -184,8 +179,27 @@
 		height: 30px;
 		border: none;
 		text-align: left;
-		font-family: 'Josefin Slab';
+		font-family: 'Poppins';
+        font-weight: normal;
         padding: 5px 10px;
+	}
+	
+	.th1 {
+		background-color: #3498DB;
+		padding-top: 15px;
+		padding-bottom: 25px;
+		padding-left: 20px;
+		padding-right: 20px;
+		font-size: 25px;
+        text-shadow: 1px 2px 1px grey;
+	}
+	
+	.th2{
+		background-color: #5DADE2;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		font-size: 20px;
+        text-shadow: 1px 2px 1px grey;
 	}
 	
 	#mytable td{
@@ -202,24 +216,6 @@
 	#mytable tbody tr:hover td{
 		background-color:rgb(255,255,255);
 		color: #3498DB;
-	}
-	
-	.th1 {
-		background-color: #3498DB;
-		padding-top: 15px;
-		padding-bottom: 25px;
-		padding-left: 20px;
-		padding-right: 20px;
-		font-size: 22px;
-        text-shadow: 1px 1px 1px grey;
-	}
-	
-	.th2{
-		background-color: #5DADE2;
-		padding-top: 8px;
-		padding-bottom: 8px;
-		font-size: 20px;
-        text-shadow: 1px 1px 1px grey;
 	}
 	
 	.btn{ outline:none; 
@@ -476,7 +472,7 @@
 		text-align: center;
 		position: static;
         box-shadow:5px 5px 15px grey;
-		font-family: Verdana;
+		font-family: Poppins;
 	}
 	
 	.boxed > ul {
@@ -504,7 +500,7 @@
 		text-align: center;
 		position: static;
         box-shadow:5px 5px 15px grey;
-		font-family: Verdana;
+		font-family: Poppins;
 	}
 	
 	.boxed2 > ul {
@@ -543,10 +539,9 @@
     .salesDate{
         width:78%;
         margin:0px auto;
-        padding:10px 0px 20px;
-        margin-top: 30px;
-        position:fixed;
-        bottom: 0;
-/*        position:absolute;*/
-        background-color: rgba(225,225,225,0.8);
+        padding:10px 0px 50px;
+        margin-top: 20px;
+/*        bottom: 0;*/
+        position:absolute;
+        background-color: rgba(225,225,225,0.5);
     }

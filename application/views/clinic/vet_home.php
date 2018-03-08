@@ -265,9 +265,8 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
                 
 				<button class="tablink btn btn-info" onclick="details(event, 'clientDet')">Client Details</button>
 				<button class="tablink btn btn-info" onclick="details(event, 'addPet')">Add Pet</button>
-				<button id = "mytab" class="tablink btn btn-info" onclick="details(event, 'visitHistory')">Visit Details</button>
+				<!-- <button id = "mytab" class="tablink btn btn-info" onclick="details(event, 'visitHistory')">Visit Details</button> -->
 				<button class="tablink btn btn-info" id="hstry" onclick="details(event, 'addHistory'); " >Add History</button>
-				<button class="tablink btn btn-info" onclick="details(event, 'addItem')">Add Item Used</button>
 					
 			</div>
 		
@@ -551,7 +550,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										$date=date('m-d-Y');
 										?>
 										<div class="col-md-6">
-											<h4 name="date" class="text-center">Date :</b><?php echo $date;?></h4>
+											<h4 name="date" class="text-center"><b>Date: </b><?php echo $date;?></h4>
 										</div>
 									</div>
 									<hr />
@@ -674,44 +673,6 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 			</div>
 
 
-			<div class="container-fluid window" id="addItem">
-					
-						<div class="row">
-                            <div class="col-md-2"></div> 
-							<div class="col-md-8">
-								<p class="lead text-center">Add Item</p>
-								<?php echo form_open(site_url("vetclinic/inventory/")) ?>
-						         
-						            		<div class="form-group">
-												<label>Item:</label>
-												<select class="form-control" id="Vitemss" name="itemid">						
-												</select>
-                                                <br/>
-						                    <label for="qty_used">Quantity:</label>
-						                      <input type="number" class="form-control" id="qty_used" name="qty_used" placeholder="Quantity"/>
-						               
-						            		</div>
-
-						            		<div class="form-group">
-												
-											</div>
-						            
-						            <!-- Modal Footer -->
-                                            <br />
-						            <div class="modal-footer">
-						                <button type="button" class="btn btn-default" data-dismiss="modal"> Cancel </button>
-						                <button type="submit" class="btn btn-primary" name="itemuse"> Update </button>
-						        <?php echo form_close() ?>
-
-
-			                 
-                            <div class="col-md-2"></div> 
-			<!-----------------FOOTER ------------>
-			<!-- <div class="modal-footer">
-				<button type="button" onclick="" class="btn btn-primary" data-dismiss="modal">Save</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div> -->
-			</div>
 	
      </div>
 

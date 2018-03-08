@@ -10,7 +10,7 @@
 <table class="table" id="mytable">
 	<thead>
 		<tr class="th1">
-                <th colspan="2">AVAILABLE STOCKS</th><th></th>
+                <th colspan="3">AVAILABLE STOCKS</th>
                 <th></th>
                 <th >
                     <div>
@@ -84,7 +84,7 @@
                 </th>
             </tr>
             <tr class="th2">
-                <th >Item ID.</th>
+                <th style="width:100px;">Item ID.</th>
                 <th  >Action</th>
                 <th >Description</th>
                 <th  >Date</th>
