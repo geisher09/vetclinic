@@ -44,9 +44,9 @@
 				<li> <img src="<?php echo base_url('assets/images/logo.png');?>" alt="Deloso Veterinary Clinic" class="logo" /> </li>
             <li style="float:right;"><a href="<?php echo base_url('vetclinic/services'); ?>"  class="<?=$title=='Services Offered'?'activeLink':''?>">&nbsp;<span class="<?=$title=='Services Offered'?'active':''?>">Services</span></a></li>
 				<li style="float:right;" class="dropdown" >
-                    <a href="#" class="<?=$title=='Inventory'?'activeLink':''?>" ><span class="<?=$title=='Inventory'?'active':''?>">Inventory </span>&nbsp;<?=($notif!=0?'<span class="badge" style="background-color: red;">'.$notif.'</span>':'')?></a>
+                    <a href="#" class="<?=$title=='Inventory'?'activeLink':''?>" ><span class="<?=$title=='Inventory'?'active':''?>">Inventory </span>&nbsp;</a>
 					<ul style="border:0px;" class="dropdown-menu">
-						<a href="<?php echo base_url('vetclinic/inventory'); ?>" style="border-top: 0px;"> Stocks &nbsp;<?=($notif!=0?'<span class="badge" style="background-color: red;">'.$notif.'</span>':'')?></a>
+						<a href="<?php echo base_url('vetclinic/inventory'); ?>" style="border-top: 0px;"> Stocks &nbsp;</a>
 						<a href="<?php echo base_url('vetclinic/history'); ?>" style="border-top: 0px;"> History</a>
 					</ul>
 				</li>
@@ -57,9 +57,23 @@
 				<li style="float:right;" class="dropdown">
 					<a href="">
 						<i class="glyphicon glyphicon-bell" style="margin-top:5px;"> </i> 
-						<span class="badge1" data-badge="2"> </span> </a>
+						<?=($notif!=0?'<span class="badge1" data-badge="'.$notif.'" style="background-color: red;"></span>':'')?></a>
 						<ul style="border:0px;" class="dropdown-menu">
-							<a href="#" style="border-top: 0px;"> Some Notifs </a>
+							
+								<?php
+									if(isset($events)){
+										$i=1;
+										foreach($events as $e){
+											echo '	
+													<a href="#" style="border-top: 0px;">
+													Event no.'.$i.': '.$e['title'].', Desc:'.$e['description'].'
+													</a>
+												';
+											$i++;
+										}
+									}
+								?>
+							
 						</ul>
 					
 				</li>
@@ -88,18 +102,6 @@
             <p>Event 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p><!- -event- ->
         </div>
 		-->
-		<?php
-			if(isset($events)){
-				foreach($events as $e){
-					echo '
-						<div class="event">
-							<p><strong>'.$e['title'].'</strong></p>
-							<p>'.$e['description'].'</p>
-						</div>
-						';
-				}
-			}
-		?>
 		
         
 </div><!--END OF REMINDER DIV-->

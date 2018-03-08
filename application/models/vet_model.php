@@ -73,10 +73,20 @@
 		}
 		//chrstnv
 		public function notification(){
+			date_default_timezone_set('Asia/Manila');
+			$today =date("Y-m-d");
+
 			 $this->db->from('itemstock');
 			$this->db->where('qty_left =',0);
 			$query = $this->db->get();
-			return $query->num_rows();
+			$invent= $query->num_rows();
+
+			$this->db->from('schedule');
+			$this->db->where('startdate =',$today);
+			$query2 = $this->db->get();
+			$sched= $query2->num_rows();
+
+			return ($sched+$invent);
 
 		}
 
