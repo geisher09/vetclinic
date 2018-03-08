@@ -65,15 +65,24 @@
 										$i=1;
 										foreach($events as $e){
 											echo '	
-													<a href="#" style="border-top: 0px;">
+													<a href="vetclinic/sched" style="border-top: 0px;">
 													Event no.'.$i.': '.$e['title'].', Desc:'.$e['description'].'
 													</a>
 												';
 											$i++;
 										}
 									}
-								?>
-							
+
+									if(isset($items)){
+										foreach($items as $item){
+											echo '	
+													<a href="vetclinic/inventory" style="border-top: 0px;">
+													Item #'.$item['itemid'].': '.$item['item_desc'].' has 0 quantity left!
+													</a>
+												';
+										}
+									}
+								?>						
 						</ul>
 					
 				</li>

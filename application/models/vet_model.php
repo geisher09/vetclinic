@@ -68,10 +68,19 @@
 			 $this->db->from('itemstock');
 			$this->db->where('qty_left !=',0);
 			$query = $this->db->get();
-			return $query->result();
+			return $query->result_array();
 
 		}
 		//chrstnv
+
+		public function getAllZeroitems(){
+			 $this->db->from('itemstock');
+			$this->db->where('qty_left =',0);
+			$query = $this->db->get();
+			return $query->result_array();
+
+		}
+
 		public function notification(){
 			date_default_timezone_set('Asia/Manila');
 			$today =date("Y-m-d");

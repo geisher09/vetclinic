@@ -35,6 +35,7 @@ class vetclinic extends CI_Controller {
 		$header_data['notif']=$this->vet_model->notification();
 		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
 		$header_data['eventCounter'] = count($header_data['events']);
+		$header_data['items'] = $this->vet_model->getAllZeroitems();
 		$lastclient = $this->vet_model->getLastClient();	
 		$this->load->view('include/header',$header_data);
 		$this->load->view('clinic/vet_home', ['cl'=>$clients,'al'=>$lastclient,'stock'=>$stocks]);			
