@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	//edit infoo 
+
 	$("#custcontactno1").hide();
 	$("#custemail1").hide();
 	$("#custaddress1").hide();
@@ -12,12 +13,13 @@ $("#editClient").click(function(e){
 	var address = $("#custaddress1").val();
 	var id = $("#clientno1").val();
 	var name = $("#custname1").val();
-	$("#custcontactno1").toggle();
+			$("#custcontactno1").toggle();
 	$("#custemail1").toggle();
 	$("#custaddress1").toggle();
 	$("#custcontactno").toggle();
 	$("#custemail").toggle();
 	$("#custaddress").toggle();
+
 
 	var $this = $(this);
 		$this.toggleClass('EDIT');
@@ -26,23 +28,93 @@ $("#editClient").click(function(e){
 
 		} else {
 			$this.text('EDIT');
-		
-
+	
+					 $.ajax({
+					    type: "POST",
+					    url: base_url+"/veterinary/vetclinic/validate",
+					     data: {name:name,id:id,cnum:number,email:email,addr:address},
+					    success: function(msg){
+					    	if(msg=='true'){
+					 	
 					 $.ajax({
 					    type: "POST",
 					    url: base_url+"/veterinary/vetclinic/upClient",
 					     data: {name:name,id:id,cnum:number,email:email,addr:address},
 					    success: function(msg){
-					 	
-					
+					    	
+								$("#conerror").text('');	
+								$("#cnume").removeClass("has-error has-feedback");
+								$("#addrerror").text('');	
+								$("#addre").removeClass("has-error has-feedback");
+								$("#emailerror").text('');	
+								$("#emaile").removeClass("has-error has-feedback");
+								$("#custcontactno").text(number);				
+								$("#custemail").text(email);
+								$("#custaddress").text(address);
+							
+								alert('Record updated successfully');
+						
 
-					$("#custcontactno").text(number);				
-					$("#custemail").text(email);
-					$("#custaddress").text(address);
-					alert('UPDATED!');
-					         
+
+
+
+							}
+							
+						});//end	
+							}
+
+							else{
+					$("#custcontactno1").show();
+					$("#custemail1").toggle();
+					$("#custaddress1").toggle();
+					$("#custcontactno").toggle();
+					$("#custemail").toggle();
+					$("#custaddress").toggle();
+					$this.toggleClass('EDIT');
+		if($this.hasClass('EDIT')){
+			$this.text('SAVE');	}
+			else{
+					$this.text('EDIT');
+			}
+	
+							var obj = JSON.parse(msg);
+							if(obj.cnum!=null){
+								$("#conerror").html(obj.cnum);	
+								$("#cnume").addClass("has-error has-feedback");
+								// $("#cnume").append("<span id='cnume1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+
+							}
+							else{
+								$("#conerror").remove(obj.cnum);	
+								$("#cnume").removeClass("has-error has-feedback");
+								// $("#cnume1").remove();
+
+							}
+							if(obj.addr!=null){
+					         	$("#addrerror").html(obj.addr);	
+								$("#addre").addClass("has-error has-feedback");
+								// $("#addre").append("<span id='addre1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
 							  }
-	});
+							  else{
+								$("#addrerror").remove(obj.addr);	
+								$("#addre").removeClass("has-error has-feedback");
+								// $("#addre1").remove();
+
+							}
+							 if(obj.email!=null){
+							 	$("#emailerror").html(obj.email);	
+								$("#emaile").addClass("has-error has-feedback");
+								// $("#emaile").append("<span id='emaile1' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+							 }
+							 else{
+								$("#emailerror").remove(obj.email);	
+								$("#emaile").removeClass("has-error has-feedback");
+								// $("#emaile1").remove();
+
+							}
+							}
+						}
+						});//end
   		
 
 		}
@@ -51,7 +123,6 @@ $("#editClient").click(function(e){
 
 });
 //end
-
 
 
 
@@ -207,26 +278,26 @@ $(document).ready(function(){
 								$('.addtm').each(function(){
 										 x=$(this).closest('tr').find(':selected').val();
 										 y= $(this).val();
-								
-									
-										 	$.ajax({
+									$.ajax({
 												type: "POST",
 						  						  url: base_url+"/veterinary/vetclinic/itemUsed",
 						   						  data: {id:x,item:y,pet:a},
 						   						 success: function(msg){
-						   						 	$("#hstryform").submit();
+						   						 
 														   $('#clientModal').modal('hide');
-														   alert('Record save successfully');		
-
+														 	
 								 				 }
-
-									});
+												});
+							
 
 
 
 										 	
 								});
-							
+								  alert('Record save successfully');	
+									$("#hstryform").submit();
+
+										 	
 								}
 
 							});
@@ -240,9 +311,18 @@ $(document).ready(function(){
 								newp($(this).val());
 								$("#btn_get").val($(this).val());
 							});
+							//validation
+						 $("#custcontactno1").keyup(function(){
 
+
+
+						 });
+						
+
+							
 				});
 
+			
 
 
 

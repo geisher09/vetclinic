@@ -163,7 +163,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				<div class="form-group">
 				  <label class=" col-sm-3" for="contact">Contact #:</label>
 				  <div class="col-sm-8">          
-					<input type="text" class="form-control" id="contact"  name="contactno">
+					<input type="text" class="form-control" id="contact ctact"   name="contactno">
 				  </div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
@@ -265,7 +265,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
                 
 				<button class="tablink btn btn-info" onclick="details(event, 'clientDet')">Client Details</button>
 				<button class="tablink btn btn-info" onclick="details(event, 'addPet')">Add Pet</button>
-				<!-- <button id = "mytab" class="tablink btn btn-info" onclick="details(event, 'visitHistory')">Visit Details</button> -->
+				 <!-- <button id="mytab"  class="tablink btn btn-info"  onclick="">Visit Detailsss</button>  -->
 				<button class="tablink btn btn-info" id="hstry" onclick="details(event, 'addHistory'); " >Add History</button>
 					
 			</div>
@@ -288,9 +288,10 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										<p id="custname"  value=""></p>
 							</div>
 							
-							<div class="col-md-4 form-group">
+							<div class="col-md-4 form-group " id="cnume">
 								<label for="">Contact No.:</label>
-								<input type="text" class="form-control" id="custcontactno1" value=""/>
+								<input type="number" class="form-control" id="custcontactno1" name="num" value="<?php echo set_value('num'); ?>" maxlength="11" min="0"/>
+								<p id="conerror" class="valerror"></p>
 										<p id="custcontactno"  value=""></p>
 							</div>	
 							<button class="btn btn-primary" id="editClient">EDIT</button>
@@ -299,14 +300,16 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 						<!-- 	<button class="btn btn-primary" id="modal">modal</button> -->
 						</div>
 						<div class="row">
-							<div class="col-md-6 form-group">
+							<div class="col-md-6 form-group" id="emaile">
 								<label for="">Email:</label>
-								<input type="text" class="form-control" id="custemail1" name="" value=""/>
+								<input type="text" class="form-control" id="custemail1" name="num2" value="<?php echo set_value('num2'); ?>"/>
+								<p id="emailerror" class="valerror"></p>
 										<p id="custemail"  value=""></p>
 							</div>
-							<div class="col-md-6 form-group">
+							<div class="col-md-6 form-group" id="addre">
 								<label for="">Address:</label>
-								<input type="text" class="form-control" id="custaddress1" name="" value=""/>
+								<input type="text" class="form-control" id="custaddress1" name="num3" value="<?php echo set_value('num3'); ?>"/>
+								<p id="addrerror" class="valerror"></p>
 										<p id="custaddress" value=""></p>
 							</div>		
 						</div>
@@ -436,8 +439,8 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 					</div>
 					<div class="col-md-2"></div>
 				</div>
-				
-				<div class="container-fluid window" id="visitHistory">
+		
+				<div class="container-fluid window2" id="visitHistory">
 					<div class="col-md-6">
 						<p class="lead text-center">History of Visits</p>
 						
@@ -697,6 +700,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 		x = document.getElementsByClassName("window");
 		for (i = 0; i < x.length; i++) {
 			x[i].style.display = "none";
+			$(".window2").css('display','none');
 		}
 		tablinks = document.getElementsByClassName("tablink");
 		for (i = 0; i < x.length; i++) {
@@ -824,6 +828,8 @@ $('.modal').on('hidden.bs.modal', function (e) {
 
 		function history(id){
 			$('#pet_detail').hide();
+
+				        
 			document.getElementById("itemsused").innerHTML="";
 			$.ajax({
 			        type: 'POST',
@@ -844,7 +850,8 @@ $('.modal').on('hidden.bs.modal', function (e) {
 								for(var i=0; i<parseInt(obj.items.length); i++){
 									item += '<tr><td>'+obj.items[i].items_used+'</td><td>'+obj.items[i].item_desc+'</td></tr>';
 								}
-								$("#itemsused").html(item);								
+								$("#itemsused").html(item);
+								
 							}
 
 							
@@ -964,7 +971,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 				        	var ai = "", hi="";
 							if(parseInt(obj.pets.length) > 0){
 								for(var i=0; i<parseInt(obj.pets.length); i++){
-									s += '<tr><td>'+obj.pets[i].petid+'</td><td>'+obj.pets[i].pname+'</td><td><button class="btn btn-info" id="'+obj.pets[i].petid+'"type="button" onclick="pop(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button></td><td><button class="tablink btn btn-info" id="'+obj.pets[i].petid+'"type="button" onclick="visit(this.id)"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>s</button></tr>';
+									s += '<tr><td>'+obj.pets[i].petid+'</td><td>'+obj.pets[i].pname+'</td><td><button class="btn btn-info" id="'+obj.pets[i].petid+'"type="button" onclick="pop(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button></td><td><button class="btn btn-info" id="'+obj.pets[i].petid+'"type="button" onclick="visit(this.id)"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button></tr>';
 		 					        v += '<option value='+obj.pets[i].petid+'>'+obj.pets[i].pname+'</option>';
 
 								}
