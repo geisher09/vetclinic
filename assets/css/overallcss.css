@@ -44,8 +44,8 @@ input::-webkit-inner-spin-button {
 	.badge1[data-badge]:after {
 		content:attr(data-badge);
 		position:absolute;
-		bottom:10px;
-		left:5px;
+		bottom:25px;
+		left:20px;
 		font-size:.8em;
 		background: red;
 		color:white;
@@ -197,7 +197,7 @@ input::-webkit-inner-spin-button {
 	.nonotif {
 		position: absolute;
 		bottom: -20px;
-		left: 35px;
+		left: 30px;
 		visibility: hidden;
 		background: none;
 		color: red;
