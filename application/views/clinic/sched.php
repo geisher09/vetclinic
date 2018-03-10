@@ -69,7 +69,7 @@
 	
 	
 </head>
-<body style="margin-right: 250px;"> <!--
+<body style=""> <!--
 	<div id='top'>
 
 		<div class='left'>

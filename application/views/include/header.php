@@ -18,23 +18,12 @@
   	<script src="<?php echo base_url("assets/js/canvasjs.min.js"); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/myjs.js"); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/search.js"); ?>" ></script>
-    <script type="text/javascript">// js for active link
+<!--    <script type="text/javascript">
         $(document).ready(function() {
             var url = window.location.protocol + "//" + window.location.host + window.location.pathname;
-//            alert(url);
-            if(url == "<?php echo base_url('vetclinic/inventory'); ?>"){
-                url = '#';
-                $('#menu li a[href="'+ url +'"]').addClass('active');
-                
-               }
-            else if(url == "<?php echo base_url('vetclinic/history'); ?>"){
-                url = '#';
-                $('#menu li a[href="'+ url +'"]').addClass('active');
-               }
-            else
-                $('#menu li a[href="'+ url +'"]').addClass('active');
+            $('#menu li a[href="'+ url +'"]').addClass('active');
         })
-    </script>
+    </script>-->
 	
 </head>
 <body>
@@ -102,15 +91,12 @@
 			
 					$("#bellBut").click(function(e){
 						e.preventDefault();
-<?=$notif!=0?'
+                        <?=$notif!=0?'
 
 						$(".md").toggleClass("bellShow");
-						
-
-
-
-':'alert("No new notification");'?>
-					});
-	});
+                        
+                    ':'alert("No new notification");'?>
+                                        });
+                        });
 
 </script>

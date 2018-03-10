@@ -233,13 +233,17 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				</div>
 				<div class="form-group">
 				  <label class=" col-sm-3" for="sex">Sex:</label>
-				  <div class="col-sm-8">
-					<label class="radio-inline">
+				  <div class="col-sm-9">
+<!--					<label class="">-->
+                    <div class="radio">
 					  <input type="radio" name="sex" value="m">Male
-					</label>
-					<label class="radio-inline">
+                    </div>
+<!--					</label>-->
+<!--					<label class="">-->
+                    <div class="radio">
 					  <input type="radio" name="sex" value="f">Female
-					</label>
+                    </div>
+<!--					</label>-->
 				  </div>
 				</div>
         </div>
@@ -422,8 +426,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 								<input type="text" class="form-control" id="addpetmarkings" name="markings"/>
 								<p id="Markerror" class="valerror"></p>
 							</div>
-
-
+                        
 							<div class="form-group">
 								<label class=" col-sm-3" for="sex">Sex:</label>
 								  <div class="col-sm-8">
@@ -436,7 +439,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 								  </div>
 							</div>
 
-						<div>
+						<div class="modal-footer">
 							<button type="submit" id="sbmtPet" class="btn btn-primary">Save</button>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 						</div>
@@ -452,7 +455,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							<div style="height: 300px; overflow: auto">
 								<table align="center" id="petList" class="table table-hover" style="margin-top: 20px;">
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Date</th>
-									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Pet id</th>
+									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Pet ID</th>
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Service Type</th>
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">View Full Visit</th>
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Add Item Used</th>
