@@ -7,7 +7,7 @@
 	<span class="glyphicon glyphicon-plus"></span> Add an Item</button>
 </div> -->
 
-<table class="table" id="mytable">
+<table class="table" id="mytable" style="width:90%; margin-left:5%;">
 	<thead>
 		<tr class="th1">
                 <th colspan="3">AVAILABLE STOCKS</th>
@@ -69,7 +69,7 @@
     <button type="button" class="btn btn-warning btn-md" id="addbtn"  data-toggle="modal" data-target="#myModalHistory">
     <span class="glyphicon glyphicon-plus"></span>&nbsp;Sell an Item</button>
 </div> -->
-    <table class="table" id="mytable">
+    <table class="table" id="mytable" style="width:90%; margin-left:5%;">
         <thead>
 			<tr class="th1">
                 <th colspan="3">TRANSACTIONS</th>
