@@ -47,7 +47,7 @@
                                             <input type="hidden" class="form-control" id="itemid" name="itemid" value="'.$s['itemid'].'"/>
                                         </div>
                                         <div class="class="col-sm-6">
-                                            <button name="addstock" type="submit" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
+                                            <button name="addstock" type="submit" class="btn btn-info" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
                                         </div>
                                     </div>
 								</form>

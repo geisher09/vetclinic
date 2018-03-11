@@ -589,7 +589,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										$date=date('m-d-Y');
 										?>
 										<div class="col-md-6">
-											<h4 name="date" class="text-center"><b>Date: </b><?php echo $date;?></h4>
+											<h4 name="date" class="text-center"><label>Date:&nbsp;</label><?php echo $date;?></h4>
 										</div>
 									</div>
 									<hr />
@@ -696,8 +696,8 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							</div>
 						</div>
 								<div class="modal-footer">
-									<button type="submit" id="sbmtbtn" class="btn btn-primary">Save</button>
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="submit" id="sbmtbtn" class="btn btn-primary">Save</button>
 								</div>
 				<?php echo form_close(); ?>
 

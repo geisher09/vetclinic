@@ -16,11 +16,7 @@
         -webkit-appearance: none;
         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
     }
-    .valerror{
-        color:red;
-
-
-    }
+    .valerror{   color:red;    }
     .window2{
         display: none;
     }
@@ -55,8 +51,8 @@
 	}
     label, .btn {
         font-family: Poppins;
-        font-size:16px;
-        font-weight: 300;
+        font-size:17px;
+        font-weight: 500;
     }
 	.navbar-nav {
 		-moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
