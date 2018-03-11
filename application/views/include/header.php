@@ -35,7 +35,7 @@
 				<li> <img src="<?php echo base_url('assets/images/logo.png');?>" alt="Deloso Veterinary Clinic" class="logo" /> </li>
             <li style="float:right;"><a href="<?php echo base_url('vetclinic/services'); ?>"  class="<?=$title=='Services Offered'?'activeLink':''?>">&nbsp;<span class="<?=$title=='Services Offered'?'active':''?>">Services</span></a></li>
 				<li style="float:right;" class="dropdown" >
-                    <a href="#" data-toggle="dropdown" class="<?=$title=='Inventory'?'activeLink':''?>" ><span class="<?=$title=='Inventory'?'active':''?>">Inventory </span>&nbsp;</a>
+                    <a href="#" id="invent" data-toggle="dropdown" class="<?=$title=='Inventory'?'activeLink':''?>" ><span class="<?=$title=='Inventory'?'active':''?>">Inventory </span>&nbsp;</a>
 					<ul style="border:0px;" class="dropdown-menu nd">
 						<a href="<?php echo base_url('vetclinic/inventory'); ?>" style="border-top: 0px;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp; Stocks &nbsp;</a>
 						<a href="<?php echo base_url('vetclinic/history'); ?>" style="border-top: 0px;"><span class="glyphicon glyphicon-hourglass"></span>&nbsp; History</a>
@@ -46,9 +46,11 @@
 				<li style="float:right;"><a href="<?php echo base_url('vetclinic/sched'); ?>" class="<?=$title=='Schedule'?'activeLink':''?>">&nbsp;<span class="<?=$title=='Schedule'?'active':''?>">Schedule</span></a></li>
 				<li style="float:right;"><a  href="<?php echo base_url('vetclinic'); ?>" class="<?=$title=='Records'?'activeLink':''?>">&nbsp;<span class="<?=$title=='Records'?'active':''?>">Records</span></a></li>
 				<li style="float:right;" class="dropdown"  >
-					<a href="" class="dropdown-toggle" id="bellBut">
-						<i class="glyphicon glyphicon-bell" style="margin-top:5px;"> </i> 
-						<?=($notif!=0?'<span class="badge1" data-badge="'.$notif.'" style="background-color: red;"></span>':'')?></a>
+					<a href="" class="dropdown-toggle" id="bellBut" >
+						<i class="glyphicon glyphicon-bell"  style="margin-top:5px;"> </i> 
+						<span class="nonotif" >No new notification</span></a>
+						<?=($notif!=0?'<span class="badge1" data-badge="'.$notif.'" style="background-color: red;"></span>':'')?>
+						
 						
 						<ul style="border:0px;" class="dropdown-menu md">
 							
@@ -89,14 +91,17 @@
 
 		$(document).ready(function(){
 			
-					$("#bellBut").click(function(e){
-						e.preventDefault();
-                        <?=$notif!=0?'
+			$("#bellBut").click(function(e){
+				e.preventDefault();
+				<?=$notif!=0?'$(".md").toggleClass("bellShow");
+				':'$(".nonotif").toggleClass("nonotifShow");'?>
+			});
+			
+			$("#invent").click(function(e){
+				e.preventDefault();
+				$(".nd").toggleClass("bellShow");
+			});
 
-						$(".md").toggleClass("bellShow");
-                        
-                    ':'alert("No new notification");'?>
-                                        });
-                        });
+		});
 
 </script>

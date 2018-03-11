@@ -48,20 +48,21 @@
         .clear { clear: both }
 
         #calendar {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 0 10px;
+            margin-top: 50px;
+			margin-left: 8%;
+			min-width: 1100px;
         }
 		
-		.btn-default {background-color: #AED6F1; color: #2980B9; border-color: #2980B9;}
-		.btn-default:hover {background-color: #D6EAF8; color: #2980B9; border-color: #2980B9;}
-		.btn-default:focus {background-color: #D6EAF8; color: #2980B9; border-color: #2980B9;}
+		.btn-default {background-color: #AED6F1; color: #000; border-color: #2980B9;}
+		.btn-default:hover {background-color: #D6EAF8; color: #000; border-color: #2980B9;}
+		.btn-default:focus {background-color: #D6EAF8; color: #000; border-color: #2980B9;}
 		.btn-default.active {background-color: #3498DB; color: white;}
 		.btn-default.active:hover {background-color: #3498DB; color: white;}
 		.btn-default.active:focus {background-color: #3498DB; color: white;}
-		.fc-center {font-family: Vollkorn Black; color: #2980B9;}
+		.fc-center {font-family: Arvo; color: #2980B9;}
 		.fc-day-header {color:#2980B9; background-color: #F2F4F4;}
 		th.fc-week-number {color:#2980B9; background-color: #F2F4F4;}
+		.fc-day-top {font-weight: bold;}
 		
     </style>
 	

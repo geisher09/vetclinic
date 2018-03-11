@@ -208,7 +208,7 @@ function realTimeSalesChart(){
 								position : "top",
 								text : "Sales Chart",
 								fontSize : 45,
-                                fontFamily : "Vollkorn Black",
+                                fontFamily : "Arvo",
 								fontColor : "#2471A3"
 							},
 							legend : {
@@ -307,8 +307,8 @@ function monthlySalesChart(){
 								position : "top",
 								text : "Sales Chart",
 								fontSize : 45,
-                                fontFamily : "Vollkorn Black",
-								fontColor : "#111"
+                                fontFamily : "Arvo",
+								fontColor : "#2471A3"
 							},
 							legend : {
 								display : true,
@@ -401,8 +401,8 @@ function monthlySalesChart(){
 								position : "top",
 								text : "Sales Chart",
 								fontSize : 45,
-                                fontFamily : "Vollkorn Black",
-								fontColor : "#111"
+                                fontFamily : "Arvo",
+								fontColor : "#2471A3"
 							},
 							legend : {
 								display : true,

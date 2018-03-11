@@ -42,8 +42,8 @@
 	.badge1[data-badge]:after {
 		content:attr(data-badge);
 		position:absolute;
-		bottom:10px;
-		left:5px;
+		bottom:25px;
+		left:20px;
 		font-size:.8em;
 		background: red;
 		color:white;
@@ -165,6 +165,27 @@
 	}
 	#addbutn:hover { color: #fff;}
 	#addbutn:focus { color: #fff; box-shadow: 0px 1px 2px #3175A2 inset;}
+	
+	.bellShow{
+		
+		display:block;
+		color:red;
+		z-index:99999;
+	}
+	
+	.nonotif {
+		position: absolute;
+		bottom: -20px;
+		left: 30px;
+		visibility: hidden;
+		background: none;
+		color: red;
+		font-size: 12px;
+	}
+	
+	.nonotifShow {
+		visibility: visible;
+	}
 	
 	.tooltiptext {
 		visibility: hidden;
@@ -533,12 +554,6 @@
         box-shadow:5px 5px 15px grey;
 		font-family: Poppins;
 	}
-	.bellShow{
-		
-		display:block;
-		color:red;
-		z-index:99999;
-	}
 	
 	.boxed2 > ul {
 		color: #fff;
@@ -557,11 +572,13 @@
 		color: #2471A3;
 		font-family: 'Arvo';
 		font-size: 40px;
+		margin-right: 100px;
 	}
 	
 	#addserv {
 		color: #2471A3; 
 		text-align: center; 
+		margin-right: 100px;
 	}
 
 	#addserv button {

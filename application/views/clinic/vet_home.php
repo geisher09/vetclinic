@@ -57,7 +57,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 
 <!--table for clients-->
 <div class="table-responsive">
-    <table class="beta table-list-search" id="mytable" style="width:100%;">
+    <table class="beta table-list-search" id="mytable" style="width:90%; margin-left:5%;">
         <thead>
             <tr class="th1">
                 <th colspan="2">LIST OF CLIENTS</th>
@@ -100,8 +100,8 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 						<?php } ?>
 							<td><?php echo $client['cname']?></td>
 							<td style="text-align:center;"><?php echo $client['pets']; ?></td>
-							<td style="text-align:center;width:260px;">	
-							<?php $c=$client['clientid'];?>				
+							<td style="text-align:center; width:260px;">	
+							<?php $c=$client['clientid'];?>	
 							<b class="btn viewdetailsbtn" style="font-size:15px;" id="<?php echo $c;?>" type="button" onclick="lol(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true">
 							<span class="tooltiptext2">View Details</span></span></b>
 							</td>
