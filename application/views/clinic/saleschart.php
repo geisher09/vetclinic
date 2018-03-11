@@ -5,8 +5,12 @@
 <!--  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
   <link rel="stylesheet" href="<?php echo base_url('assets/css/datepicker.css'); ?>">
   <link rel="stylesheet" href="/resources/demos/style.css">
+<!--
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+-->
+  <script src="<?php echo base_url("assets/js/jquery-1.12.4.js"); ?>"></script>
+  <script src="<?php echo base_url("assets/js/jquery-ui.js"); ?>"></script>
 
 </head>
 
@@ -39,8 +43,18 @@
     }
     input[type='text']{
         background: url(<?php echo base_url('assets/images/calendar.png');?>) no-repeat;
-        padding: 2px;
-        padding-left: 30px;
+        background-position: 97% 3px;
+        padding-left: 10px;
+        cursor: pointer;
+    }
+    .spanhidden{
+        color:#ff0000;
+        padding:5px 0px;
+        position: absolute;
+        display: none;
+    }
+    #enddate:hover + .spanhidden {
+        display: block;
     }
 </style>
 
@@ -56,27 +70,47 @@
 	</div>
     <!-- <form method="POST" action="<?php echo base_url('vetclinic/sales');?>" > -->
 		<div id="chart-date" class="row salesDate" >
-            <div class="col-md-1 col-sm-1"></div>
-            <div class="col-md-4 col-sm-4">
+            <div class="col-md-2 col-sm-2"></div>
+            <div class="col-md-3 col-sm-3">
 				<label>Start date:</label><input type="text" class="form-control" id="startdate" name="startdate" />
             </div>
-            <div class="col-md-4 col-sm-4">
-				<label>End date:</label><input type="text" class="form-control" id="enddate" name="enddate" />
+            <div class="col-md-3 col-sm-3">
+				<label>End date:</label><input type="text" class="form-control" id="enddate" name="enddate" disabled="disabled" />
+                <div id="toShow" class="spanhidden"><span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;Please enter start date</div>
             </div>            
             <div class="col-md-2 col-sm-2">
-                <button type="reset" class="button">Cancel</button>
+                <button type="reset" class="button" style="background-color:#f2f2f2;color:#404040;">Cancel</button>
                 <button type="button" onclick="realTimeSalesChart()" class="button">Save</button>
             </div>
-            <div class="col-md-1 col-sm-1"></div>
+            <div class="col-md-2 col-sm-2"></div>
 		</div>
     <!--     </form> -->
 </body>
 
 
 <script type="text/javascript">
+    
+        $(document).ready(function() { // js to enable enddate input field once startdate is may laman na
+            $('#startdate').change(function() {
+                var empty = false;
+                $('#startdate').each(function() {
+                    if ($(this).val().length == 0) {
+                        empty = true;
+                    }
+                });
+
+                if (empty) {
+                    $('#enddate').attr('disabled', 'disabled');
+                    $('#enddate').after('<div id="toShow" class="spanhidden"><span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;Please enter start date</div>');
+                } else {
+                    $('#enddate').removeAttr('disabled');
+                    $('#toShow').remove();
+                }
+            });
+        });
+    
 		$(document).ready(function(){
 			
-		
 		    $( "#startdate").datepicker(
 		    	{
 		    		dateFormat: 'yy-mm-dd',

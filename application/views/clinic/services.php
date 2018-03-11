@@ -112,7 +112,7 @@
 		  <div class="modal-content" id="registermodal">
 			<div class="modal-header" style="background-color:rgba(128, 191, 255,0.9);">
 			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-			  <h2 class="modal-title">Update Service</h2>
+			  <h3 class="modal-title">UPDATE SERVICE</h3>
 			</div>
 			<div class="modal-body" style="padding:50px;padding-top:0px;">
 					<br/>

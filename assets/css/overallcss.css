@@ -7,28 +7,26 @@
 		background-size: cover;*/
 	}
 	#btnfordetails{
-
 		background-color: red;
 		color: red;
-
 	}
 	input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
-.valerror{
-	color:red;
-	
+    input::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+    .valerror{
+        color:red;
 
-}
-.window2{
-	display: none;
-}
 
-	.option{ color:red; }
-   .redrow { color: red; }
+    }
+    .window2{
+        display: none;
+    }
+
+    .option{ color:red; }
+    .redrow { color: red; }
 	.logo{
 		height: 40px;
 		width: 40px;
@@ -55,7 +53,11 @@ input::-webkit-inner-spin-button {
 		border-radius:50%;
 		border: none;
 	}
-	
+    label, .btn {
+        font-family: Poppins;
+        font-size:16px;
+        font-weight: 300;
+    }
 	.navbar-nav {
 		-moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
 		-webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
@@ -75,12 +77,11 @@ input::-webkit-inner-spin-button {
 	#menu li a {
 		display: block; color: grey; text-decoration: none; padding-top:25px;
 		font-family: Champagne&Limousines; font-size: 14px; 
-		transition: 0.3s; margin-right: 30px;
+		transition: 0.1s; margin-right: 30px;
 	}
 	#menu li a:hover {  color:#3498DB; border-top:2px solid #3498DB; background-color: #fff;}
-    .active {  color:#3498DB; background-color: #fff;}
+    .active {  color:#3498DB; }
     .activeLink {  color:#3498DB; border-top:2px solid #3498DB; background-color: #fff;}
-
 
 	.dropdown {
 		position: relative;
@@ -93,7 +94,6 @@ input::-webkit-inner-spin-button {
 		z-index: 1000;
 	}
 	
-
 	.nd a {
 		color: black;
 		padding: 10px;
@@ -148,27 +148,6 @@ input::-webkit-inner-spin-button {
     .badge{
         background-color: #ff3333;
         margin-top: -5px;
-    }
-    .reminder>.event{
-        background-color:#E5E8E8;
-        width:100%;
-        padding:10px;
-        border-radius:10px;
-        margin:10px 0px;
-    }
-    .reminder .reminderdatetime{
-        background-color:#7dbde8;
-        margin:-10px;
-        margin-bottom: 10px;
-        padding:5px 10px; 
-    }
-    .reminder .reminderdatetime>p{
-        color:#FFF;
-        text-shadow: 2px 2px 2px #808080;
-        font-weight: bold;
-        font-size: 21px;
-/*        color:#FFF;*/
-        text-align: center;
     }
 	/************* home page *************/
 	#addbutn {
@@ -304,13 +283,6 @@ input::-webkit-inner-spin-button {
 	.viewdetailsbtn:hover .tooltiptext2 {
 		visibility: visible;
 	}
-	/************* add new page *************/
-	label{
-		font-size:17px;
-		font-family:helvetica;
-		text-align:right;
-	}
-	input[type=radio]{ cursor: pointer;}
 	
 	/************* search bars *************/
 	/*
@@ -508,15 +480,38 @@ input::-webkit-inner-spin-button {
 	}
 	
 	/************* modal *************/
-	#registermodal{
-		background-color:rgba(255,255,255,0.9);
+	.registerModal{
+/*		background-color:#F2F2F2;*/
 		border-radius:5px;
+        
 	}
-	
+    .registerModal label {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 18px;
+        margin:auto;
+    }
+	input[type=radio]{ cursor: pointer;}
 	#clientModal{
 		margin: 0 auto;
 	}
-	
+    .newClientbox{
+        background-color: #F2F2F2;
+        padding:50px 0px 10px 0px;
+        border-radius: 25px;
+        border: 1px solid #CCCCCC;
+    }
+    .newClientboxHead{
+        background-color: white;
+        padding: 0px 0px 8px 0px;
+        width: 180px;
+        margin-left: 50px;
+        position: relative;
+        top: 28;
+        z-index: 100;
+        border-radius: 20px;
+        border: 1px solid #CCCCCC;
+    }
 	/************* services ************/
 	.boxed {
 		float: left;
