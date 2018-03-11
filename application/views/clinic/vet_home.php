@@ -102,7 +102,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							<td style="text-align:center;"><?php echo $client['pets']; ?></td>
 							<td style="text-align:center;width:260px;">	
 							<?php $c=$client['clientid'];?>				
-							<b class="btn viewdetailsbtn" id="<?php echo $c;?>" type="button" onclick="lol(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true">
+							<b class="btn viewdetailsbtn" style="font-size:15px;" id="<?php echo $c;?>" type="button" onclick="lol(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true">
 							<span class="tooltiptext2">View Details</span></span></b>
 							</td>
 						</tr>
@@ -125,127 +125,155 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
       $cid=0;
       $cid=$al+1;
       ?>
-      <div class="modal-content" id="registermodal">
-        <div class="modal-header" style="background-color:white"><!--background-color:rgba(128, 191, 255,0.9)-->
+      <div class="modal-content registerModal">
+        <div class="modal-header" style="background-color:rgba(128, 191, 255,0.9);"><!--background-color:rgba(128, 191, 255,0.9)-->
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">NEW CLIENT FORM</h3>
+          <h3 class="modal-title text-center" style="font-size:30px;"><b>NEW CLIENT FORM</b></h3>
         </div>
         <div class="modal-body" style="padding:60px;padding-top:0px;">
 				<br/>
 		<?php  echo form_open('vetclinic/save', ['class'=>'form-horizontal']); ?>
-				<div class="form-group">
-				  <label class=" col-sm-3" >Client ID:</label>
-				  <div class="col-sm-8">
+				<div class="form-group row" style="padding:auto;">
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class="col-sm-3 col-md-3" style="text-align:right;">Client ID:</label>
+				  <div class="col-sm-6 col-md-6">
 					<input type="text" class="form-control" id="clientid"  name="clientid" value="<?php echo $cid;?>" disabled>
 				  	<input type="hidden" id="hiddenIDNo" value="<?php echo $cid;?>" name="idnum">
 				  </div>
+				  <div class="col-sm-2 col-md-2"></div>
 				</div>
-				<br />
-			  <h3 class="text-center"><b>Owner's Info</b></h3>
+				<hr />
+			  <div class="newClientboxHead"><h3 class="text-center"><b>Owner's Info</b></h3></div>
+            <div class="newClientbox"> <!--- new client box new client --->
 				<div class="form-group">
-				  <label class=" col-sm-3" for="name">Name:</label>
-				  <div class="col-sm-8">
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="name">Name:</label>
+				  <div class="col-sm-8 col-md-8">
 					<input type="text" class="form-control" id="name"  name="cname">
 				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-12">
+			  			<div><br></div>
 			  			<?php echo form_error('cname'); ?>
 			  		</div>	
 				</div>
 				<div class="form-group">
-				  <label class=" col-sm-3" for="address">Address:</label>
-				  <div class="col-sm-8">          
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="address">Address:</label>
+				  <div class="col-sm-8 col-md-8">          
 					<input type="text" class="form-control" id="address"  name="address">
 				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
+			  			<div><br></div>
 			  			<?php echo form_error('address'); ?>
 			  		</div>
 				</div>
 				<div class="form-group">
-				  <label class=" col-sm-3" for="contact">Contact #:</label>
-				  <div class="col-sm-8">          
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="contact">Contact #:</label>
+				  <div class="col-sm-8 col-md-8">          
 					<input type="text" class="form-control" id="contact ctact"   name="contactno">
 				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
 			  			<?php echo form_error('contact'); ?>
 			  		</div>
 				</div>
 				<div class="form-group">
-				  <label class=" col-sm-3" for="email">E-mail:</label>
-				  <div class="col-sm-8">          
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="email">E-mail:</label>
+				  <div class="col-sm-8 col-md-8">          
 					<input type="text" class="form-control" id="email"  name="email">
 				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
 			  			<?php echo form_error('email'); ?>
 			  		</div>
 				</div>
-			  <h3 class="text-center"><b>Pet's Info</b></h3>
+            </div> <!--- end of new client box new client --->
+            <div class="newClientboxHead"><h3 class="text-center"><b>Pet's Info</b></h3></div>
+            <div class="newClientbox"> <!--- new client box new pet --->
 				<div class="form-group">
-				  <label class=" col-sm-3" for="petname">Name:</label>
-				  <div class="col-sm-8">
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="petname">Name:</label>
+				  <div class="col-sm-8 col-md-8">
 					<input type="text" class="form-control" id="pname"  name="pname">
 				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
 			  			<?php echo form_error('pname'); ?>
 			  		</div>
 				</div>
 				<div class="form-group">
-				  <label class=" col-sm-3" for="petbreed">Breed:</label>
-				  <div class="col-sm-8">
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="petbreed">Breed:</label>
+				  <div class="col-sm-8 col-md-8">
 					<input type="text" class="form-control" id="breed"  name="breed">
 				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
 			  			<?php echo form_error('breed'); ?>
 			  		</div>
 				</div>
 				<div class="form-group">
-				  <label class=" col-sm-3" for="markings">Color/Markings:</label>
-				  <div class="col-sm-8">
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-3 col-md-3" for="markings">Color/Markings:</label>
+				  <div class="col-sm-7 col-md-7">
 					<input type="text" class="form-control" id="markings"  name="markings">
 				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
 			  			<?php echo form_error('markings'); ?>
 			  		</div>
 				</div>
 				<div class="form-group">
-				  <label class=" col-sm-3" for="species">Species:</label>
-				  <div class="col-sm-8">
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="species">Species:</label>
+				  <div class="col-sm-8 col-md-8">
 					<input type="text" class="form-control" id="species"  name="species">
 				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
 			  			<?php echo form_error('species'); ?>
 			  		</div>
 				</div>
 				<div class="form-group">
-				  <label class=" col-sm-3" for="birthday">Birthday:</label>
-				  <div class="col-sm-8">
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="birthday">Birthday:</label>
+				  <div class="col-sm-8 col-md-8">
 						<input type="date" class="form-control" id="birthday" name="birthday"/>
 				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
 			  			<?php echo form_error('birthday'); ?>
 			  		</div>
 				</div>
 				<div class="form-group">
-				  <label class=" col-sm-3" for="sex">Sex:</label>
-				  <div class="col-sm-9">
-<!--					<label class="">-->
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="sex">Sex:</label>
+				  <div class="col-sm-8 col-md-8">
                     <div class="radio">
+					<label style="font-weight:400;font-size:16px;">
 					  <input type="radio" name="sex" value="m">Male
+					</label>
                     </div>
-<!--					</label>-->
-<!--					<label class="">-->
                     <div class="radio">
+					<label style="font-weight:400;font-size:16px;">
 					  <input type="radio" name="sex" value="f">Female
+					</label>
                     </div>
-<!--					</label>-->
 				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
 				</div>
+            </div> <!--- end of new client box new pet --->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

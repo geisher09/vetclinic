@@ -5,8 +5,12 @@
 <!--  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
   <link rel="stylesheet" href="<?php echo base_url('assets/css/datepicker.css'); ?>">
   <link rel="stylesheet" href="/resources/demos/style.css">
+<!--
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+-->
+  <script src="<?php echo base_url("assets/js/jquery-1.12.4.js"); ?>"></script>
+  <script src="<?php echo base_url("assets/js/jquery-ui.js"); ?>"></script>
 
 </head>
 
@@ -100,11 +104,10 @@
                     $('#enddate').after('<div id="toShow" class="spanhidden"><span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;Please enter start date</div>');
                 } else {
                     $('#enddate').removeAttr('disabled');
-                    $('#enddate').removeAttr('title');
                     $('#toShow').remove();
                 }
             });
-        });// end of js to enable enddate input field once startdate is may laman na
+        });
     
 		$(document).ready(function(){
 			

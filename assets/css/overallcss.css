@@ -55,6 +55,8 @@
 	}
     label, .btn {
         font-family: Poppins;
+        font-size:16px;
+        font-weight: 300;
     }
 	.navbar-nav {
 		-moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
@@ -260,13 +262,6 @@
 	.viewdetailsbtn:hover .tooltiptext2 {
 		visibility: visible;
 	}
-	/************* add new page *************/
-	label{
-		font-size:17px;
-		font-family:helvetica;
-		text-align:right;
-	}
-	input[type=radio]{ cursor: pointer;}
 	
 	/************* search bars *************/
 	/*
@@ -464,15 +459,38 @@
 	}
 	
 	/************* modal *************/
-	#registermodal{
-		background-color:rgba(255,255,255,0.9);
+	.registerModal{
+/*		background-color:#F2F2F2;*/
 		border-radius:5px;
+        
 	}
-	
+    .registerModal label {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 18px;
+        margin:auto;
+    }
+	input[type=radio]{ cursor: pointer;}
 	#clientModal{
 		margin: 0 auto;
 	}
-	
+    .newClientbox{
+        background-color: #F2F2F2;
+        padding:50px 0px 10px 0px;
+        border-radius: 25px;
+        border: 1px solid #CCCCCC;
+    }
+    .newClientboxHead{
+        background-color: white;
+        padding: 0px 0px 8px 0px;
+        width: 180px;
+        margin-left: 50px;
+        position: relative;
+        top: 28;
+        z-index: 100;
+        border-radius: 20px;
+        border: 1px solid #CCCCCC;
+    }
 	/************* services ************/
 	.boxed {
 		float: left;
