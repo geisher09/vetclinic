@@ -48,13 +48,14 @@
 				<li style="float:right;" class="dropdown"  >
 					<a href="" class="dropdown-toggle" id="bellBut" >
 						<i class="glyphicon glyphicon-bell"  style="margin-top:5px;"> </i> 
-						<span class="nonotif" >No new notification</span></a>
+						
 						<?=($notif!=0?'<span class="badge1" data-badge="'.$notif.'" style="background-color: red;"></span>':'')?>
 						
 						
 						<ul style="border:0px;" class="dropdown-menu md">
 							
 								<?php
+								if($notif!=0){
 									if(isset($events)){
 										$i=1;
 										foreach($events as $e){
@@ -74,11 +75,27 @@
 													Item #'.$item['itemid'].': '.$item['item_desc'].' has 0 quantity left!
 													</a>
 												';
+
 										}
 									}
+								}
+
+
+									else {
+
+
+
+
+
+											echo	'<a href="" id="nolink">No new notification</a>
+
+
+											';
+									}
+
 								?>						
-						</ul>
-					
+					</a>
+					</ul>
 				</li>
 				<?=$title!='Records'?'':'<li style="float:right;" class="search">
 					<input type="text" name="q" onkeyup="search()"  id="search"/>
@@ -93,14 +110,21 @@
 			
 			$("#bellBut").click(function(e){
 				e.preventDefault();
-				<?=$notif!=0?'$(".md").toggleClass("bellShow");
-				':'$(".nonotif").toggleClass("nonotifShow");'?>
+				$(".md").toggleClass("bellShow");
+				$(".nonotif").toggleClass("nonotifShow");
 			});
 			
 			$("#invent").click(function(e){
 				e.preventDefault();
 				$(".nd").toggleClass("bellShow");
 			});
+			$("#nolink").click(function(e){
+						e.preventDefault();
+		
+
+
+			});
+
 
 		});
 

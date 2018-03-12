@@ -343,9 +343,9 @@
 			      'findings' => $this->input->post('findings') ,
 			      'recommendation' => $this->input->post('recom'),
 			      'case_type' => $this->input->post('optradio'),
-			      'visit_cost' => $this->input->post('totalCost')+$this->input->post('hiddenSum')
-
-			   );
+			      'visit_cost' => $this->input->post('totalCost'),
+			      'total' => $this->input->post('totalCost')+$this->input->post('hiddenSum'),
+			      'itemCost'=> $this->input->post('hiddenSum')  );
 
 
 			return $this->db->insert('visit', $vdata);
@@ -389,7 +389,7 @@
 
 		public function getvisit_by_id($id)
 		{
-			$this->db->select('a.petid,b.pname,a.visitid,a.vetid,a.serviceid,a.visitdate,a.findings,a.recommendation,a.case_type,a.visit_cost,c.id,c.desc');
+			$this->db->select('a.petid,b.pname,a.visitid,a.vetid,a.serviceid,a.visitdate,a.findings,a.recommendation,a.case_type,a.visit_cost,c.id,c.desc,a.Total,a.itemCost');
 			$this->db->from('visit a');
 			$this->db->join('pet b','a.petid = b.petid');
 			$this->db->join('services c','a.serviceid = c.id');

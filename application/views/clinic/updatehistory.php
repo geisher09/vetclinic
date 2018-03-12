@@ -19,6 +19,7 @@
             <div class="modal-body">
                  <?php echo form_open(site_url("vetclinic/inventory/")) ?>
             	<form action="" method="POST"><div class="form-group">
+            		<span  id="ins" class="valerror"></span>
 										<label>Item</label>
 										<select class="form-control" id="itemid" name="itemid">
 											<?php
@@ -28,7 +29,8 @@
 											?>
 										</select>
                     <label for="qty_used">Quantity</label>
-                      <input type="number" class="form-control" id="qty_used" name="qty_used" placeholder="Quantity"/>
+                      <input type="number" class="form-control globalDisable" id="qty_used" name="qty_used" placeholder="Quantity"/>
+
                
             </div>
             
@@ -38,7 +40,7 @@
                         data-dismiss="modal">
                             Cancel
                 </button>
-                <button type="submit" class="btn btn-primary" name="itemuse" onclick="window.location.reload( true );">
+                <button type="submit" id="sbmtMyItem" class="btn btn-primary" name="itemuse" onclick="">
                     Update
                 </button>
                 <?php echo form_close() ?>

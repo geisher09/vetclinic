@@ -131,15 +131,6 @@
 						<input type="text" class="form-control" id="desc"  name="desc">
 					  </div>
 					</div>
-					<div class="form-group">
-					  <label class=" col-sm-3" for="serv_type">Type of Service:</label>
-					  <div class="col-sm-8">          
-							<select class="form-control" id="serv_type" name="serv_type">
-								<option >Grooming</option>
-								<option >Treatment</option>
-							</select>
-					  </div>
-					</div>
 					
 			</div>
 			<div class="modal-footer">

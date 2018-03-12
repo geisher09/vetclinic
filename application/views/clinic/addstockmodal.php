@@ -29,12 +29,12 @@
 				    </div>
                     <div id="costerror">
 					<label for="item_cost">Price:</label>
-					<input type="number" step=0.01 class="form-control" id="item_cost" name="item_cost" />
+					<input type="number" step=0.01 class="form-control globalDisable" id="item_cost" name="item_cost" />
                       <p id="costerror1" class="valerror"></p>
 				    </div>
 				    <div id="qtyerror">
 					<label for="qty_left">Quantity:</label>
-					<input type="number" class="form-control" id="qty_left" name="qty_left" />
+					<input type="number" class="form-control globalDisable" id="qty_left" class="globalDisable" name="qty_left" />
                     <p id="qtyerror1" class="valerror"></p>
                      </div>
 		  
