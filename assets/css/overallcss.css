@@ -280,6 +280,36 @@
 		visibility: visible;
 	}
 	
+	input[type=text].line {
+		border-top: 0px;
+		border-left: 0px;
+		border-right: 0px;
+		border-bottom: 3px solid #3498DB;
+		margin-left: 30px;
+		width: 80%;
+		border-radius: 0px;
+	}
+	
+	input[type=number].line {
+		border-top: 0px;
+		border-left: 0px;
+		border-right: 0px;
+		border-bottom: 3px solid #3498DB;
+		margin-left: 30px;
+		width: 80%;
+		border-radius: 0px;
+	}
+	
+	.ecbtn {
+		border-radius: 0px;
+	}
+	
+	#pet_detail {
+		border-top: 0px;
+		border-left: 1px solid #D5D8DC;
+		border-right: 0px;
+		border-bottom: 0px;
+	}
 	/************* search bars *************/
 	/*
 	input[type=text]#search {
@@ -523,14 +553,14 @@
 	}
 	
 	.boxed > ul {
-		color: #fff;
+		color: #000;
 		font-size: 25px;
 		margin-right: 30px;
 	}
 	
 	.boxed > li {
 		list-style: none;
-		color: #fff;
+		color: #000;
 		font-size: 20px;
 	}
 	
@@ -567,7 +597,7 @@
 		text-align: center;
 		color: #2471A3;
 		font-family: 'Arvo';
-		font-size: 40px;
+		font-size: 50px;
 		margin-right: 100px;
 	}
 	

@@ -49,8 +49,8 @@
 
         #calendar {
             margin-top: 50px;
-			margin-left: 8%;
-			min-width: 1100px;
+			margin-left: 12%;
+			max-width: 1000px;
         }
 		
 		.btn-default {background-color: #AED6F1; color: #000; border-color: #2980B9;}
@@ -59,7 +59,7 @@
 		.btn-default.active {background-color: #3498DB; color: white;}
 		.btn-default.active:hover {background-color: #3498DB; color: white;}
 		.btn-default.active:focus {background-color: #3498DB; color: white;}
-		.fc-center {font-family: Arvo; color: #2980B9;}
+		.fc-center {font-size:50px !important; font-family: Arvo; color: #2980B9;}
 		.fc-day-header {color:#2980B9; background-color: #F2F4F4;}
 		th.fc-week-number {color:#2980B9; background-color: #F2F4F4;}
 		.fc-day-top {font-weight: bold;}
@@ -128,9 +128,9 @@
 	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 	    	<div class="modal-content">
-	      		<div class="modal-header ">
+	      		<div class="modal-header" style="background-color:rgba(128, 191, 255,0.9);">
 	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        		<h4 class="modal-title" id="myModalLabel">View/Update Calendar Event</h4>
+	        		<h4 class="modal-title text-center" id="myModalLabel" style="font-size:25px; font-weight:bold;">View/Update Calendar Event</h4>
 	      		</div>
 	      		<div class="modal-body">
 	      			<?php echo form_open(site_url("vetclinic/edit_event"), array("class" => "form-horizontal")) ?>
@@ -180,9 +180,9 @@
 	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 	    	<div class="modal-content">
-	      		<div class="modal-header edit">
+	      		<div class="modal-header edit" style="background-color:rgba(128, 191, 255,0.9);">
 	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        		<h3 class="modal-title" id="myModalLabel">ADD EVENT</h3>
+	        		<h3 class="modal-title text-center" id="myModalLabel" style="font-size:25px; font-weight:bold;">ADD EVENT</h3>
 	      		</div>
 	      		<div class="modal-body">
 	      			<?php echo form_open(site_url("vetclinic/add_event"), array("class" => "form-horizontal")) ?>
