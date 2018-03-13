@@ -3,11 +3,12 @@
     <link href="<?php echo base_url('assets/css/salesreport.css'); ?>" rel="stylesheet" type="text/css"  />
 </head>
 <body>
+    <h1>Items Sold</h1>
     <table>
         <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Total</th>
+            <th><strong>Item</strong></th>
+            <th><strong>Quantity</strong></th>
+            <th><strong>Total</strong></th>
         </tr>
         <?php
             if(isset($itemsReport)){
@@ -24,11 +25,12 @@
     <br />
     <br />
     <br />
+    <h1>Services Rendered</h1>
     <table>
         <tr>
-            <th>Service</th>
-            <th>Quantity</th>
-            <th>Total</th>
+            <th><strong>Service</strong></th>
+            <th><strong>Quantity</strong></th>
+            <th><strong>Total</strong></th>
         </tr>
         <?php
             if(isset($servReport)){

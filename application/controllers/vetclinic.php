@@ -684,7 +684,7 @@ $lastclient = $this->vet_model->getLastClient();
 		public function validateItem(){
 
 			// print_r($_POST);
-			$this->form_validation->set_rules('desc','Description','required|min_length[2]|callback_space');
+			$this->form_validation->set_rules('desc','Description','required|min_length[2]');
 	  		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|min_length[2]');
 		 	$this->form_validation->set_rules('qty', 'Quantity', 'trim|required');
 
@@ -712,6 +712,39 @@ $lastclient = $this->vet_model->getLastClient();
 		 	}
 
 
+
+
+
+		}
+		//chrstnv delete
+		public function delete(){
+
+				//print_r($_GET);
+
+				$this->vet_model->deleteItem($this->input->get('itemid'));
+
+				return redirect('vetclinic/inventory');
+
+		}
+
+		//chrstnv update 
+		public function updateItem(){
+				if($this->input->post('updateid')!=null){
+						$data= array('item_desc'=>$this->input->post('update_desc'),
+							'item_cost'=>$this->input->post('update_cost'),
+							'itemid'=>$this->input->post('updateid'));
+
+
+
+						$this->vet_model->updates($data);
+							return redirect('vetclinic/inventory');
+
+				}
+				else{
+				$data = $this->vet_model->updateItem($this->input->post('id'));
+
+		 		echo json_encode($data);
+		 			}
 
 
 
@@ -795,6 +828,90 @@ $lastclient = $this->vet_model->getLastClient();
 
 
 	}
+	//chrstnv history
+	public function history(){
+
+		if(isset($_POST['itemuse'])){
+			$option = $this->input->post("itemid", TRUE);
+			$qty = $this->input->post("qty_used", TRUE);
+			$visitid = $this->input->post("additemId", TRUE);
+			$validate = array (
+				array('field'=>'qty_used','label'=>'left','rules'=>'trim|required|min_length[1]')
+			);
+			$this->form_validation->set_rules($validate);
+			
+			$selector = 'item_cost';
+			$condition = array('itemid'=>$option);
+			$price = $this->itemstock->read($condition,$selector)[0]['item_cost'];
+			$selector = 'item_desc';
+			$condition = array('itemid'=>$option);
+			$desc = $this->itemstock->read($condition,$selector)[0]['item_desc'];
+			$selector = 'qty_left';
+			$left = $this->itemstock->read($condition,$selector)[0]['qty_left'];
+			
+			if($qty>$left || $qty<=0){
+				echo "<script type='text/javascript'>
+				alert('Invalid input');
+
+
+				;</script>";
+				
+			}
+			else{
+			$price = $price*$qty;
+			$left = $left-$qty;
+
+			$data = array('qty_left'=>$left);
+			$this->itemstock->update($data,$condition);
+			$this->vet_model->addItemUsed2($option,$visitid);
+
+			$data = array(
+					'itemid'=>$option,
+					'qty'=>$qty,
+					'action'=>'Sold Item',
+					'description'=>'Sold Item: Item '.$option .' - '  .$desc . ' sold ' .$qty .' pc/s with total cost of '  .number_format($price, 2, '.', ',').'. Only ' .$left . ' pc/s left ' ,
+					'total_cost'=>$price
+					);
+			$this->itemhistory->create($data);
+			}
+		}
+		$data['stock'] = $this->itemstock->read();
+
+
+
+		$data['title']='history';
+			$data['itemhistory']=$this->itemhistory->read();
+			$data['notif']=$this->vet_model->notification();
+		$header_data['events'] = $this->vet_model->getEventsByDate(date("Y-m-d"));
+		$header_data['eventCounter'] = count($header_data['events']);
+		$header_data['items'] = $this->vet_model->getAllZeroitems();
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		$this->load->view('include/header',$data);
+		$this->load->view('clinic/historyview',$data);
+
+		$this->load->view('include/footer');
+
+
+
+
+
+
+
+	}
 
 	public function upClient(){
 		
@@ -809,6 +926,7 @@ $lastclient = $this->vet_model->getLastClient();
 
 				}
 
+
 	public function getSalesReport(){
 		$this->load->library('Pdf');
 		$pdf = new TCPDF();
@@ -817,7 +935,20 @@ $lastclient = $this->vet_model->getLastClient();
 		$pdf->addPage();
 		
 		$itemsReport = array();
-		$itemsArr = $this->vet_model->getSales2();
+		$servReport = array();
+
+		$range = $this->input->get('range');
+		if($range === 'daily'){
+			$itemsArr = $this->vet_model->getSales2(date('Y-m-d'));
+			$servArr = $this->vet_model->getSales(date('Y-m-d'));
+		}
+		elseif($range === 'monthly'){
+			$year=date('Y');
+			$month=date('m');
+			$itemsArr = $this->vet_model->getSales2(null,$month, $year);
+			$servArr = $this->vet_model->getSales(null,$month, $year);
+		}
+
 		foreach($itemsArr as $i){
 			if(array_key_exists($i['itemid'], $itemsReport)){
 				$itemsReport[$i['itemid']]['qty'] += $i['qty'];
@@ -831,8 +962,6 @@ $lastclient = $this->vet_model->getLastClient();
 		}
 		$data['itemsReport'] = $itemsReport;
 
-		$servReport = array();
-		$servArr = $this->vet_model->getSales();
 		foreach($servArr as $s){
 			if(array_key_exists($s['serviceid'], $servReport)){
 				$servReport[$s['serviceid']]['qty'] += 1;

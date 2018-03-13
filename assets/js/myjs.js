@@ -134,7 +134,6 @@ $("#editClient").click(function(e){
 
 // computatiom
 $(document).ready(function(){
-				var add =0;
 			
 				$(document).on('change','.addtm',function(){
 					var base_url = window.location.origin;
@@ -144,7 +143,7 @@ $(document).ready(function(){
 				  	// $(".prd").val('hi');	
   					var y= $(this);		
 			       
-					var sum = 0;
+					
 
 					$.ajax({
 			   				type: "POST",
@@ -162,8 +161,12 @@ $(document).ready(function(){
 									y.val('');
 									}
 									else{
+										var sum = 0;
+											var add =0;
+			
 									add=price[0].item_cost*prc;
-										
+										$(y).closest('tr').find('.Tamount').val(add);
+										$(y).closest('tr').find('.ITprice').val(price[0].item_cost);
 									$(y).closest('tr').find('.prd').val(add);
 									 $(".prd").each(function(){
 								        sum += +$(this).val();
@@ -238,8 +241,10 @@ $(document).ready(function(){
 									 $("#hiddenSum").val(sum);
 									}
 									else{
+
 									add=price[0].item_cost*prc;
-										
+										$(y).closest('tr').find('.Tamount').val(add);
+										$(y).closest('tr').find('.ITprice').val(price[0].item_cost);
 									$(y).closest('tr').find('.prd').val(add);
 									 $(".prd").each(function(){
 								        sum += +$(this).val();
@@ -647,9 +652,40 @@ $(document).ready(function(){
 
 
 
-
 				});
+					function populate(id){
+						var base_url = window.location.origin;
+								$.ajax({
 
+							type: 'POST',
+							url: base_url+"/veterinary/vetclinic/updateItem",
+						    data: {id:id},
+						   success: function(msg){
+						  
+						   			var obj = JSON.parse(msg);
+						   				// console.log(obj[0].itemid)
+
+						   					console.log(obj)
+						   			$("#update_desc").val(obj[0].item_desc);
+						   			$("#update_cost").val(obj[0].item_cost);
+						   			$("#updateid").val(obj[0].itemid);
+								}		
+
+
+							});
+
+
+
+
+
+
+
+
+
+
+
+
+					}
 
 
 		
