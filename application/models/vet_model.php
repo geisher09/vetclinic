@@ -167,12 +167,20 @@
 
 		}
 
-		public function getSales(){
+		public function getSales($date=null, $month=null, $year=null){
 			$this->db->select('a.visit_cost,a.serviceid,a.visitdate,a.case_type,b.id,b.desc');
 			$this->db->from('visit a');
 			$this->db->join('services b','a.serviceid = b.id');
 			// $this->db->group_by('b.clientid');     
 			
+			if(isset($date)){
+				$this->db->where("CAST(visitdate as date) = '$date'");
+			}
+			elseif(isset($month) && isset($year)){
+				$this->db->where("MONTH(visitdate) = '$month'");
+				$this->db->where("YEAR(visitdate) = '$year'");
+			}
+
 			$query = $this->db->get();
 
 			return $query->result_array();
@@ -191,7 +199,7 @@
 				return $result['visit_cost'];
 		}
 
-		public function getSales2($date=null){
+		public function getSales2($date=null, $month=null, $year=null){
 			$serv="Sold Item";
 			$this->db->select('a.itemid,a.item_desc,b.itemid,b.action,b.date,b.total_cost,b.qty');
 			$this->db->from('itemstock a');
@@ -200,6 +208,10 @@
 
 			if(isset($date)){
 				$this->db->where("CAST(date as date) = '$date'");
+			}
+			elseif(isset($month) && isset($year)){
+				$this->db->where("MONTH(date) = '$month'");
+				$this->db->where("YEAR(date) = '$year'");
 			}
 			
 			$query = $this->db->get();
