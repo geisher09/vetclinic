@@ -165,6 +165,14 @@
         background-color: #ff3333;
         margin-top: -5px;
     }
+	
+	.select2-selection__rendered {
+		line-height: 32px !important;
+	}
+
+	.select2-selection {
+		height: 34px !important;
+	}
 	/************* home page *************/
 	#addbutn {
 		display: inline-block;

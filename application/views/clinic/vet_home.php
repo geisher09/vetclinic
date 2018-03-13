@@ -218,7 +218,11 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="petbreed">Breed:</label>
 				  <div class="col-sm-8 col-md-8" id="CBerror">
-					<input type="text" class="form-control" id="petbreed"  name="breed">
+					<select class="sb" name="breed" id="petbreed">
+						<option value="LR">Loverador Retriever</option>
+						<option value="GR">Golden Retriever</option>
+					</select>
+					<!-- <input type="text" class="form-control" id="petbreed"  name="breed"> -->
 					<p id="CBtext" class="valerror"></p>
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
@@ -227,6 +231,27 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 		
 			  		</div>
 				</div>
+				
+				<div class="form-group">
+				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="species">Species:</label>
+				  <div class="col-sm-8 col-md-8" id="CSerror">
+					<select class="sb" name="species" id="petspecies">
+						<option value="Dog">Dog</option>
+						<option value="Cat">Cat</option>
+						<option value="Hed">Hedgehog</option>
+						<option value="Rat">Rabbit</option>
+					</select>
+					<!-- <input type="text" class="form-control" id="petspecies"  name="species"> -->
+					<p id="CStext" class="valerror"></p>
+				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
+				  <div class="col-lg-8">
+			  			<div><br></div>
+		
+			  		</div>
+				</div>
+				
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-3 col-md-3" for="markings">Color/Markings:</label>
@@ -240,19 +265,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 
 			  		</div>
 				</div>
-				<div class="form-group">
-				  <div class="col-sm-1 col-md-1"></div>
-				  <label class=" col-sm-2 col-md-2" for="species">Species:</label>
-				  <div class="col-sm-8 col-md-8" id="CSerror">
-					<input type="text" class="form-control" id="petspecies"  name="species">
-					<p id="CStext" class="valerror"></p>
-				  </div>
-				  <div class="col-sm-1 col-md-1"></div>
-				  <div class="col-lg-8">
-			  			<div><br></div>
-		
-			  		</div>
-				</div>
+				
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="birthday">Birthday:</label>
@@ -448,13 +461,23 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 
 							<div class="form-group" id="Terror">
 								<label for="">Species:</label>
-								<input type="text" class="form-control" id="addpetype" name="species"/>
+								<select class="sb" name="species" id="addpetype">
+									<option value="Dog">Dog</option>
+									<option value="Cat">Cat</option>
+									<option value="Hedgehog">Hedgehog</option>
+									<option value="Rabbit">Rabbit</option>
+								</select>
+								<!-- <input type="text" class="form-control" id="addpetype" name="species"/> -->
 								<p id="Typeerror" class="valerror"></p>
 							</div>
 							
 							<div class="form-group" id="Berror">
 								<label for="">Breed:</label>
-								<input type="text" class="form-control" id="addpetbreed" name="breed"/>
+								<select class="sb" name="breed" id="addpetbreed">
+									<option value="Labrador">Loverador Retriever</option>
+									<option value="Golden Retriever">Golden Retriever</option>
+								</select>
+								<!-- <input type="text" class="form-control" id="addpetbreed" name="breed"/> -->
 								<p id="Breerror" class="valerror"></p>
 							</div>
 							
@@ -752,6 +775,12 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 	</div>
 </div>
 
+<!--Script for select2-->
+<script>
+	$(document).ready(function() {
+		$('.sb').select2({ width : '100%'});
+	});
+</script>
 	
 <!--Script for the item used-->
 <script>
