@@ -1,47 +1,4 @@
-<!-- 
-PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung bakit. ayusin na lang minsan. -carlo
-
-<style type="text/css">
-    .beta thead, .beta tbody, .beta tr, .beta td, .beta th { display: block; }
-
-    .beta tr:after {
-        content: ' ';
-        display: block;
-        visibility: hidden;
-        clear: both;
-    }
-
-    .beta thead th {
-        height: 30px;
-        /*text-align: left;*/
-    }
-
-    .beta tbody {
-        height: 1000px;
-    /*    width: 1068px;*/
-        overflow-y: hidden;
-    }
-
-    .beta thead {
-        /* fallback */
-    }
-
-
-    .beta tbody td, thead th {
-        width: 25%;
-        float: left;
-    }
-</style> -->
-
 <div id="container">
-
-<!--
-<div  style="float:right;">
-	<button type="button" class="btn btn-success btn-md" id="addbtn"  data-toggle="modal" data-target="#addclientmodal">
-	<span class="glyphicon glyphicon-plus"></span>New Client</button>
-</div>
-<h2>List of Clients</h2>
--->
 
 <?php if( $error = $this->session->flashdata('responsed')): ?>
 		<div class="alert alert-dismissible alert-danger">
@@ -216,6 +173,19 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
+				  <label class=" col-sm-2 col-md-2" for="species">Species:</label>
+				  <div class="col-sm-8 col-md-8" id="CSerror">
+					<input type="text" class="form-control" id="petspecies"  name="species">
+					<p id="CStext" class="valerror"></p>
+				  </div>
+				  <div class="col-sm-1 col-md-1"></div>
+				  <div class="col-lg-8">
+			  			<div><br></div>
+		
+			  		</div>
+				</div>
+				<div class="form-group">
+				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="petbreed">Breed:</label>
 				  <div class="col-sm-8 col-md-8" id="CBerror">
 					<input type="text" class="form-control" id="petbreed"  name="breed">
@@ -238,19 +208,6 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				  <div class="col-lg-8">
 			  			<div><br></div>
 
-			  		</div>
-				</div>
-				<div class="form-group">
-				  <div class="col-sm-1 col-md-1"></div>
-				  <label class=" col-sm-2 col-md-2" for="species">Species:</label>
-				  <div class="col-sm-8 col-md-8" id="CSerror">
-					<input type="text" class="form-control" id="petspecies"  name="species">
-					<p id="CStext" class="valerror"></p>
-				  </div>
-				  <div class="col-sm-1 col-md-1"></div>
-				  <div class="col-lg-8">
-			  			<div><br></div>
-		
 			  		</div>
 				</div>
 				<div class="form-group">
@@ -332,7 +289,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							</div>
 							<div class="col-md-4 form-group text-center" id="cnume">
 								<label for="">Contact No.</label>
-								<input type="number" class="form-control line" id="custcontactno1" name="num" value="<?php echo set_value('num'); ?>" maxlength="11" min="0"/>
+								<input type="text" class="form-control line" id="custcontactno1" name="num" value="<?php echo set_value('num'); ?>" maxlength="11" min="0"/>
 								<p id="conerror" class="valerror"></p>
 										<p id="custcontactno"  value=""></p>
 							</div>
@@ -434,10 +391,13 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 					<form></form>
 					<?php echo form_open('vetclinic/savepet', ['class'=>'form-horizontal','id'=>'addPetForm']); ?>
 					<div class="col-md-8">
+                        <br/>
 							<div class="form-group" id="Perror">
 								<span style="white-space: nowrap">
-								<label for="">Pet Name:</label>
-								<input type="text" class="form-control" id="Mypetname" name="pname" />
+								<label class=" col-sm-3 col-md-3" for="">Pet Name:</label>
+                                <div class="col-sm-9 col-md-9">
+								    <input type="text" class="form-control" id="Mypetname" name="pname" />
+                                </div>
 								<p id="Peterror" class="valerror"></p>
 								</span>
 							</div>
@@ -445,46 +405,58 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							<div class="form-group">
 								<input type="hidden" id="addpetclientno" name="addpetclientno"/>
 							</div>
-
+                        <br/>
 							<div class="form-group" id="Terror">
-								<label for="">Species:</label>
+								<label class=" col-sm-3 col-md-3" for="">Species:</label>
+                                <div class="col-sm-9 col-md-9">
 								<input type="text" class="form-control" id="addpetype" name="species"/>
+                                </div>
 								<p id="Typeerror" class="valerror"></p>
 							</div>
-							
+							<br/>
 							<div class="form-group" id="Berror">
-								<label for="">Breed:</label>
+								<label class=" col-sm-3 col-md-3" for="">Breed:</label>
+                                <div class="col-sm-9 col-md-9">
 								<input type="text" class="form-control" id="addpetbreed" name="breed"/>
+                                </div>
 								<p id="Breerror" class="valerror"></p>
 							</div>
-							
+							<br/>
 							<div class="form-group" id="Derror">
-								<label for="">Birthday:</label>
+								<label class=" col-sm-3 col-md-3" for="">Birthday:</label>
+                                <div class="col-sm-9 col-md-9">
 								<input type="date" class="form-control" id="addpetbday" name="birthday"/>
+                                </div>
 								<p id="Bdayerror" class="valerror"></p>
 							</div>	
-							
+							<br/>
 							<div class="form-group" id="Merror">
-								<label for="">Markings:</label>
+								<label class=" col-sm-3 col-md-3" for="">Markings:</label>
+                                <div class="col-sm-9 col-md-9">
 								<input type="text" class="form-control" id="addpetmarkings" name="markings"/>
+                                </div>
 								<p id="Markerror" class="valerror"></p>
 							</div>
-                        
+                        <br/>
 							<div class="form-group">
-								<label class=" col-sm-3" for="sex">Sex:</label>
-								  <div class="col-sm-8">
-									<label class="radio-inline">
-									  <input type="radio" id="addpetsex" name="sex" value="m" checked>Male
-									</label>
-									<label class="radio-inline">
-									  <input type="radio" id="addpetsex" name="sex" value="f">Female
-									</label>
+								<label class=" col-sm-3 col-md-3" for="sex">Sex:</label>
+								  <div class="col-sm-9 col-md-9">
+                                    <div class="radio">
+                                    <label style="font-weight:400;font-size:16px;">
+                                      <input type="radio" name="sex" value="m">Male
+                                    </label>
+                                    </div>
+                                    <div class="radio">
+                                    <label style="font-weight:400;font-size:16px;">
+                                      <input type="radio" name="sex" value="f">Female
+                                    </label>
+                                    </div>
 								  </div>
 							</div>
-
+                        <br/>
 						<div class="modal-footer">
-							<button type="submit" id="sbmtPet" class="btn btn-primary">Save</button>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button type="submit" id="sbmtPet" class="btn btn-primary">Save</button>
 						</div>
 						<?php echo form_close();?>
 					</div>
@@ -495,13 +467,12 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 					<div class="col-md-6">
 						<p class="lead text-center" style="font-size:23px; font-family:'Arvo'; color:#2471A3;">History of Visits</p>
 						
-							<div style="height: 300px; overflow: auto">
+							<div style="min-height:500px; overflow:auto">
 								<table align="center" id="petList" class="table table-hover" style="margin-top: 20px;">
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Date</th>
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Pet ID</th>
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Service Type</th>
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">View Full Visit</th>
-									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Add Item Used</th>
 
 									<tbody align="center" id="PetsVisits">
 										
@@ -528,8 +499,8 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							<hr />
 							<div class="row">
 								<div class=" col-md-12 form-group">
-									<label for="">Findings :</label>
-									<textarea id="visitfindings" class="form-control" name="findings" rows="2" readonly>Findings here.</textarea>
+									<label for="">Diagnosis :</label>
+									<textarea id="visitfindings" class="form-control" name="findings" rows="2" readonly>Diagnosis here.</textarea>
 								</div>
 							</div>
 				
@@ -537,6 +508,12 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 								<div class="col-md-12 form-group">
 									<label for="">Recommendations :</label>
 									<textarea id="visitrecom" class="form-control" name="findings" rows="2" readonly>Recommendations.</textarea>
+								</div>	
+							</div>
+							<div class="row ">
+								<div class="col-md-12 form-group">
+									<label for="">Prescription :</label>
+									<textarea id="" class="form-control" name="" rows="2" readonly>Prescriptions.</textarea>
 								</div>	
 							</div>
 						
@@ -625,13 +602,17 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 									</div>
 									<br />
 									<div class=" col-md-12 form-group">
-										<label for="">Findings :</label>
-										<textarea placeholder="Findings" class="form-control" name="findings" rows="4"></textarea>
+										<label for="">Diagnosis :</label>
+										<textarea placeholder="Diagnosis" class="form-control" name="findings" rows="4"></textarea>
 									</div>
 				
 									<div class="col-md-12 form-group">
 										<label for="">Recommendations :</label>
 										<textarea placeholder="Recommendations" class="form-control" name="recom" rows="4"></textarea>
+									</div>	
+									<div class="col-md-12 form-group">
+										<label for="">Prescriptions :</label>
+										<textarea placeholder="Prescriptions" class="form-control" name="" rows="4"></textarea>
 									</div>	
 									
 								</div>
@@ -707,8 +688,8 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 									</table>
 
 									<div class="btn-group">
-										<a id="add_row" class="btn btn-primary pull-center"  onclick="sos(this.id)" title="Add row">+</a>
-										<a id="delete_row" class="pull-right btn btn-danger" title="Delete row">-</a>	
+										<a id="add_row" class="btn btn-primary pull-center" onclick="sos(this.id)"><span data-toggle="tooltip" title="Add another row">+</span></a>
+										<a id="delete_row" class="pull-right btn btn-danger"><span data-toggle="tooltip" title="Delete a row">-</span></a>	
 									</div>
 
 								<div class=" col-md-12 form-group">
@@ -746,7 +727,10 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 
 <!--Script for the item used-->
 <script>
-
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+    
 
 $('.modal').on('hidden.bs.modal', function (e) {
   if($('.modal').hasClass('in')) {
@@ -946,7 +930,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 
 				        	if(parseInt(obj.visits.length) > 0){
 								for(var i=0; i<parseInt(obj.visits.length); i++){
-									s += '<tr><td>'+obj.visits[i].visitdate+'</td><td>'+obj.visits[i].petid+'</td><td>'+obj.visits[i].case_type+'</td><td><button class="btn btn-info" id="'+obj.visits[i].visitid+'"type="button" onclick="history(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button></td><td><button class="btn btn-info" id="'+obj.visits[i].visitid+'"type="button" "type="button" onclick="sos(this.id)"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button></tr>';
+									s += '<tr><td>'+obj.visits[i].visitdate+'</td><td>'+obj.visits[i].petid+'</td><td>'+obj.visits[i].case_type+'</td><td><button class="btn btn-info" id="'+obj.visits[i].visitid+'"type="button" onclick="history(this.id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button></td></tr>';
 								}
 								$("#PetsVisits").html(s);								
 							}
