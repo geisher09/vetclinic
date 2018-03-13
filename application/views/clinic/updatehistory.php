@@ -4,13 +4,13 @@
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<!-- Modal Header -->
-						<div class="modal-header">
+						<div class="modal-header" style="background-color:rgba(128, 191, 255,0.9);">
 							<button type="button" class="close" 
 							   data-dismiss="modal">
 								   <span aria-hidden="true">&times;</span>
 								   <span class="sr-only">Close</span>
 							</button>
-							<h4 class="modal-title" id="LabelHistory">
+							<h4 class="modal-title text-center" id="LabelHistory" style="font-size:25px; font-weight:bold;">
 							   UPDATE ITEM USAGE
 							</h4>
 						</div>
@@ -27,7 +27,7 @@
 												echo '<option value="'.$s['itemid'].'">'.$s['itemid'].'-'.$s['item_desc'].'</option>';
 											}
 											?>
-										</select>
+										</select> <br />
                     <label for="qty_used">Quantity</label>
                       <input type="number" class="form-control globalDisable" id="qty_used" name="qty_used" placeholder="Quantity"/>
 
