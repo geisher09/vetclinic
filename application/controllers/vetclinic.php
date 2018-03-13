@@ -808,6 +808,49 @@ $lastclient = $this->vet_model->getLastClient();
 				
 
 				}
+
+	public function getSalesReport(){
+		$this->load->library('Pdf');
+		$pdf = new TCPDF();
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->addPage();
+		
+		$itemsReport = array();
+		$itemsArr = $this->vet_model->getSales2();
+		foreach($itemsArr as $i){
+			if(array_key_exists($i['itemid'], $itemsReport)){
+				$itemsReport[$i['itemid']]['qty'] += $i['qty'];
+				$itemsReport[$i['itemid']]['total'] += $i['total_cost'];
+			}
+			else {
+				$itemsReport[$i['itemid']]['desc'] = $i['item_desc'];
+				$itemsReport[$i['itemid']]['qty'] = $i['qty'];
+				$itemsReport[$i['itemid']]['total'] = $i['total_cost'];
+			}
+		}
+		$data['itemsReport'] = $itemsReport;
+
+		$servReport = array();
+		$servArr = $this->vet_model->getSales();
+		foreach($servArr as $s){
+			if(array_key_exists($s['serviceid'], $servReport)){
+				$servReport[$s['serviceid']]['qty'] += 1;
+				$servReport[$s['serviceid']]['total'] += $s['visit_cost'];
+			}
+			else {
+				$servReport[$s['serviceid']]['desc'] = $s['desc'];
+				$servReport[$s['serviceid']]['qty'] = 1;
+				$servReport[$s['serviceid']]['total'] = $s['visit_cost'];
+			}
+		}
+		$data['servReport'] = $servReport;
+
+		$tbl = $this->load->view('clinic/salesreport',$data,TRUE);
+
+		$pdf->writeHTML($tbl);
+		$pdf->Output('test.pdf', 'I');
+	}
 }
 
 ?>

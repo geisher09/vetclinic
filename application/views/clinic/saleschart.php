@@ -60,7 +60,7 @@
 
 <body>
     <div class="btn-group" style="margin-left:50px;">
-	    <button type="button" class="button" onclick="dailySalesChart()">Daily</button>
+	    <button type="button" class="button" onclick="realTimeSalesChart()">Weekly</button>
 	    <button type="button" class="button" onclick="monthlySalesChart()">Monthly</button>
 	    <button type="button" class="button" onclick="yearlySalesChart()">Yearly</button>
 	  </div>

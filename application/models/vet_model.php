@@ -165,12 +165,16 @@
 				return $result['visit_cost'];
 		}
 
-		public function getSales2(){
+		public function getSales2($date=null){
 			$serv="Sold Item";
-			$this->db->select('a.itemid,a.item_desc,b.itemid,b.action,b.date,b.total_cost');
+			$this->db->select('a.itemid,a.item_desc,b.itemid,b.action,b.date,b.total_cost,b.qty');
 			$this->db->from('itemstock a');
 			$this->db->join('itemhistory b','a.itemid = b.itemid');
 			$this->db->where('b.action',$serv);     
+
+			if(isset($date)){
+				$this->db->where("CAST(date as date) = '$date'");
+			}
 			
 			$query = $this->db->get();
 
