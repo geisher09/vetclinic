@@ -98,6 +98,13 @@
 			return ($sched+$invent);
 
 		}
+		public function deleteItem($data){
+		$this->db->where('itemid', $data);
+		$this->db->delete('itemstock');
+
+
+
+		}
 
 
 		public function getLastClient(){

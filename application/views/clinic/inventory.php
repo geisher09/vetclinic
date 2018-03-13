@@ -10,7 +10,7 @@
 <table class="table" id="mytable" style="width:90%; margin-left:5%;">
 	<thead>
 		<tr class="th1">
-                <th colspan="3">AVAILABLE STOCKS</th>
+                <th colspan="5">AVAILABLE STOCKS</th>
                 <th></th>
                 <th >
                     <div>
@@ -19,23 +19,28 @@
                             <span class="tooltiptext">Add an item</span>
                             </span>
                         </button>
+
                     </div> 
                 </th>
         </tr>
 		<tr class="th2">
-			<th style="text-align:center;width:100px;">Item ID.</th>
+			<th style="text-align:center;width:100px;">#</th>
 			<th style="text-align:center;">Description</th>
 			<th style="text-align:center;">Price</th>
 			<th style="text-align:center;" >Stocks Left</th>
 			<th style="text-align:center;">Add Stock</th>
+            <th style="text-align:center;">delete</th>
+              <th style="text-align:center;">edit</th>
 		</tr>
 	</thead>
 	<tbody>
 		
 		<?php
+            $i=1;
 						foreach($stock as $s){
+                      
 							echo '<tr  style="height:20px;padding:-10px;" class="'.($s['qty_left']==0?'redrow':'').'">	
-									<td style="text-align:center;width:100px;">'.$s['itemid'].'</td>
+									<td style="text-align:center;width:100px;">'.$i.'</td>
 									<td style="text-align:center;"  >'.$s['item_desc'].'</td>
 									<td style="text-align:center;">'.$s['item_cost'].'</td>
 									<td style="text-align:center; ">'.$s['qty_left'].'</td>
@@ -48,72 +53,55 @@
                                         </div>
                                         <div class="class="col-sm-6">
                                             <button name="addstock" type="submit" class="btn btn-info" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
+
+
                                         </div>
                                     </div>
 								</form>
 							</td>
+                                <td style="width:200px;">
+                                <form method="GET" action="">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                        
+                                            <input type="hidden" class="form-control" id="itemid" name="itemid" value="'.$s['itemid'].'"/>
+                                        </div>
+                                        <div class="class="col-sm-6">
+                                            <a href="'.base_url('vetclinic/delete').'?itemid='.$s['itemid'].'" name="addstock" type="submit" class="btn btn-danger" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-plus"></span>&nbsp;delete</a>
+                                            
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                                <td style="width:200px;">
+                              
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                          
+                                        </div>
+                                        <div class="class="col-sm-6">
+                                            <button type="button" name="addstock"  data-toggle="modal" data-target="#editStock" class="btn btn-warning" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-plus"></span>&nbsp;edit</button>
+                                            
+
+                                        </div>
+                                    </div>
+                            
+                            </td>
 						</tr>
 						';
-				}
+			 $i++;
+                }
 				?>
 	</tbody>
 </table>
 <!--</div>--><!--end of div for stocks-->
 
 
-<!-- Add Product Modal + Add Stock Modal & Update History + View Full History Moda -->
-	
-<!--<div style="width:100%; overflow:hidden;">-->
-<!--div for transactions-->
-<!--<div  style="float:right;margin-top:20px;">
-    <button type="button" class="btn btn-warning btn-md" id="addbtn"  data-toggle="modal" data-target="#myModalHistory">
-    <span class="glyphicon glyphicon-plus"></span>&nbsp;Sell an Item</button>
-</div> -->
-    <table class="table" id="mytable" style="width:90%; margin-left:5%;">
-        <thead>
-			<tr class="th1">
-                <th colspan="3">TRANSACTIONS</th>
-                <th >
-                    <div>
-                        <button type="button" class="btn btn-md" id="addbutn"  data-toggle="modal" data-target="#myModalHistory">
-                            <span class="glyphicon glyphicon-plus">
-                            <span class="tooltiptext">Sold an item</span>
-                            </span>
-                        </button>
-                    </div> 
-                </th>
-            </tr>
-            <tr class="th2">
-                <th style="width:100px;">Item ID.</th>
-                <th  >Action</th>
-                <th >Description</th>
-                <th  >Date</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-            <?php
-                            foreach($itemhistory as $r){
-                                echo '	<tr>	
-                                        <td style="text-align:center;">'.$r['itemid'].'</td>
-                                        <td style="text-align:left;">'.$r['action'].'</td>
-                                        <td style="text-align:left;">'.$r['description'].'</td>
-                                        <td style="text-align:left;">'.$r['date'].'</td>
-                            </tr>
-                            ';
-                    }
-                    ?>
-        </tbody>
-    </table>
-<!--</div>--><!--end of div for transactions-->
-
-
-</div>
 </div>
 <?php
 	include "addstockmodal.php";
-	include "updatehistory.php";
+
 	
 ?>
 <script type="text/javascript">
