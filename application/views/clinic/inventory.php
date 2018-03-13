@@ -81,7 +81,7 @@
                                           
                                         </div>
                                         <div class="class="col-sm-6">
-                                            <button type="button" name="addstock"  data-toggle="modal" data-target="#editStock" class="btn btn-warning" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-plus"></span>&nbsp;edit</button>
+                                            <button type="button" data-toggle="modal" id="'.$s['itemid'].'" data-target="#editStock" onclick="populate(this.id)" class="btn btn-warning" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-plus"></span>&nbsp;edits</button>
                                             
 
                                         </div>
