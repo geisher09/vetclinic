@@ -705,7 +705,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 
 
 										
-												<input type="hiddenSum" name="hiddenSum" id="hiddenSum" /> <!-- compute sum hidden field-->
+												<input type="hidden" name="hiddenSum" id="hiddenSum" /> <!-- compute sum hidden field-->
 											
 										</tr>
 									</tfoot>
