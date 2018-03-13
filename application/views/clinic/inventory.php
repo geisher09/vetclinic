@@ -28,9 +28,7 @@
 			<th style="text-align:center;">Description</th>
 			<th style="text-align:center;">Price</th>
 			<th style="text-align:center;" >Stocks Left</th>
-			<th style="text-align:center;">Add Stock</th>
-            <th style="text-align:center;">delete</th>
-              <th style="text-align:center;">edit</th>
+			<th style="text-align:center;" colspan="3">Action </th>
 		</tr>
 	</thead>
 	<tbody>
@@ -53,41 +51,29 @@
                                         </div>
                                         <div class="class="col-sm-6">
                                             <button name="addstock" type="submit" class="btn btn-info" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
-
-
-                                        </div>
+										</div>
                                     </div>
 								</form>
 							</td>
-                                <td style="width:200px;">
-                                <form method="GET" action="">
-                                    <div class="row">
-                                        <div class="col-sm-6">
+                                
+								<td >
+                              <div class="row">
+                                 <div class="class="col-sm-6">
+                                     <button type="button" data-toggle="modal" id="'.$s['itemid'].'" data-target="#editStock" onclick="populate(this.id)" class="btn btn-success" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</button>
+                                  </div>
+                              </div>
+                            </td>
+							
+							<td>
+									<form method="GET" action="">
+										<div class="row">
                                         
-                                            <input type="hidden" class="form-control" id="itemid" name="itemid" value="'.$s['itemid'].'"/>
-                                        </div>
-                                        <div class="class="col-sm-6">
-                                            <a href="'.base_url('vetclinic/delete').'?itemid='.$s['itemid'].'" name="addstock" type="submit" class="btn btn-danger" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-plus"></span>&nbsp;delete</a>
-                                            
-
-                                        </div>
-                                    </div>
-                                </form>
-                            </td>
-                                <td style="width:200px;">
-                              
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                          
-                                        </div>
-                                        <div class="class="col-sm-6">
-                                            <button type="button" data-toggle="modal" id="'.$s['itemid'].'" data-target="#editStock" onclick="populate(this.id)" class="btn btn-warning" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-plus"></span>&nbsp;edits</button>
-                                            
-
-                                        </div>
-                                    </div>
-                            
-                            </td>
+											<div>
+												<a href="'.base_url('vetclinic/delete').'?itemid='.$s['itemid'].'" name="addstock" type="submit" class="btn btn-danger" style="font-weight:300;font-size:15px;"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a>
+                                            </div>
+										</div>
+									</form>
+								</td>
 						</tr>
 						';
 			 $i++;
