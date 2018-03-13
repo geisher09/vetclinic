@@ -726,6 +726,29 @@ $lastclient = $this->vet_model->getLastClient();
 				return redirect('vetclinic/inventory');
 
 		}
+
+		//chrstnv update 
+		public function updateItem(){
+				if($this->input->post('updateid')!=null){
+						$data= array('item_desc'=>$this->input->post('update_desc'),
+							'item_cost'=>$this->input->post('update_cost'),
+							'itemid'=>$this->input->post('updateid'));
+
+
+
+						$this->vet_model->updates($data);
+							return redirect('vetclinic/inventory');
+
+				}
+				else{
+				$data = $this->vet_model->updateItem($this->input->post('id'));
+
+		 		echo json_encode($data);
+		 			}
+
+
+
+		}
 	public function validatePet()
 	{
 			$this->form_validation->set_rules('name','Pet name','required|min_length[2]|callback_space');

@@ -105,6 +105,25 @@
 
 
 		}
+			public function updateItem($data){
+			$this->db->from('itemstock');
+			$this->db->where('itemid',$data);
+			$query = $this->db->get();
+			return $query->result_array();
+
+
+		}
+		public function updates($data){
+
+				$this->db->set('item_desc',$data['item_desc']);
+				$this->db->set('item_cost',$data['item_cost']);
+				$this->db->where('itemid',$data['itemid']);
+				$this->db->update('itemstock');
+					
+
+		}
+
+
 
 
 		public function getLastClient(){

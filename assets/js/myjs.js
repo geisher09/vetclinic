@@ -652,9 +652,40 @@ $(document).ready(function(){
 
 
 
-
 				});
+					function populate(id){
+						var base_url = window.location.origin;
+								$.ajax({
 
+							type: 'POST',
+							url: base_url+"/veterinary/vetclinic/updateItem",
+						    data: {id:id},
+						   success: function(msg){
+						  
+						   			var obj = JSON.parse(msg);
+						   				// console.log(obj[0].itemid)
+
+						   					console.log(obj)
+						   			$("#update_desc").val(obj[0].item_desc);
+						   			$("#update_cost").val(obj[0].item_cost);
+						   			$("#updateid").val(obj[0].itemid);
+								}		
+
+
+							});
+
+
+
+
+
+
+
+
+
+
+
+
+					}
 
 
 		
