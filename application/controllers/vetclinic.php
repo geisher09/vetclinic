@@ -943,8 +943,8 @@ $lastclient = $this->vet_model->getLastClient();
 			$servArr = $this->vet_model->getSales(date('Y-m-d'));
 		}
 		elseif($range === 'monthly'){
-			$year=date('Y',strtotime('October 1, 2017'));
-			$month=date('m',strtotime('October 1, 2017'));
+			$year=date('Y');
+			$month=date('m');
 			$itemsArr = $this->vet_model->getSales2(null,$month, $year);
 			$servArr = $this->vet_model->getSales(null,$month, $year);
 		}
