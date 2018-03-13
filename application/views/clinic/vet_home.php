@@ -66,7 +66,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
                     <div>
                         <button type="button" class="btn btn-md" id="addbutn"  data-toggle="modal" data-target="#addclientmodal">
                             <span class="glyphicon glyphicon-plus">
-                            <span class="tooltiptext">Add new client</span>
+                            <span class="tooltiptext">Add new client </span>
                             </span>
                         </button>
                     </div> 
@@ -116,7 +116,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 </div>
 <!--    end of table for clients-->
 
-<!------------- Add Client Modal --------------->
+
     <div class="modal fade" id="addclientmodal" role="dialog">
     <div class="modal-dialog modal-lg">
     
@@ -125,6 +125,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
       $cid=0;
       $cid=$al+1;
       ?>
+      <!-- CHRSTNV validation-->
       <div class="modal-content registerModal">
         <div class="modal-header" style="background-color:rgba(128, 191, 255,0.9);"><!--background-color:rgba(128, 191, 255,0.9)-->
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -132,7 +133,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
         </div>
         <div class="modal-body" style="padding:60px;padding-top:0px;">
 				<br/>
-		<?php  echo form_open('vetclinic/save', ['class'=>'form-horizontal']); ?>
+		<?php  echo form_open('vetclinic/save', ['class'=>'form-horizontal','id'=>'addclientform']); ?>
 				<div class="form-group row" style="padding:auto;">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class="col-sm-3 col-md-3" style="text-align:right;">Client ID:</label>
@@ -144,116 +145,125 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				</div>
 				<hr />
 			  <div class="newClientboxHead"><h3 class="text-center"><b>Owner's Info</b></h3></div>
-            <div class="newClientbox"> <!--- new client box new client --->
-				<div class="form-group">
+            <div class="newClientbox"> 
+				<div class="form-group" >
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="name">Name:</label>
-				  <div class="col-sm-8 col-md-8">
+				  <div class="col-sm-8 col-md-8 " id="CNerror">
 					<input type="text" class="form-control" id="name"  name="cname">
+					<p id="CNtext" class="valerror"></p>
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-12">
 			  			<div><br></div>
-			  			<?php echo form_error('cname'); ?>
+			  			
 			  		</div>	
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="address">Address:</label>
-				  <div class="col-sm-8 col-md-8">          
+				  <div class="col-sm-8 col-md-8" id="CAerror">          
 					<input type="text" class="form-control" id="address"  name="address">
+					<p id="CAtext" class="valerror"></p>
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
-			  			<?php echo form_error('address'); ?>
+			  	
 			  		</div>
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="contact">Contact #:</label>
-				  <div class="col-sm-8 col-md-8">          
-					<input type="text" class="form-control" id="contact ctact"   name="contactno">
+				  <div class="col-sm-8 col-md-8" id="CCerror">          
+					<input type="text" class="form-control" id="clientnum"   name="contactno">
+					<p id="CCtext" class="valerror"></p>
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
-			  			<?php echo form_error('contact'); ?>
+			 
 			  		</div>
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="email">E-mail:</label>
-				  <div class="col-sm-8 col-md-8">          
+				  <div class="col-sm-8 col-md-8" id="CEerror">          
 					<input type="text" class="form-control" id="email"  name="email">
+					<p id="CEtext" class="valerror"></p>
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
-			  			<?php echo form_error('email'); ?>
+			
 			  		</div>
 				</div>
-            </div> <!--- end of new client box new client --->
+            </div> 
             <div class="newClientboxHead"><h3 class="text-center"><b>Pet's Info</b></h3></div>
-            <div class="newClientbox"> <!--- new client box new pet --->
+            <div class="newClientbox">
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="petname">Name:</label>
-				  <div class="col-sm-8 col-md-8">
-					<input type="text" class="form-control" id="pname"  name="pname">
+				  <div class="col-sm-8 col-md-8" id="CPerror">
+					<input type="text" class="form-control" id="petname"  name="pname">
+					<p id="CPtext" class="valerror"></p>
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
-			  			<?php echo form_error('pname'); ?>
+			 
 			  		</div>
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="petbreed">Breed:</label>
-				  <div class="col-sm-8 col-md-8">
-					<input type="text" class="form-control" id="breed"  name="breed">
+				  <div class="col-sm-8 col-md-8" id="CBerror">
+					<input type="text" class="form-control" id="petbreed"  name="breed">
+					<p id="CBtext" class="valerror"></p>
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
-			  			<?php echo form_error('breed'); ?>
+		
 			  		</div>
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-3 col-md-3" for="markings">Color/Markings:</label>
-				  <div class="col-sm-7 col-md-7">
-					<input type="text" class="form-control" id="markings"  name="markings">
+				  <div class="col-sm-7 col-md-7" id="CPerror">
+					<input type="text" class="form-control" id="petmarkings"  name="markings">
+
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
-			  			<?php echo form_error('markings'); ?>
+
 			  		</div>
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="species">Species:</label>
-				  <div class="col-sm-8 col-md-8">
-					<input type="text" class="form-control" id="species"  name="species">
+				  <div class="col-sm-8 col-md-8" id="CSerror">
+					<input type="text" class="form-control" id="petspecies"  name="species">
+					<p id="CStext" class="valerror"></p>
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
-			  			<?php echo form_error('species'); ?>
+		
 			  		</div>
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class=" col-sm-2 col-md-2" for="birthday">Birthday:</label>
-				  <div class="col-sm-8 col-md-8">
-						<input type="date" class="form-control" id="birthday" name="birthday"/>
+				  <div class="col-sm-8 col-md-8" id="CDerror">
+						<input type="date" class="form-control" id="petbirthday" name="birthday"/>
+						<p id="CDtext" class="valerror"></p>
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
 				  <div class="col-lg-8">
 			  			<div><br></div>
-			  			<?php echo form_error('birthday'); ?>
+			  	
 			  		</div>
 				</div>
 				<div class="form-group">
@@ -273,11 +283,11 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				  </div>
 				  <div class="col-sm-1 col-md-1"></div>
 				</div>
-            </div> <!--- end of new client box new pet --->
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" id="sbmtClient" class="btn btn-primary">Save</button>
 			  </form>
         </div>
         <?php form_close();?>
@@ -552,19 +562,28 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										</thead>
 										<tbody id="itemsused">
 										
+
 										</tbody>
 									</table>
 								</div>
 							</div>
 						
 							<hr />
-				
+							<div class="row">
+								<div class=" col-md-6 form-group">
+									<h4 class="text-right">Service Fee: (Php)</h4>
+								</div>
+								<div class=" col-md-6 form-inline pull-to-left">
+									<input type="text" name='totalCost' placeholder='0.00' class="form-control ad" id="servicecost" readonly />
+								</div>
+							</div>
 							<div class="row">
 								<div class=" col-md-6 form-group">
 									<h4 class="text-right">Total Cost: (Php)</h4>
 								</div>
 								<div class=" col-md-6 form-inline pull-to-left">
-									<input type="number" name='totalCost' placeholder='0.00' class="form-control ad" id="visitcost" readonly />
+										<input type="text" name='totalCost' placeholder='0.00' class="form-control ad" id="visitcost" readonly />
+									<div id="" ></div>
 								</div>
 							</div>
 						</form>
@@ -870,7 +889,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 		function history(id){
 			$('#pet_detail').hide();
 
-				        
+				    //CHRSTNV item cost
 			document.getElementById("itemsused").innerHTML="";
 			$.ajax({
 			        type: 'POST',
@@ -878,7 +897,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 			        data:{id: id},
 				        success: function(data) {
 				        	var obj = JSON.parse(data);
-				        	console.log(obj.items);
+				        	console.log(obj);
 				        	var s="";
 				        	var r="";
 				        	var t="";
@@ -891,11 +910,12 @@ $('.modal').on('hidden.bs.modal', function (e) {
 								for(var i=0; i<parseInt(obj.items.length); i++){
 									item += '<tr><td>'+obj.items[i].items_used+'</td><td>'+obj.items[i].item_desc+'</td></tr>';
 								}
+								item+='<tr><td colspan="3">Item Cost ₱ '+obj.visit.itemCost+'</td></tr>'
 								$("#itemsused").html(item);
 								
-							}
+						
 
-							
+							}
 
 							$('#basicid').html(s);
 							$('#visitdate').html(q);
@@ -903,7 +923,9 @@ $('.modal').on('hidden.bs.modal', function (e) {
 							$("#visitservice").html(r);
 				        	$("#visitrecom").val(obj.visit.recommendation);
 				        	$("#visitfindings").val(obj.visit.findings);
-				        	$("#visitcost").val(obj.visit.visit_cost);
+				        	$("#visitcost").val('₱ '+parseInt(obj.visit.Total).toLocaleString('en'));
+				   			$("#servicecost").val('₱ '+parseInt(obj.visit.visit_cost).toLocaleString('en'));
+
 				          $('#fullVisitDet').show();				          
 				        }
 				    });

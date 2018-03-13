@@ -191,6 +191,13 @@ $(document).ready(function(){
 	   								 }
 						});
 
+							$(document).on('keyup','.globalDisable',function(){
+								 var num = this.value.match(/^\d+$/);
+									  if (num === null) {	
+	      							 this.value = "";
+	   								 }
+						});
+
 				});
 
 
@@ -294,7 +301,7 @@ $(document).ready(function(){
 
 										 	
 								});
-								  alert('Record save successfully');	
+							
 									$("#hstryform").submit();
 
 										 	
@@ -457,7 +464,7 @@ $(document).ready(function(){
 
 						   						if(msg=='true'){
 						   							$('#addInventory').submit();
-						   								alert('hi');				   						}
+						   					   						}
 						   					else{
 												if(obj.desc!=null){
 													$("#descerror1").html(obj.desc);	
@@ -507,6 +514,140 @@ $(document).ready(function(){
 
 
 					});
+				});
+
+
+
+
+				//***************validation for Add client**************
+
+
+
+
+
+				$(document).ready(function(){
+
+
+					$('#sbmtClient').click(function(e){
+
+						e.preventDefault();
+						var name = $('#name').val();
+						var address = $('#address').val();
+						var contact = $('#clientnum').val();
+						var email = $('#email').val();
+						var petname = $('#petname').val();
+						var petbreed = $('#petbreed').val();
+						var petmarkings = $('#petmarkings').val();
+						var petspecies = $('#petspecies').val();
+						var petbirthday = $('#petbirthday').val();
+						var base_url = window.location.origin;
+						$.ajax({
+							type: 'POST',
+							url: base_url+"/veterinary/vetclinic/validateClient",
+						    data: {name:name,address:address,contact:contact,email:email,petname:petname,petbreed:petbreed,petmarkings:petmarkings,petspecies:petspecies,petbirthday:petbirthday},
+						   success: function(msg){
+						   	if(msg=='true'){
+						   		$('#addclientform').submit();
+
+
+						   	}
+						   	else{ 	console.log(msg);
+							var obj = JSON.parse(msg);
+
+
+							if(obj.name!=null)
+							{
+							$("#CNtext").html(obj.name);	
+							$("#CNerror").addClass("has-error has-feedback");
+							}
+							else{
+								$("#CNtext").remove(obj.name);	
+							    $("#CNerror").removeClass("has-error has-feedback");
+							}
+							if(obj.address!=null)
+							{
+							$("#CAtext").html(obj.address);	
+							$("#CAerror").addClass("has-error has-feedback");
+							}
+							else{
+								$("#CAtext").remove(obj.address);	
+							    $("#CAerror").removeClass("has-error has-feedback");
+							}
+							if(obj.contact!=null)
+							{
+							$("#CCtext").html(obj.contact);	
+							$("#CCerror").addClass("has-error has-feedback");
+							}
+							else{
+								$("#CCtext").remove(obj.contact);	
+							    $("#CCerror").removeClass("has-error has-feedback");
+							}
+							if(obj.email!=null)
+							{
+							$("#CEtext").html(obj.email);	
+							$("#CEerror").addClass("has-error has-feedback");
+							}
+							else{
+								$("#CEtext").remove(obj.email);	
+							    $("#CEerror").removeClass("has-error has-feedback");
+							}
+							if(obj.petname!=null)
+							{
+							$("#CPtext").html(obj.petname);	
+							$("#CPerror").addClass("has-error has-feedback");
+							}
+							else{
+								$("#CPtext").remove(obj.petname);	
+							    $("#CPerror").removeClass("has-error has-feedback");
+							}
+							if(obj.petbreed!=null)
+							{
+							$("#CBtext").html(obj.petbreed);	
+							$("#CBerror").addClass("has-error has-feedback");
+							}
+							else{
+								$("#CBtext").remove(obj.petbreed);	
+							    $("#CBerror").removeClass("has-error has-feedback");
+							}
+							if(obj.petspecies!=null)
+							{
+							$("#CStext").html(obj.petspecies);	
+							$("#CSerror").addClass("has-error has-feedback");
+							}
+							else{
+								$("#CStext").remove(obj.petspecies);	
+							    $("#CSerror").removeClass("has-error has-feedback");
+							}
+							if(obj.petbirthday!=null)
+							{
+							$("#CDtext").html(obj.petbirthday);	
+							$("#CDerror").addClass("has-error has-feedback");
+							}
+							else{
+								$("#CDtext").remove(obj.petbirthday);	
+							    $("#CDerror").removeClass("has-error has-feedback");
+							}
+
+
+
+
+
+
+
+						   	}
+
+						  
+						   }
+						});
+
+					});
+
+
+
+
+
+
+
 				});
 
 

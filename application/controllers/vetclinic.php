@@ -187,45 +187,58 @@ class vetclinic extends CI_Controller {
 	// 	$this->load->view('clinic/inventory');
 	// 	$this->load->view('include/footer');
 	// }// end of inventory function
-
+	//chrstnv
 	public function save(){
-
-		$this->load->model('vet_model');
-		$lastclient = $this->vet_model->getLastClient();
+$lastclient = $this->vet_model->getLastClient();
 		$finalid = $lastclient+1;
-			$this->form_validation->set_rules('cname', 'Name', 'required');
-	  		$this->form_validation->set_rules('address', 'address', 'required');
-		 	$this->form_validation->set_rules('contactno', 'contact', 'required');
-		  	//$this->form_validation->set_rules('email', 'email', 'required');
-		  	$this->form_validation->set_rules('pname', 'Pet Name', 'required');
-	  		$this->form_validation->set_rules('breed', 'breed', 'required');
-		 	$this->form_validation->set_rules('markings', 'markings', 'required');
-		 	$this->form_validation->set_rules('species', 'species', 'required');
-			$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+		$data = $this->input->post(['cname','address','contactno','email']);
+    
+		if (($this->vet_model->saveClients($data,$finalid))&&($this->vet_model->savePets($finalid))){
+            		$this->session->set_flashdata('response', 'Saved Succesfully!');
+				 }
+				 return redirect('vetclinic');
+
+	}
+	public function validateClient(){
+
+	
+			$this->form_validation->set_rules('name', 'Name', 'trim|required');
+	  		$this->form_validation->set_rules('address', 'address', 'trim|required');
+		 	$this->form_validation->set_rules('contact', 'contact', 'trim|required|min_length[11]|max_length[11]');
+		  	$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
+		  	$this->form_validation->set_rules('petname', 'Pet Name', 'trim|required');
+	  		$this->form_validation->set_rules('petbreed', 'breed', 'trim|required');
+		 	// $this->form_validation->set_rules('petmarkings', 'markings', 'required');
+		 	$this->form_validation->set_rules('petspecies', 'species', 'trim|required');
+		   $this->form_validation->set_rules('petbirthday', 'Birthday', 'trim|required');
             
             if ($this->form_validation->run()){
 
-             	$data = $this->input->post(['cname','address','contactno','email']);
-             	$this->load->model('vet_model');
-             	if (($this->vet_model->saveClients($data,$finalid))&&($this->vet_model->savePets($finalid))){
-             		$this->session->set_flashdata('response', 'Saved Succesfully!');
-				 }
-				 else{
-             		// $this->session->set_flashdata('response', 'Failed to save!');
-				 }
-				return redirect('vetclinic');
+    //          	$data = $this->input->post(['cname','address','contactno','email']);
+    //          	$this->load->model('vet_model');
+    //          	if (($this->vet_model->saveClients($data,$finalid))&&($this->vet_model->savePets($finalid))){
+    //          		$this->session->set_flashdata('response', 'Saved Succesfully!');
+				//  }
+				//  else{
+    //          		// $this->session->set_flashdata('response', 'Failed to save!');
+				//  }
+				// 
+				echo 'true';
 
             }
             else{
-            	$this->session->set_flashdata('responsed', 'Failed to save! (Please input necessary details)');
-            	$header_data['title'] = "Clinic";		
-				$this->load->view('include/header',$header_data);
-				$this->load->model('vet_model');
-				$clients = $this->vet_model->getClients();
-				$lastclient = $this->vet_model->getLastClient();	
-				$this->load->view('clinic/vet_home', ['cl'=>$clients,'al'=>$lastclient]);
-				$this->load->view('include/footer');
-            }
+    
+
+            if(form_error('name')!=null){$data['name']=form_error('name');}
+             if(form_error('address')!=null){$data['address']=form_error('address');}
+              if(form_error('contact')!=null){$data['contact']=form_error('contact');}
+               if(form_error('email')!=null){$data['email']=form_error('email');}
+                if(form_error('petname')!=null){$data['petname']=form_error('petname');}
+                 if(form_error('petbreed')!=null){$data['petbreed']=form_error('petbreed');}
+                  if(form_error('petspecies')!=null){$data['petspecies']=form_error('petspecies');}
+                   if(form_error('petbirthday')!=null){$data['petbirthday']=form_error('petbirthday');}
+           		echo json_encode($data); 
+                }
 		}
 
 	public function savedate(){
@@ -285,7 +298,7 @@ class vetclinic extends CI_Controller {
 			$petv=$petv+1;
 			 $id = $yr.'-'.$pet.'-'.$petv;
 
-			$notif = $this->vet_model->addItemUsed($id,$data['item']);
+			$notif = $this->vet_model->addItemUsed($id,$data['id']);
 			$item=$this->vet_model->itemUsage($data);
 			//to transaction
 
@@ -577,7 +590,11 @@ class vetclinic extends CI_Controller {
 			$left = $this->itemstock->read($condition,$selector)[0]['qty_left'];
 			
 			if($qty>$left || $qty<=0){
-				echo "<script type='text/javascript'>alert('Invalid Input');</script>";
+				echo "<script type='text/javascript'>
+				alert('Invalid input');
+
+
+				;</script>";
 				
 			}
 			else{
@@ -663,6 +680,7 @@ class vetclinic extends CI_Controller {
         return TRUE;
     	}
 		} 
+		//chrstnv
 		public function validateItem(){
 
 			// print_r($_POST);
