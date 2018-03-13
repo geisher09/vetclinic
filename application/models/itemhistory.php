@@ -14,7 +14,7 @@ class itemhistory extends CI_Model {
 		if($selector==null) $selector = '*';
 		$this->db->select($selector);
 		$this->db->from($this->table);
-	
+		$this->db->order_by('date','desc');
 		if( isset($condition) ) $this->db->where($condition);
 		
 

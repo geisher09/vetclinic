@@ -17,7 +17,7 @@
 				
             <!-- Modal Body -->
             <div class="modal-body">
-                 <?php echo form_open(site_url("vetclinic/inventory/")) ?>
+                 <?php echo form_open(site_url("vetclinic/history/")) ?>
             	<form action="" method="POST"><div class="form-group">
             		<span  id="ins" class="valerror"></span>
 										<label>Item</label>

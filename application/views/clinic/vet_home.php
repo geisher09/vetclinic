@@ -593,7 +593,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				<div class="container-fluid window" id="addHistory">
 					
 						<div class="row">
-							<p class="lead text-center" style="font-size:32px; font-family:'Arvo'; color:#2471A3;">Add History</p>
+							<p class="lead text-center" style="font-size:32px; font-family:'Arvo'; color:#2471A3;">Add Historys</p>
 							<hr />
 							<div class="col-md-6">
 								<?php 
@@ -663,6 +663,8 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 												<th class="text-center col-md-1" style="background-color:#d9d9d9">#</th>
 												<th class="text-center col-md-8" style="background-color:#d9d9d9">Item Used</th>
 												<th class="text-center col-md-3" style="background-color:#d9d9d9">Quantity</th>
+													<th class="text-center col-md-3" style="background-color:#d9d9d9">Unit price</th>
+														<th class="text-center col-md-3" style="background-color:#d9d9d9">Amount</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -681,6 +683,17 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 													<input type="number" name='qty0' id="myitem0" placeholder='Qty' class="form-control addtm" min="0"/>
 													<input id="prdid0" class='prd' type='hidden'></input>
 												</td>
+												<td>
+													<input type="number" name='qty0' id="qtyprice0" placeholder='Price' class="form-control ITprice" min="0" readonly />
+												</td>
+												<td>
+													<input type="number" name='qty0' id="amount0" placeholder='Price' class="form-control Tamount" min="0" readonly/>
+												</td>
+
+											</tr>
+											<tr id='addr1'>
+												
+
 											</tr>
 											<tr id='addr1'>
 												
@@ -691,13 +704,9 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 											<tr>
 
 
-											<td colspan="3">
-
-												<div class="col-md-1">Total: </div> <div class="col-md-11" id="TotalSum">
-												
-												</div>
-												<input type="hidden" name="hiddenSum" id="hiddenSum" /> <!-- compute sum hidden field-->
-											</td>
+										
+												<input type="hiddenSum" name="hiddenSum" id="hiddenSum" /> <!-- compute sum hidden field-->
+											
 										</tr>
 									</tfoot>
 								
@@ -743,7 +752,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 	</div>
 </div>
 
-
+	
 <!--Script for the item used-->
 <script>
 
@@ -778,13 +787,14 @@ $('.modal').on('hidden.bs.modal', function (e) {
 		  });
 		});
 		//adding rowss
+
 		$(document).ready(function(){
 				var value="";
 		      var i=1;
 		       sos(this.id);
 		     $("#add_row").click(function(){
 		    
-		      $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><select class='form-control Vitems'><option></option></select></td><td><input name='qty"+i+"' type='number' placeholder='Qty' id='myitem"+i+"' class='form-control input-md addtm' min='0'><input id='prdid"+i+"' value='0' class='prd' type='hidden'></input></td>");
+		      $('#addr'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><select class='form-control Vitems'><option></option></select></td><td><input name='qty"+i+"' type='number' placeholder='Qty' id='myitem"+i+"' class='form-control input-md addtm' min='0'><input id='prdid"+i+"' value='0' class='prd' type='hidden'></input></td><td><input type='number' name='qty0' id='qtyprice0' placeholder='Price' class='form-control ITprice' min='0' readonly /></td> <td><input type='number' name='qty0' id='amount0' placeholder='Price' class='form-control Tamount' min='0' readonly/></td>");
 
 		      $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
 
@@ -910,12 +920,16 @@ $('.modal').on('hidden.bs.modal', function (e) {
 								for(var i=0; i<parseInt(obj.items.length); i++){
 									item += '<tr><td>'+obj.items[i].items_used+'</td><td>'+obj.items[i].item_desc+'</td></tr>';
 								}
-								item+='<tr><td colspan="3">Item Cost ₱ '+obj.visit.itemCost+'</td></tr>'
+
+							var itemcost = parseFloat(obj.visit.itemCost).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+								item+='<tr><td colspan="3">Item Cost ₱ '+itemcost+'</td></tr>'
 								$("#itemsused").html(item);
 								
 						
 
 							}
+							var data = parseFloat(obj.visit.Total).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+							var data2 = parseFloat(obj.visit.visit_cost).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
 							$('#basicid').html(s);
 							$('#visitdate').html(q);
@@ -923,8 +937,8 @@ $('.modal').on('hidden.bs.modal', function (e) {
 							$("#visitservice").html(r);
 				        	$("#visitrecom").val(obj.visit.recommendation);
 				        	$("#visitfindings").val(obj.visit.findings);
-				        	$("#visitcost").val('₱ '+parseInt(obj.visit.Total).toLocaleString('en'));
-				   			$("#servicecost").val('₱ '+parseInt(obj.visit.visit_cost).toLocaleString('en'));
+				        	$("#visitcost").val('₱ '+data);
+				   			$("#servicecost").val('₱ '+data2);
 
 				          $('#fullVisitDet').show();				          
 				        }
