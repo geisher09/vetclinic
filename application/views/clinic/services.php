@@ -131,11 +131,6 @@
 						<input type="text" class="form-control" id="desc"  name="desc">
 					  </div>
 					</div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> f1ff35b6cb7c09a5beaeaf1ac40fa37533337bee
 
 					<div class="form-group">
 					  <label class=" col-sm-3" for="serv_type">Type of Service:</label>
@@ -146,12 +141,7 @@
 							</select>
 					  </div>
 					</div>
-<<<<<<< HEAD
->>>>>>> 982ec1f9c5e7818008f6b7518ce06edef30c157c
-=======
 
->>>>>>> f1ff35b6cb7c09a5beaeaf1ac40fa37533337bee
-					
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
