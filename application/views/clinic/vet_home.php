@@ -316,49 +316,49 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 		
 					<div class="container-fluid window" id="clientDet">
 					<?php echo form_open('vetclinic/updateclient', ['class'=>'form-horizontal']); ?>
-					<p class="lead text-center">Client Details</p>	
+					<p class="lead text-center" style="font-size:32px; font-family:'Arvo'; color:#2471A3;">Client Details</p>
+					<hr />
 						<div class="row">
-							<div class=" col-md-4 form-group">
-								<label for="">Client no:</label>
-							<input type="hidden" class="form-control form-inline" id="clientno1" name="clientno" value="" disabled="true"/> 
+							<div class=" col-md-4 form-group text-center">
+								<label for="">Client No.</label>
+							<input type="hidden" class="form-control " id="clientno1" name="clientno" value="" disabled="true"/> 
 							<p id="clientno" value=""></p>
 						<h1></h1>	 
 							</div>
-							<div class=" col-md-4 form-group">
-								<label for="">Name :</label>
+							<div class=" col-md-4 form-group text-center">
+								<label for="">Name </label>
 								<input type="text" class="form-control form-inline" id="custname1" name="" value="" disabled="true"/>
 										<p id="custname"  value=""></p>
 							</div>
-							
-							<div class="col-md-4 form-group " id="cnume">
-								<label for="">Contact No.:</label>
-								<input type="number" class="form-control" id="custcontactno1" name="num" value="<?php echo set_value('num'); ?>" maxlength="11" min="0"/>
+							<div class="col-md-4 form-group text-center" id="cnume">
+								<label for="">Contact No.</label>
+								<input type="number" class="form-control line" id="custcontactno1" name="num" value="<?php echo set_value('num'); ?>" maxlength="11" min="0"/>
 								<p id="conerror" class="valerror"></p>
 										<p id="custcontactno"  value=""></p>
-							</div>	
-							<button class="btn btn-primary" id="editClient">EDIT</button>
-
-
+							</div>
 						<!-- 	<button class="btn btn-primary" id="modal">modal</button> -->
 						</div>
 						<div class="row">
-							<div class="col-md-6 form-group" id="emaile">
-								<label for="">Email:</label>
-								<input type="text" class="form-control" id="custemail1" name="num2" value="<?php echo set_value('num2'); ?>"/>
+							<div class="col-md-4 form-group text-center" id="emaile">
+								<label for="">Email</label>
+								<input type="text" class="form-control line" id="custemail1" name="num2" value="<?php echo set_value('num2'); ?>"/>
 								<p id="emailerror" class="valerror"></p>
 										<p id="custemail"  value=""></p>
 							</div>
-							<div class="col-md-6 form-group" id="addre">
-								<label for="">Address:</label>
-								<input type="text" class="form-control" id="custaddress1" name="num3" value="<?php echo set_value('num3'); ?>"/>
+							<div class="col-md-4 form-group text-center" id="addre">
+								<label for="">Address</label>
+								<input type="text" class="form-control line" id="custaddress1" name="num3" value="<?php echo set_value('num3'); ?>"/>
 								<p id="addrerror" class="valerror"></p>
 										<p id="custaddress" value=""></p>
-							</div>		
+							</div>
+							<div class=" col-md-4 form-group text-center" style="margin-top:10px;">	
+							<button class="btn btn-primary ecbtn" id="editClient">EDIT</button>
+							</div>
 						</div>
-			
+					<hr />
 					<div class="row">
 						<div class="col-md-6">
-								<p class="lead text-center">List of Owned Pet(s)</p>
+								<p class="lead text-center" style="font-size: 25px;font-family:'Arvo'; color:#2471A3;">List of Owned Pet(s)</p>
 								<div style="height: 300px; overflow: auto">
 									<table id="petList" class="table table-hover" style="margin-top: 20px;">
 										<th align="center" class="text-center table-bordered bg-info" style="background-color:#d9d9d9;">Pet ID</th>
@@ -373,8 +373,9 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 						</div>
 					
 						<div class="col-md-6 collapse" id="pet_detail">
-							<p class="lead text-center">Pet Details</p>
-									<div class="form-group">
+							<p class="lead text-center" style="font-size: 25px;font-family:'Arvo'; color:#2471A3;">Pet Details</p>
+								<div class="row">
+									<div class="col-md-6 form-group text-center">
 										<span style="white-space: nowrap">
 										<label for="">Pet Name:</label>
 								<!-- 		<input type="text" class="form-control" id="petsname" name="petsname" value=""> -->
@@ -382,49 +383,53 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										</span>
 									</div>
 							
-									<div class="form-group">
+									<div class="col-md-6 form-group text-center">
 										<label for="">Pet id:</label>
 										<!-- <input type="text" class="form-control" id="petsid" name="petsid" value="" disabled="true"/> -->
 										<p id="petsid"></p>
 									</div>
-							
-									<div class="form-group">
+								</div>
+								
+								<div class="row">
+									<div class="col-md-6 form-group text-center">
 										<label for="">Breed:</label>
 							<!-- <input type="text" class="form-control" id="petsbreed" name="petsbreed" value="" disabled="true"/>-->
 										<p id="petsbreed"></p>		
 								</div>
 							
 							
-									<div class="form-group">
+									<div class="col-md-6 form-group text-center">
 										<label for="">Birthday:</label>
 										<!-- <input type="text" class="form-control" id="petsbirthday" name="petsbirthday" value="" disabled="true"/> -->
 											<p id="petsbirthday"></p>
 									</div>	
-							
-									<div class="form-group">
+								</div>
+								
+								<div class="row">
+									<div class="col-md-6 form-group text-center">
 										<label for="">Sex:</label>
 							<!-- 			<input type="text" class="form-control" id="petssex" name="petssex" value="" disabled="true"/> -->
 											<p id="petssex"></p>
 									</div>
 
-									<div class="form-group">
+									<div class="col-md-6 form-group text-center">
 										<label for="">Markings:</label>
 										<!-- <input type="text" class="form-control" id="petsmarkings" name="petsmarkings" value=""/> -->
 											<p id="petsmarkings"></p>
 									</div>		
-									
+								</div>	
 						</div>
 					</div>
 
-					<div>
-						
+					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 					<?php echo form_close();?>
 				</div>
 					
 				<div class="container-fluid window" id="addPet">
-					<p class="lead text-center">Add Pet</p>
+					<p class="lead text-center" style="font-size:32px; font-family:'Arvo'; color:#2471A3;">Add Pet</p>
+					<hr />
 					<div class="col-md-2"></div>
 					<form></form>
 					<?php echo form_open('vetclinic/savepet', ['class'=>'form-horizontal','id'=>'addPetForm']); ?>
@@ -488,7 +493,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 		
 				<div class="container-fluid window2" id="visitHistory">
 					<div class="col-md-6">
-						<p class="lead text-center">History of Visits</p>
+						<p class="lead text-center" style="font-size:23px; font-family:'Arvo'; color:#2471A3;">History of Visits</p>
 						
 							<div style="height: 300px; overflow: auto">
 								<table align="center" id="petList" class="table table-hover" style="margin-top: 20px;">
@@ -507,7 +512,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 					</div>
 	
 					<div class="col-md-6 collapse" id="fullVisitDet">
-						<p class="lead text-center">Full Visit Details</p>
+						<p class="lead text-center" style="font-size:23px; font-family:'Arvo'; color:#2471A3;">Full Visit Details</p>
 						<form role="form" method="post" class="form-group">
 							<div class="row">
 								<div class="col-md-12" id="basicid"></div>
@@ -536,7 +541,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 							</div>
 						
 							<div class="row">
-								<div align="center" class="col-md-12" id="visitservice">
+								<div align="left" class="col-md-12" id="visitservice">
 								</div>
 							</div>
 				
@@ -588,8 +593,8 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 				<div class="container-fluid window" id="addHistory">
 					
 						<div class="row">
-							<p class="lead text-center">Add History</p>
-						
+							<p class="lead text-center" style="font-size:32px; font-family:'Arvo'; color:#2471A3;">Add History</p>
+							<hr />
 							<div class="col-md-6">
 								<?php 
 								$attributes = array('class'=>'form-horizontal','id'=>'hstryform');
@@ -612,7 +617,7 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 										</div>
 									</div>
 									<hr />
-									<div class="col-md-12">
+									<div class="col-md-12 form-group">
 										<label>Doctor:</label>
 										<select name="doctor" class="form-control" id="Vdoctors">
 											
@@ -621,12 +626,12 @@ PS: ginawa ko munang comment to kasi nakakaapekto sa calendar... ewan ko kung ba
 									<br />
 									<div class=" col-md-12 form-group">
 										<label for="">Findings :</label>
-										<textarea class="form-control" name="findings" rows="4">Findings here.</textarea>
+										<textarea placeholder="Findings" class="form-control" name="findings" rows="4"></textarea>
 									</div>
 				
 									<div class="col-md-12 form-group">
 										<label for="">Recommendations :</label>
-										<textarea class="form-control" name="recom" rows="4">Recommendations.</textarea>
+										<textarea placeholder="Recommendations" class="form-control" name="recom" rows="4"></textarea>
 									</div>	
 									
 								</div>

@@ -25,9 +25,9 @@
 			foreach($grooming as $s){
 				echo '
 				<div class="col-lg-3 col-md-3 col-sm-3 boxed">
-					<ul> Grooming </ul> <hr>
+					<ul> Grooming </ul> <hr />
 					<li> '.$s['desc'].' </li>
-					<li> '.$s['id'].' </li> <hr>
+					<li> '.$s['id'].' </li> <hr />
 					<li> <p>
 						<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#updateservicemodal" onclick="data('.$s['id'].')">Edit</button>
 						<a href="'.base_url('vetclinic/services/?id='.$s['id']).'" role="button" class="btn btn-danger btn-md" >Delete</a></p>
@@ -69,7 +69,7 @@
 		  <div class="modal-content" id="registermodal">
 			<div class="modal-header" style="background-color:rgba(128, 191, 255,0.9);">
 			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-			  <h3 class="modal-title">ADD SERVICE</h3>
+			  <h3 class="modal-title text-center" style="font-size:25px; font-weight:bold;">ADD SERVICE</h3>
 			</div>
 			<div class="modal-body" style="padding:10px;padding-top:0px;">
 					<br/>
@@ -112,7 +112,7 @@
 		  <div class="modal-content" id="registermodal">
 			<div class="modal-header" style="background-color:rgba(128, 191, 255,0.9);">
 			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-			  <h3 class="modal-title">UPDATE SERVICE</h3>
+			  <h3 class="modal-title text-center" style="font-size:25px; font-weight:bold;">UPDATE SERVICE</h3>
 			</div>
 			<div class="modal-body" style="padding:50px;padding-top:0px;">
 					<br/>
@@ -131,6 +131,17 @@
 						<input type="text" class="form-control" id="desc"  name="desc">
 					  </div>
 					</div>
+
+					<div class="form-group">
+					  <label class=" col-sm-3" for="serv_type">Type of Service:</label>
+					  <div class="col-sm-8">          
+							<select class="form-control" id="serv_type" name="serv_type">
+								<option >Grooming</option>
+								<option >Treatment</option>
+							</select>
+					  </div>
+					</div>
+
 					
 			</div>
 			<div class="modal-footer">
