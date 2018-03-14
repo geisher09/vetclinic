@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2018 at 05:58 AM
+-- Generation Time: Mar 14, 2018 at 04:17 AM
 -- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -59,7 +59,7 @@ CREATE TABLE `itemhistory` (
   `description` text NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `qty` int(20) NOT NULL,
-  `total_cost` int(20) NOT NULL
+  `total_cost` decimal(20,2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -67,25 +67,26 @@ CREATE TABLE `itemhistory` (
 --
 
 INSERT INTO `itemhistory` (`id`, `itemid`, `serviceid`, `action`, `description`, `date`, `qty`, `total_cost`) VALUES
-(1, 1, 'SER-000', 'Add Product', 'Add Product: Item 1 - Anti bacteria with 20 pc/s and price of 300 added ', '0000-00-00 00:00:00', 20, 300),
-(2, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 3 pc/s with total cost of 900. Only 17 pc/s left ', '2017-10-09 23:41:38', 3, 900),
-(3, 1, 'SER-000', 'Add Stock', 'Add Stock: Item 1 - Anti bacteria added 3 pc/s', '0000-00-00 00:00:00', 20, 300),
-(4, 2, 'SER-000', 'Add Product', 'Add Product: Item 2 - Paracetamol for pups with 50 pc/s and price of 250 added ', '0000-00-00 00:00:00', 50, 250),
-(5, 2, 'SER-000', 'Add Stock', 'Add Stock: Item 2 - Paracetamol for pups added 5 pc/s', '2017-10-09 23:41:38', 55, 250),
-(6, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 7 pc/s with total cost of 2100. Only 13 pc/s left ', '2017-10-10 21:05:52', 7, 2100),
-(7, 2, 'SER-000', 'Sold Item', 'Sold Item: Item 2 - Paracetamol for pups sold 1 pc/s with total cost of 250. Only 54 pc/s left ', '2017-10-10 21:09:56', 1, 250),
-(8, 2, 'SER-000', 'Sold Item', 'Sold Item: Item 2 - Paracetamol for pups sold 15 pc/s with total cost of 3750. Only 9 pc/s left ', '2017-10-10 21:37:15', 15, 3750),
-(9, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 2 pc/s with total cost of 600. Only 11 pc/s left ', '2017-10-10 21:46:24', 2, 600),
-(10, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 1 pc/s with total cost of 300. Only 10 pc/s left ', '2017-10-10 21:51:53', 1, 300),
-(11, 2, 'SER-000', 'Sold Item', 'Sold Item: Item 2 - Paracetamol for pups sold 3 pc/s with total cost of 750. Only 6 pc/s left ', '2017-10-10 21:52:10', 3, 750),
-(12, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 1 pc/s with total cost of 300. Only 9 pc/s left ', '2017-10-11 01:50:40', 1, 300),
-(13, 2, 'SER-000', 'Sold Item', 'Sold Item: Item 2 - Paracetamol for pups sold 3 pc/s with total cost of 750. Only 3 pc/s left ', '2017-10-11 01:51:41', 3, 750),
-(14, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 1 pc/s with total cost of 300. Only 8 pc/s left ', '2017-10-11 02:34:41', 1, 300),
-(15, 2, 'SER-000', 'Sold Item', 'Sold Item: Item 2 - Paracetamol for pups sold 1 pc/s with total cost of 250. Only 2 pc/s left ', '2017-10-11 02:54:19', 1, 250),
-(16, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 1 pc/s with total cost of 300. Only 7 pc/s left ', '2017-10-11 11:03:43', 1, 300),
-(17, 3, 'SER-000', 'Add Product', 'Add Product: Item 3 - Pet Shampoo with 100 pc/s and price of 12 added ', '2017-10-11 15:44:15', 100, 12),
-(18, 1, 'SER-000', 'Add Stock', 'Add Stock: Item 1 - Anti bacteria added 3 pc/s', '2017-11-01 12:53:13', 10, 300),
-(19, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 2 pc/s with total cost of 600. Only 8 pc/s left ', '2017-11-01 12:54:30', 2, 600);
+(1, 1, 'SER-000', 'Add Product', 'Add Product: Item 1 - Anti bacteria with 20 pc/s and price of 300 added ', '0000-00-00 00:00:00', 20, '300.00'),
+(2, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 3 pc/s with total cost of 900. Only 17 pc/s left ', '2017-10-09 23:41:38', 3, '900.00'),
+(3, 1, 'SER-000', 'Add Stock', 'Add Stock: Item 1 - Anti bacteria added 3 pc/s', '0000-00-00 00:00:00', 20, '300.00'),
+(4, 2, 'SER-000', 'Add Product', 'Add Product: Item 2 - Paracetamol for pups with 50 pc/s and price of 250 added ', '0000-00-00 00:00:00', 50, '250.00'),
+(5, 2, 'SER-000', 'Add Stock', 'Add Stock: Item 2 - Paracetamol for pups added 5 pc/s', '2017-10-09 23:41:38', 55, '250.00'),
+(6, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 7 pc/s with total cost of 2100. Only 13 pc/s left ', '2017-10-10 21:05:52', 7, '2100.00'),
+(7, 2, 'SER-000', 'Sold Item', 'Sold Item: Item 2 - Paracetamol for pups sold 1 pc/s with total cost of 250. Only 54 pc/s left ', '2017-10-10 21:09:56', 1, '250.00'),
+(8, 2, 'SER-000', 'Sold Item', 'Sold Item: Item 2 - Paracetamol for pups sold 15 pc/s with total cost of 3750. Only 9 pc/s left ', '2017-10-10 21:37:15', 15, '3750.00'),
+(9, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 2 pc/s with total cost of 600. Only 11 pc/s left ', '2017-10-10 21:46:24', 2, '600.00'),
+(10, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 1 pc/s with total cost of 300. Only 10 pc/s left ', '2017-10-10 21:51:53', 1, '300.00'),
+(11, 2, 'SER-000', 'Sold Item', 'Sold Item: Item 2 - Paracetamol for pups sold 3 pc/s with total cost of 750. Only 6 pc/s left ', '2017-10-10 21:52:10', 3, '750.00'),
+(12, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 1 pc/s with total cost of 300. Only 9 pc/s left ', '2017-10-11 01:50:40', 1, '300.00'),
+(13, 2, 'SER-000', 'Sold Item', 'Sold Item: Item 2 - Paracetamol for pups sold 3 pc/s with total cost of 750. Only 3 pc/s left ', '2017-10-11 01:51:41', 3, '750.00'),
+(14, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 1 pc/s with total cost of 300. Only 8 pc/s left ', '2017-10-11 02:34:41', 1, '300.00'),
+(15, 2, 'SER-000', 'Sold Item', 'Sold Item: Item 2 - Paracetamol for pups sold 1 pc/s with total cost of 250. Only 2 pc/s left ', '2017-10-11 02:54:19', 1, '250.00'),
+(16, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 1 pc/s with total cost of 300. Only 7 pc/s left ', '2017-10-11 11:03:43', 1, '300.00'),
+(17, 3, 'SER-000', 'Add Product', 'Add Product: Item 3 - Pet Shampoo with 100 pc/s and price of 12 added ', '2017-10-11 15:44:15', 100, '12.00'),
+(18, 1, 'SER-000', 'Add Stock', 'Add Stock: Item 1 - Anti bacteria added 3 pc/s', '2017-11-01 12:53:13', 10, '300.00'),
+(19, 1, 'SER-000', 'Sold Item', 'Sold Item: Item 1 - Anti bacteria sold 2 pc/s with total cost of 600. Only 8 pc/s left ', '2017-11-01 12:54:30', 2, '600.00'),
+(20, 2, 'SER-000', 'Add Stock', 'Add Stock: Item 2 - Paracetamol for pups added 1 pc/s', '2018-03-04 02:06:47', 1, '250.00');
 
 -- --------------------------------------------------------
 
@@ -97,7 +98,7 @@ CREATE TABLE `itemstock` (
   `itemid` int(11) UNSIGNED NOT NULL,
   `item_desc` varchar(200) NOT NULL,
   `qty_left` int(11) UNSIGNED NOT NULL,
-  `item_cost` decimal(10,0) NOT NULL
+  `item_cost` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -105,9 +106,9 @@ CREATE TABLE `itemstock` (
 --
 
 INSERT INTO `itemstock` (`itemid`, `item_desc`, `qty_left`, `item_cost`) VALUES
-(1, 'Anti bacteria', 8, '300'),
-(2, 'Paracetamol for pups', 2, '250'),
-(3, 'Pet Shampoo', 97, '12');
+(1, 'Anti bacteria', 8, '300.00'),
+(2, 'Paracetamol for pups', 1, '250.00'),
+(3, 'Pet Shampoo', 97, '12.00');
 
 -- --------------------------------------------------------
 
@@ -142,7 +143,7 @@ CREATE TABLE `itemusage` (
   `serviceid` int(1) NOT NULL DEFAULT '3',
   `date_used` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `qty_used` int(11) UNSIGNED NOT NULL,
-  `total_cost` decimal(10,0) NOT NULL
+  `total_cost` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -150,23 +151,23 @@ CREATE TABLE `itemusage` (
 --
 
 INSERT INTO `itemusage` (`itemid`, `serviceid`, `date_used`, `qty_used`, `total_cost`) VALUES
-(1, 3, '2017-10-02 00:00:26', 2, '20'),
-(2, 3, '2017-10-02 01:01:29', 12, '112'),
-(1, 3, '2017-10-02 01:55:51', 12, '1234'),
-(1, 3, '2017-10-02 02:18:21', 2, '1231231'),
-(1, 3, '2017-10-02 02:22:48', 2, '0'),
-(1, 3, '2017-10-02 02:23:31', 2, '0'),
-(1, 3, '2017-10-02 02:24:35', 2, '0'),
-(1, 3, '2017-10-02 02:27:33', 2, '600'),
-(1, 3, '2017-10-02 02:28:02', 2, '600'),
-(1, 3, '2017-10-02 02:29:09', 3, '900'),
-(1, 3, '2017-10-02 02:30:20', 1, '301'),
-(1, 3, '2017-10-02 02:31:50', 1, '301'),
-(3, 3, '2009-12-07 05:50:33', 45, '54540'),
-(6, 3, '2009-12-07 05:52:31', 4, '1296'),
-(6, 3, '2009-12-07 05:56:00', 4, '1296'),
-(1, 3, '2009-12-07 05:56:53', 0, '0'),
-(6, 3, '2009-12-07 05:57:02', 3, '972');
+(1, 3, '2017-10-02 00:00:26', 2, '20.00'),
+(2, 3, '2017-10-02 01:01:29', 12, '112.00'),
+(1, 3, '2017-10-02 01:55:51', 12, '1234.00'),
+(1, 3, '2017-10-02 02:18:21', 2, '1231231.00'),
+(1, 3, '2017-10-02 02:22:48', 2, '0.00'),
+(1, 3, '2017-10-02 02:23:31', 2, '0.00'),
+(1, 3, '2017-10-02 02:24:35', 2, '0.00'),
+(1, 3, '2017-10-02 02:27:33', 2, '600.00'),
+(1, 3, '2017-10-02 02:28:02', 2, '600.00'),
+(1, 3, '2017-10-02 02:29:09', 3, '900.00'),
+(1, 3, '2017-10-02 02:30:20', 1, '301.00'),
+(1, 3, '2017-10-02 02:31:50', 1, '301.00'),
+(3, 3, '2009-12-07 05:50:33', 45, '54540.00'),
+(6, 3, '2009-12-07 05:52:31', 4, '1296.00'),
+(6, 3, '2009-12-07 05:56:00', 4, '1296.00'),
+(1, 3, '2009-12-07 05:56:53', 0, '0.00'),
+(6, 3, '2009-12-07 05:57:02', 3, '972.00');
 
 -- --------------------------------------------------------
 
@@ -197,7 +198,8 @@ INSERT INTO `pet` (`petid`, `clientid`, `pname`, `breed`, `species`, `sex`, `bir
 ('3-1', '3', 'Flick', 'Corgi', 'Dog', 'm', '2015-10-28', 'White'),
 ('1002-1', '1002', 'Winter', 'Siberian Husky', 'Dog', 'f', '2016-10-21', 'Black & Yellow'),
 ('1000-1', '1000', 'Flicka', 'Husky', 'Dog', 'f', '2016-12-07', 'White'),
-('1001-1', '1001', 'Dags', 'Corgi', 'Dog', 'm', '2016-09-09', 'Brown');
+('1001-1', '1001', 'Dags', 'Corgi', 'Dog', 'm', '2016-09-09', 'Brown'),
+('1-1', '1', 'dsa', 'dsa', 'dsa', 'm', '2018-02-22', 'dsa');
 
 -- --------------------------------------------------------
 
@@ -227,7 +229,17 @@ INSERT INTO `schedule` (`ID`, `title`, `startdate`, `enddate`, `description`, `a
 (40, 'sample', '2017-10-01', '2017-10-01', 'sample', 'false'),
 (41, 'Flicky''s Vaccination', '2017-10-17T07:30:00', '2017-10-17T08:30:00', 'Flickyyyyyyyyyyyy', 'false'),
 (42, 'Flight', '2017-10-26T07:00:00', '2017-10-26T08:30:00', 'aalis ako', 'false'),
-(43, 'Sheilaaaaaaaaaaaaaaa''s bday', '2017-11-05T07:00:00', '2017-11-05T10:00:00', 'bday ni she', 'false');
+(43, 'Sheilaaaaaaaaaaaaaaa''s bday', '2017-11-05T07:00:00', '2017-11-05T10:00:00', 'bday ni she', 'false'),
+(45, 'dsada', '2018-02-07', '2018-02-07', 'dsadas', 'false'),
+(46, '1', '2018-02-17T05:30:00', '2018-02-17T07:00:00', '1', 'true'),
+(47, '2', '2018-02-17', '2018-02-17', '2', 'false'),
+(48, '3', '2018-02-17', '2018-02-17', '3', 'false'),
+(49, '4', '2018-02-17', '2018-02-17', '4', 'false'),
+(50, '5', '2018-02-17T05:30:00', '2018-02-17T07:00:00', '5', 'false'),
+(51, 'test', '2018-02-24', '2018-02-24', 'test', 'false'),
+(52, '1', '2018-02-25T06:00:00', '2018-02-25T06:00:00', '1', 'false'),
+(53, 'Test 1', '2018-03-04', '2018-03-04', 'Test 1', 'false'),
+(54, 'test', '2018-03-08', '2018-03-08', 'test', 'false');
 
 -- --------------------------------------------------------
 
@@ -239,7 +251,7 @@ CREATE TABLE `service` (
   `id` varchar(20) NOT NULL,
   `type` varchar(20) NOT NULL,
   `desc` varchar(40) NOT NULL,
-  `servcost` int(10) NOT NULL
+  `servcost` decimal(10,2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -247,9 +259,9 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `type`, `desc`, `servcost`) VALUES
-('SERT-001', 'treatment', 'deworming', 1500),
-('SERT-002', 'treatment', 'vacination', 1000),
-('SERG-001', 'grooming', 'Cleaning of pet', 200);
+('SERT-001', 'treatment', 'deworming', '1500.00'),
+('SERT-002', 'treatment', 'vacination', '1000.00'),
+('SERG-001', 'grooming', 'Cleaning of pet', '200.00');
 
 -- --------------------------------------------------------
 
@@ -284,7 +296,7 @@ CREATE TABLE `stock` (
   `stockno` varchar(20) NOT NULL,
   `item_desc` varchar(30) NOT NULL,
   `qty_left` int(10) NOT NULL,
-  `item_cost` int(15) NOT NULL
+  `item_cost` decimal(15,2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -292,10 +304,30 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`stockno`, `item_desc`, `qty_left`, `item_cost`) VALUES
-('401-001', 'Syringe', 99, 100),
-('401-002', 'paracetamol (test data)  ', 99, 100),
-('401-003', 'Dog food deluxe', 99, 300),
-('401-004', 'dog food regular', 99, 150);
+('401-001', 'Syringe', 99, '100.00'),
+('401-002', 'paracetamol (test data)  ', 99, '100.00'),
+('401-003', 'Dog food deluxe', 99, '300.00'),
+('401-004', 'dog food regular', 99, '150.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `isDoctor` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`username`, `password`, `isDoctor`) VALUES
+('doctor', '1234', 1),
+('secretary', '1234', 0);
 
 -- --------------------------------------------------------
 
@@ -331,17 +363,20 @@ CREATE TABLE `visit` (
   `findings` varchar(20) NOT NULL,
   `recommendation` varchar(30) NOT NULL,
   `case_type` varchar(15) NOT NULL,
-  `visit_cost` int(15) NOT NULL
+  `visit_cost` decimal(15,2) NOT NULL,
+  `Total` decimal(11,2) NOT NULL,
+  `itemCost` decimal(11,2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `visit`
 --
 
-INSERT INTO `visit` (`visitid`, `petid`, `vetid`, `serviceid`, `visitdate`, `findings`, `recommendation`, `case_type`, `visit_cost`) VALUES
-('17-5-1-1', '5-1', '301-001', '170011', '2017-10-11 02:50:11', 'Findings here.', 'Recommendations.', 'Grooming', 300),
-('17-1000-1-1', '1000-1', '301-001', '170011', '2017-10-11 02:35:02', 'None', 'None', 'Grooming', 500),
-('17-3-1-1', '3-1', '301-001', '170007', '2017-10-11 11:02:59', 'Findings here.', 'Recommendations.', 'Treatment', 700);
+INSERT INTO `visit` (`visitid`, `petid`, `vetid`, `serviceid`, `visitdate`, `findings`, `recommendation`, `case_type`, `visit_cost`, `Total`, `itemCost`) VALUES
+('17-5-1-1', '5-1', '301-001', '170011', '2017-10-11 02:50:11', 'Findings here.', 'Recommendations.', 'Grooming', '300.00', '0.00', '0.00'),
+('17-1000-1-1', '1000-1', '301-001', '170011', '2017-10-11 02:35:02', 'None', 'None', 'Grooming', '500.00', '0.00', '0.00'),
+('17-3-1-1', '3-1', '301-001', '170007', '2017-10-11 11:02:59', 'Findings here.', 'Recommendations.', 'Treatment', '700.00', '0.00', '0.00'),
+('18-1-1-1', '1-1', '301-001', '170007', '2018-02-17 13:49:49', 'Findings here.', 'Recommendations.', 'Treatment', '0.00', '0.00', '0.00');
 
 --
 -- Indexes for dumped tables
@@ -402,6 +437,12 @@ ALTER TABLE `stock`
   ADD PRIMARY KEY (`stockno`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`username`);
+
+--
 -- Indexes for table `veterinarian`
 --
 ALTER TABLE `veterinarian`
@@ -426,7 +467,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `itemhistory`
 --
 ALTER TABLE `itemhistory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `itemstock`
 --
@@ -441,7 +482,7 @@ ALTER TABLE `items_used`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT for table `services`
 --
