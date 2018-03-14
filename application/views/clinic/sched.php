@@ -233,6 +233,11 @@
 						navLinks: true, // can click day/week names to navigate views
 						editable: true,
 						droppable: true,
+						/*validRange: function(nowDate) {
+							return {
+								start: nowDate.subtract(1,'days')
+							};
+						},*/
 						eventLimit: true, // allow "more" link when too many events
 						eventSources: [
 					    {
@@ -265,13 +270,14 @@
 					          $('#editModal').modal();
 					    },
 					    dayClick: function(date, jsEvent, view) {
-					        var start = date.format();
-					        var view = view.name;
-					        /*alert(start);*/
-					        $('#start').val(start);
-					        $('#end').val(start);
-					        $('#addModal').modal();
-
+							if(date.isSameOrAfter(moment().subtract(1,'days'))){
+								var start = date.format();
+								var view = view.name;
+								/*alert(start);*/
+								$('#start').val(start);
+								$('#end').val(start);
+								$('#addModal').modal();
+							}
 					    },
 					    eventResize: function(event, delta, revertFunc) {
 							console.log(event);
