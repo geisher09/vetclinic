@@ -67,24 +67,28 @@
 <div class="container-fluid">
 	<div class="box">
 		
-		<div class="form-group">
-		<img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="logo" class="img-reponsive logo " /> 
-		<p class="lgntitle "> Deloso Veterinary Clinic </p>
-		</div>
-		
-		<div class="form-group"> 
-			<input align="center" id="uname" type="text" class="form-control input-underline" name="uname" placeholder="User Name">
-			<span style="color: White; "><strong> </strong></span>
-		</div> <br />
+		<form action="<?php echo base_url('login'); ?>" method="post">
+			<div class="form-group">
+			<img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="logo" class="img-reponsive logo " /> 
+			<p class="lgntitle "> Deloso Veterinary Clinic </p>
+			</div>
+			
+			<div class="form-group"> 
+				<input align="center" id="uname" type="text" class="form-control input-underline" name="uname" placeholder="User Name">
+				<span style="color: White; "><strong> </strong></span>
+			</div> <br />
 
-		<div class="form-group">
-			<input align="center" id="uname" type="text" class="form-control input-underline" name="uname" placeholder="Password">
-			<span style="color: White; "><strong> </strong></span>
-		</div> <br /><br />
+			<div class="form-group">
+				<input align="center" id="pass" type="text" class="form-control input-underline" name="pass" placeholder="Password">
+				<span style="color: White; "><strong> </strong></span>
+			</div> <br /><br />
 
-		<div class="form-group">
-			<button align="center" type="submit" class="btn btn-md lgbtn"> LOG IN </button> <br /><br /><br /><br >
-		</div>
+			<?php echo validation_errors(); ?>
+
+			<div class="form-group">
+				<button align="center" type="submit" class="btn btn-md lgbtn"> LOG IN </button> <br /><br /><br /><br >
+			</div>
+		</form>	
 
 	</div>
 
