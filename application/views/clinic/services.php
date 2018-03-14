@@ -76,22 +76,26 @@
 				  <form class="form-horizontal" action="" method="post">
 					
 					<br />
-					<div class="form-group">
-					  <label class=" col-sm-3" for="desc">Description:</label>
-					  <div class="col-sm-8">
+					<div class="row form-group">
+                        <div class="col-sm-1 col-md-1"></div>
+					  <label class=" col-sm-2 col-md-2 " for="desc">Description:</label>
+					  <div class="col-sm-8 col-md-8">
 						<input type="text" class="form-control" id="desc"  name="desc">
 					  </div>
+                        <div class="col-sm-1 col-md-1"></div>
 					</div>
-					<div class="form-group">
-					  <label class=" col-sm-3" for="serv_type">Type of Service:</label>
-					  <div class="col-sm-8">          
+					<div class="row form-group">
+                        <div class="col-sm-1 col-md-1"></div>
+					  <label class=" col-sm-3 col-md-3" for="serv_type">Type of Service:</label>
+					  <div class="col-sm-7 col-md-7">          
 							<select class="form-control" id="serv_type" name="serv_type">
 								<option >Grooming</option>
 								<option >Treatment</option>							
 							</select>
 					  </div>
+                        <div class="col-sm-1 col-md-1"></div>
 					</div>
-					
+					<br/>
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -118,28 +122,34 @@
 					<br/>
 					<br/>
 				  <form class="form-horizontal" action="" method="post">
-					<div class="form-group">
-					  <label class=" col-sm-3" >Service ID:</label>
-					  <div class="col-sm-8">
+					<div class="row form-group">
+                        <div class="col-sm-1 col-md-1"></div>
+					  <label class=" col-sm-2 col-md-2" >Service ID:</label>
+					  <div class="col-sm-8 col-md-8">
 						<input type="text" class="form-control" id="serviceid"  name="serviceid" value="" readonly="readonly" >
 					  </div>
+                        <div class="col-sm-1 col-md-1"></div>
 					</div>
 					<br />
 					<div class="form-group">
-					  <label class=" col-sm-3" for="desc">Description:</label>
+                        <div class="col-sm-1"></div>
+					  <label class=" col-sm-2" for="desc">Description:</label>
 					  <div class="col-sm-8">
 						<input type="text" class="form-control" id="desc"  name="desc">
 					  </div>
+                        <div class="col-sm-1"></div>
 					</div>
 
 					<div class="form-group">
-					  <label class=" col-sm-3" for="serv_type">Type of Service:</label>
-					  <div class="col-sm-8">          
+                        <div class="col-sm-1 col-md-1"></div>
+					  <label class=" col-sm-3 col-md-3" for="serv_type">Type of Service:</label>
+					  <div class="col-sm-7 col-md-7">          
 							<select class="form-control" id="serv_type" name="serv_type">
 								<option >Grooming</option>
 								<option >Treatment</option>
 							</select>
 					  </div>
+                        <div class="col-sm-1 col-md-1"></div>
 					</div>
 
 			</div>

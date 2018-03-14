@@ -95,7 +95,7 @@
 				  <div class="col-sm-1 col-md-1"></div>
 				  <label class="col-sm-3 col-md-3" style="text-align:right;">Client ID:</label>
 				  <div class="col-sm-6 col-md-6">
-					<input type="text" class="form-control" id="clientid"  name="clientid" value="<?php echo $cid;?>" disabled>
+					<input type="text" class="form-control" id="clientid"  name="clientid" value="<?php echo $cid;?>" readonly>
 				  	<input type="hidden" id="hiddenIDNo" value="<?php echo $cid;?>" name="idnum">
 				  </div>
 				  <div class="col-sm-2 col-md-2"></div>
@@ -503,8 +503,8 @@
 					<div class="col-md-6">
 						<p class="lead text-center" style="font-size:23px; font-family:'Arvo'; color:#2471A3;">History of Visits</p>
 						
-							<div style="min-height:500px; overflow:auto">
-								<table align="center" id="petList" class="table table-hover" style="margin-top: 20px;">
+							<div style="min-height:400px; max-height:700px; overflow:auto; margin-bottom: 50px;">
+								<table align="center" id="petList" class="table table-hover" >
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Date</th>
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Pet ID</th>
 									<th align="center" class="table-bordered bg-info" style="background-color:#d9d9d9;">Service Type</th>
@@ -606,7 +606,7 @@
 				<div class="container-fluid window" id="addHistory">
 					
 						<div class="row">
-							<p class="lead text-center" style="font-size:32px; font-family:'Arvo'; color:#2471A3;">Add Historys</p>
+							<p class="lead text-center" style="font-size:32px; font-family:'Arvo'; color:#2471A3;">Add History</p>
 							<hr />
 							<div class="col-md-6">
 								<?php 
